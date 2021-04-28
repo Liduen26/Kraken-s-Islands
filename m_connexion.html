@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Connexion</title>
+        <meta charset="UTF-8"/>
+	</head>
+	<body>
+		<h2>Connexion</h2>
+
+		{erreur}
+
+		<form action="/req_identifier" method="GET">
+			<input type="text" name="pseudo">
+			<br/>
+			<input type="password" name="password" value="">
+			<br/>
+			<input type="submit" name="action" value="Se connecter">
+		</form>
+
+		<a href="/req_afficher_inscription"><button>Créer compte</button></a>
+		
+	</body>
+</html>
