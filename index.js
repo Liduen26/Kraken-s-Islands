@@ -16,9 +16,10 @@ let port;
 //-------------------------------------------------------------------------
 
 const req_accueil = require("./req_accueil.js");
-const req_afficher_formulaire_inscription = require("./req_afficher_formulaire_inscription.js");
-const req_inscrire = require("./req_inscrire.js");
-const req_identifier = require("./req_identifier.js");
+const req_credits = require("./req_credits.js");
+const req_connexion = require("./req_connexion.js");
+const req_inscription = require("./req_inscription.js");
+const req_menu = require("./req_menu.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
@@ -46,14 +47,20 @@ const traite_requete = function (req, res) {
 			case '/req_retour_accueil':
 				req_accueil(req, res);
 				break;
+			case '/req_afficher_credits':
+				req_credits(req, res);
+				break;
 			case '/req_afficher_connexion':
-				req_afficher_formulaire_inscription(req, res, query);
+				req_connexion(req, res, query);
 				break;
 			case '/req_afficher_inscription':
-				req_inscrire(req, res, query);
+				req_inscription(req, res, query);
 				break;
 			case '/req_identifier':
-				req_identifier(req, res, query);
+				req_menu(req, res, query);
+				break;
+			case '/req_deconnexion':
+				req_accueil(req, res);
 				break;
 			default:
 				req_statique(req, res, query);
