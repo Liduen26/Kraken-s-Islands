@@ -8,7 +8,7 @@
 const fs = require("fs");
 require('remedial');
 
-const trait = function (req, res, query) {
+const trait = function (req, res, pseudo) {
 
 	let marqueurs;
 	let page;
@@ -16,7 +16,10 @@ const trait = function (req, res, query) {
 	// AFFICHAGE DE LA PAGE D'ACCUEIL
 
 	page = fs.readFileSync('m_menu.html', 'utf-8');
-
+	
+	marqueurs = {};
+	marqueurs.pseudo = pseudo;
+	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);

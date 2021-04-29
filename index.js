@@ -19,6 +19,8 @@ const req_accueil = require("./req_accueil.js");
 const req_credits = require("./req_credits.js");
 const req_connexion = require("./req_connexion.js");
 const req_inscription = require("./req_inscription.js");
+const req_identifier = require("./req_identifier.js");
+const req_inscrire = require("./req_inscrire.js");
 const req_menu = require("./req_menu.js");
 
 const req_statique = require("./req_statique.js");
@@ -33,6 +35,7 @@ const traite_requete = function (req, res) {
 	let requete;
 	let pathname;
 	let query;
+	let pseudo;
 
 	console.log("URL reçue : " + req.url);
 	requete = url.parse(req.url, true);
@@ -57,11 +60,15 @@ const traite_requete = function (req, res) {
 				req_inscription(req, res, query);
 				break;
 			case '/req_identifier':
-				req_menu(req, res, query);
+				pseudo = req_identifier(req, res, query);
 				break;
-			case '/req_deconnexion':
-				req_accueil(req, res);
+			case '/req_inscrire':
+				req_inscrire(req, res, query);
 				break;
+			case'/req_afficher_menu':
+				req_menu(req, res, pseudo);
+				break;
+
 			default:
 				req_statique(req, res, query);
 				break;

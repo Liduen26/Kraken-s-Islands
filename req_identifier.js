@@ -16,6 +16,7 @@ const trait = function (req, res, query) {
 	let listeMembres;
 	let i;
 	let trouve;
+	let pseudo;
 
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -40,7 +41,7 @@ const trait = function (req, res, query) {
 	if (trouve === false) {
 		// SI IDENTIFICATION INCORRECTE, ON REAFFICHE PAGE ACCUEIL AVEC ERREUR
 
-		page = fs.readFileSync('modele_accueil.html', 'utf-8');
+		page = fs.readFileSync('m_connexion.html', 'utf-8');
 
 		marqueurs = {};
 		marqueurs.erreur = "ERREUR : compte ou mot de passe incorrect";
@@ -50,7 +51,7 @@ const trait = function (req, res, query) {
 	} else {
 		// SI IDENTIFICATION OK, ON ENVOIE PAGE ACCUEIL MEMBRE
 
-		page = fs.readFileSync('modele_accueil_membre.html', 'UTF-8');
+		page = fs.readFileSync('m_menu.html', 'UTF-8');
 
 		marqueurs = {};
 		marqueurs.pseudo = query.pseudo;
@@ -60,6 +61,9 @@ const trait = function (req, res, query) {
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
+
+	pseudo = marqueurs.pseudo;
+	return pseudo;
 };
 
 //---------------------------------------------------------------------------
