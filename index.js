@@ -17,8 +17,8 @@ let port;
 
 const req_accueil = require("./req_accueil.js");
 const req_credits = require("./req_credits.js");
-const req_connexion = require("./req_connexion.js");
-const req_inscription = require("./req_inscription.js");
+const req_afficher_connexion = require("./req_afficher_connexion.js");
+const req_afficher_inscription = require("./req_afficher_inscription.js");
 const req_identifier = require("./req_identifier.js");
 const req_inscrire = require("./req_inscrire.js");
 const req_menu = require("./req_menu.js");
@@ -57,10 +57,10 @@ const traite_requete = function (req, res) {
 				req_credits(req, res);
 				break;
 			case '/req_afficher_connexion':
-				req_connexion(req, res, query);
+				req_afficher_connexion(req, res, query);
 				break;
 			case '/req_afficher_inscription':
-				req_inscription(req, res, query);
+				req_afficher_inscription(req, res, query);
 				break;
 			case '/req_identifier':
 				pseudo = req_identifier(req, res, query);

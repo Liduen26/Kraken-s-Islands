@@ -25,7 +25,7 @@ const trait = function (req, res, query) {
 	
 	// on vérifie que les champs ne soient pas vides
 
-	if((query.pseudo = "") || (query.password = "")) {
+	if((query.pseudo === "") || (query.password === "")) {
 		// si pseudo ou mdp vides, on réaffiche la page avec erreur
 
 		page = fs.readFileSync('m_inscription.html', 'utf-8');
