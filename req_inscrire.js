@@ -22,6 +22,19 @@ const trait = function (req, res, query) {
 
 	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');
 	listeMembres = JSON.parse(contenu_fichier);
+	
+	// on vérifie que les champs ne soient pas vides
+
+	if((query.pseudo = "") || (query.password = "")) {
+		// si pseudo ou mdp vides, on réaffiche la page avec erreur
+
+		page = fs.readFileSync('m_inscription.html', 'utf-8');
+
+		marqueurs = {};
+		marqueurs.erreur = "ERREUR : veuillez remplir tous les champs";
+		marqueurs.pseudo = query.pseudo;
+		page = page.supplant(marqueurs);
+	}
 
 	// ON VERIFIE QUE LE COMPTE N'EXISTE PAS DEJA
 
