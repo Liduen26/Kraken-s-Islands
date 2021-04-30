@@ -1,36 +1,35 @@
+//Test de génération d'îles
+
 "use strict"
 
-let grille = [];
-let l = 0, h = 0; //largeur / hauteur  
+let carte = [];
+let y = 0, x = 0; // hauteur / largeur
 
-for(let i = 0;i < 10;i++) {
-	grille[i] = new Array(20);
-	//console.log(1);
-}
+const SimplexNoise = require("simplex-noise");
 
-//console.log(grille);
+const simplex = new SimplexNoise("kraken2");
+const hauteur = 30;
+const largeur = 15;
 
-while (h < 20) {
-	l = 0;
-	while(l < 10){
-		grille[l][h] = ". ";
-		l++;
-		//console.log(2);
+for(let y = 0;y < hauteur;y++) {
+	carte.push([]);
+
+	for(let x = 0;x < largeur;x++) {
+		carte[y].push(". ");
 	}
-	h++;
 }
+y = 0;
+x = 0;
 
-h = 0;
-l = 0; 
-
-while (h < 20) {
-	l = 0;
-	while(l < 10){
-		process.stdout.write(grille[l][h]);
-		l++;
+while (y < 30) {
+	x = 0;
+	while(x < 15){
+		process.stdout.write(carte[y][x]);
+		x++;
 		//console.log(3);
 	}
 	console.log();
-	h++;
+	y++;
 }
+
 
