@@ -4,6 +4,7 @@
 
 let carte = [];
 let y = 0, x = 0; // hauteur / largeur
+var value2d = simplex.noise2D(x, y);
 
 const SimplexNoise = require("simplex-noise");
 
@@ -31,5 +32,4 @@ while (y < 30) {
 	console.log();
 	y++;
 }
-
 
