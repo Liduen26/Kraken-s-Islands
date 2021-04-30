@@ -4,11 +4,13 @@
 
 let carte = [];
 let y = 0, x = 0; // hauteur / largeur
-var value2d = simplex.noise2D(x, y);
-
+let seed;
 const SimplexNoise = require("simplex-noise");
+let random  = new Alea(seed),
+	simplex = new SimplexNoise(random),
+	value2d = simplex.noise2D(30, 15);
 
-const simplex = new SimplexNoise("kraken2");
+
 const hauteur = 30;
 const largeur = 15;
 
@@ -32,4 +34,27 @@ while (y < 30) {
 	console.log();
 	y++;
 }
+ module.seed = function(seed) {
+    if(seed > 0 && seed < 1) {
+      // Scale the seed out
+      seed *= 65536;
+    }   
+
+    seed = Math.floor(seed);
+    if(seed < 256) {
+      seed |= seed << 8;
+    }   
+
+    for(var i = 0; i < 256; i++) {
+      var v;
+      if (i & 1) {
+        v = p[i] ^ (seed & 255);
+      } else {
+        v = p[i] ^ ((seed>>8) & 255);
+      }   
+
+      perm[i] = perm[i + 256] = v;
+      gradP[i] = gradP[i + 256] = grad3[v % 12];
+    }   
+  };  
 
