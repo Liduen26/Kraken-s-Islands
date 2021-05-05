@@ -12,10 +12,10 @@ const kbd = require("kbd");
 const SimplexNoise = require("simplex-noise");
 
 let simplex = new SimplexNoise(Math.random);
-const hauteur = 30;
-const largeur = 20;
+const hauteur = 40;
+const largeur = 30;
 const h_eau = 0.60;
-const h_terre = 0.85;
+const h_terre = 0.75;
 const zoom = 0.1;
 let x_p, y_p;
 let w;
@@ -51,10 +51,10 @@ while (y < hauteur/2) {
 		}
 
 		if(carte[y][x] > h_eau && carte[y][x] < h_terre) {
-			process.stdout.write(colors.bgGreen("  "));
+			process.stdout.write(colors.bgYellow("  "));
 		
 		}else if (carte[y][x] > h_terre) {
-			process.stdout.write(colors.rainbow("  "));
+			process.stdout.write(colors.bgGreen("  "));
 		
 		}else{
 			process.stdout.write(colors.bgBlue("  "));
@@ -67,15 +67,15 @@ while (y < hauteur/2) {
 	y++;
 }
 y--;
-while (y > 0) {
+while (y >= 0) {
 	x = 0;
 	while(x < largeur){
 
 	if(carte[y][x] > h_eau && carte[y][x] < h_terre) {
-			process.stdout.write(colors.bgGreen("  "));
+			process.stdout.write(colors.bgYellow("  "));
 		
 		}else if (carte[y][x] > h_terre) {
-			process.stdout.write(colors.rainbow("  "));
+			process.stdout.write(colors.bgGreen("  "));
 		
 		}else{
 			process.stdout.write(colors.bgBlue("  "));
