@@ -4,7 +4,6 @@
 
 let carte = [];
 let y = 0, x = 0; // hauteur / largeur
-let seed;
 let elevation;
 
 const colors = require("colors/safe");
@@ -16,7 +15,7 @@ const hauteur = 40;
 const largeur = 30;
 const h_eau = 0.60;
 const h_terre = 0.75;
-const zoom = 0.08;
+const zoom = 0.1;
 const t_ilecentre = 4;
 let x_p, y_p;
 let w;
@@ -44,7 +43,8 @@ while (y < hauteur/2) {
 		dy = (hauteur / 2) - y;
 		w = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 		if (w < t_ilecentre) {
-			carte[y][x] =(Math.pow(Math.cos(carte[y][x]),3)) 
+			carte[y][x] =(Math.pow(Math.cos(carte[y][x]),3)); 
+
 			//-(Math.cos(carte[y][x],0.5))*Math.pow(carte[y][x],2)+1;       
 			// (-(Math.pow((0.5*carte[y][x]), 2))+1);
 			//carte[y][x] = Math.pow(carte[y][x]
@@ -67,6 +67,7 @@ while (y < hauteur/2) {
 	console.log();
 	y++;
 }
+
 y--;
 while (y >= 0) {
 	x = 0;
