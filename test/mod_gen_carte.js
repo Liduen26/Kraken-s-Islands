@@ -3,51 +3,67 @@
 "use strict"
 
 const SimplexNoise = require("simplex-noise");
-let simplex = new SimplexNoise(Math.random);
+const simplex = new SimplexNoise(Math.random);
 
-const hauteur = 40;
-const largeur = 30;
-const zoom = 0.08;
-const t_ilecentre = 4;
-
-function generation(hauteur, largeur, zoom, t_ilecentre) {
-	let elevation;
+function generation(hauteur, largeur, zoom, t_ilecentre, h_eau, h_terre) {
 	let carte = [];
-	let y = 0, x = 0; // hauteur / largeur
+	let y, x; //hauteur / largeur
 	let x_p, y_p;
 	let d_centre;
 	let dx, dy;
-
-	for(let y = 0;y < hauteur;y++) {
+	
+	//mise en place du tableau en 2D
+	for(y = 0;y < hauteur;y++) {	
 		carte.push([]);
 
-		for(let x = 0;x < largeur;x++) {
+		for(x = 0;x < largeur;x++) {
 			carte[y].push(0);
 		}
 	}
 	y = 0;
 
-	while (y < hauteur/2) {
+	while (y < hauteur/2) {		//remplissage du tableau carte pour l'afficher
 		x = 0;
 		while(x < largeur){
+			//on zoom sur la map, le x puis le y
 			x_p = x * zoom;
 			y_p = y * zoom;
-			elevation = simplex.noise2D(x_p, y_p);
-			carte[y][x] = elevation;
+			//génération des valeurs via le simplex-noise (bruit cohérent)
+			carte[y][x] = simplex.noise2D(x_p, y_p);
 			
-
-			dx = (largeur / 2) - x;
-			dy = (hauteur / 2) - y;
+			//Calcul via pythagore pour avoir la distance
+			dx = (largeur / 2) - x;		
+			dy = (hauteur / 2) - y;		
 			d_centre = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-
-			if (d_centre < t_ilecentre) {
+			
+			//generation de l'ile centrale
+			if (d_centre < t_ilecentre) {		
 				carte[y][x] = (Math.pow(Math.cos(carte[y][x]), 3));
-
-				//-(Math.cos(carte[y][x],0.5))*Math.pow(carte[y][x],2)+1;       
-				// (-(Math.pow((0.5*carte[y][x]), 2))+1);
-				//carte[y][x] = Math.pow(carte[y][x]
-				//console.log(carte[y][x])
+				
+				/* Vieilles courbes de gen | a virer ?
+				-(Math.cos(carte[y][x],0.5))*Math.pow(carte[y][x],2)+1;       
+				 (-(Math.pow((0.5*carte[y][x]), 2))+1);
+				carte[y][x] = Math.pow(carte[y][x]
+				console.log(carte[y][x]) */
 			}
+			
+			//changement des valeurs de 0,....... à 0, 1, ou 2
+			if(carte[y][x] > h_eau && carte[y][x] < h_terre) {
+				carte[y][x] = 1;
+			}else if (carte[y][x] > h_terre) {
+				carte[y][x] = 2;
+			}
+			//pas besoin de faire le 0 vu que le tableau en est rempli à son init
+			x++;
+		}
+		y++;
+	}
+	
+	//symétrie
+	while(y < hauteur) {
+		x = 0;
+		while(x < largeur){
+			carte[y][x] = carte[hauteur - (y + 1)][x]; 
 			x++;
 		}
 		y++;
