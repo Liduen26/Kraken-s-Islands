@@ -1,3 +1,5 @@
+//module d'affichage de la carte dans la console
+
 "use strict"
 
 const colors = require("colors/safe");
