@@ -5,7 +5,15 @@
 const SimplexNoise = require("simplex-noise");
 const simplex = new SimplexNoise(Math.random);
 
-function generation(hauteur, largeur, zoom, t_ilecentre, h_eau, h_terre) {
+//paramètre de la carte | à changer aussi dans le generation.js si on aff dans la console
+const hauteur = 40;
+const largeur = 70;
+const h_eau = 0.60;
+const h_terre = 0.75;
+const zoom = 0.08;
+const t_ilecentre = 4;
+
+function generation() {
 	let carte = [];
 	let y, x; //hauteur / largeur
 	let x_p, y_p;
@@ -52,8 +60,10 @@ function generation(hauteur, largeur, zoom, t_ilecentre, h_eau, h_terre) {
 				carte[y][x] = 1;
 			}else if (carte[y][x] > h_terre) {
 				carte[y][x] = 2;
+			}else{
+				carte[y][x] = 0;
 			}
-			//pas besoin de faire le 0 vu que le tableau en est rempli à son init
+			
 			x++;
 		}
 		y++;
