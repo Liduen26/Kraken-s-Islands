@@ -53,7 +53,7 @@ function req_aff(req, res) {
 }
 
 function trans_html(carte){
-	let display = "";
+	let display = [];
 	let y = 0, x;
 	let color = "";
 	
@@ -75,14 +75,15 @@ function trans_html(carte){
 			}
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte
-			display += `<span style="display: inline-flex; width: 20px; height: 20px; background-color: ${color}; margin-bottom: -5px"></span>`;
+			display.push(`<span style="display: inline-flex; width: 20px; height: 20px; background-color: ${color}; margin-bottom: -5px"></span>`);
 			x++;
 		}
 		//saut de ligne
-		display += "</br>";
+		display.push("</br>");
 		y++;
 	}
-	
+	display = display.join("");
+
 	return display;
 }
 

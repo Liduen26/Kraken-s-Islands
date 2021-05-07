@@ -3,7 +3,6 @@
 "use strict"
 
 const SimplexNoise = require("simplex-noise");
-const simplex = new SimplexNoise(Math.random);
 const fs = require("fs");
 
 //paramètre de la carte | à changer aussi dans le generation.js si on aff dans la console
@@ -16,6 +15,7 @@ const zoom = 0.08;
 const t_ilecentre = 4;
 
 function generation() {
+	const simplex = new SimplexNoise(Math.random);
 	let carte = [];
 	let y, x; //hauteur / largeur
 	let x_p, y_p;
