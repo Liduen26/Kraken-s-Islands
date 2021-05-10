@@ -7,11 +7,11 @@ const fs = require("fs");
 
 //paramètre de la carte | à changer aussi dans le generation.js si on aff dans la console
 //ce bloc de const est voué à disparaitre, ce sera des variables qu'on gèrera dans l'html
-const hauteur = 40;
-const largeur = 40;
+const hauteur = 500;
+const largeur = 400;
 const h_eau = 0.60;
 const h_terre = 0.75;
-const zoom = 0.08;
+const zoom = 0.005;
 const t_ilecentre = 4;
 
 function generation() {

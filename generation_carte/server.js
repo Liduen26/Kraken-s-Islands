@@ -8,6 +8,7 @@ const fs = require("fs");
 
 const req_statique = require("./req_statique");
 const generation = require("./mod_gen_carte");
+const trans_html = require("./mod_aff_html");
 
 let mon_serveur;
 let port;
@@ -43,7 +44,7 @@ function req_aff(req, res) {
 //	console.log(carte);
 	
 	//rentrée de la carte dans l'html
-	marqueurs.carteAff = trans_html(carte);
+	marqueurs.carteAff = trans_html(carte, 1);
 	page = page.supplant(marqueurs);
 
 	//affichage de la page html
@@ -52,40 +53,7 @@ function req_aff(req, res) {
 	res.end();
 }
 
-function trans_html(carte){
-	let display = [];
-	let y = 0, x;
-	let color = "";
-	
-	//avec cette boucle on remplit le contenu de la variable display, que l'on enverra dans la page html
-	while(y < carte.length) {
-		x = 0;
-		
-		while(x < carte[y].length) {
-			switch(carte[y][x]){
-				case 0:
-					color = "blue";
-					break;
-				case 1:
-					color = "yellow";
-					break;
-				case 2:
-					color = "green";
-					break;
-			}
-			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
-			//c'est tout ces carrés de couleurs assemblés qui font une carte
-			display.push(`<span style="display: inline-flex; width: 20px; height: 20px; background-color: ${color}; margin-bottom: -5px"></span>`);
-			x++;
-		}
-		//saut de ligne
-		display.push("</br>");
-		y++;
-	}
-	display = display.join("");
 
-	return display;
-}
 
 //gestion du serveur local
 mon_serveur = http.createServer(index);
