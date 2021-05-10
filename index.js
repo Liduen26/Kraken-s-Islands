@@ -25,9 +25,12 @@ const req_menu = require("./req_menu.js");
 const req_afficher_creation = require("./req_afficher_creation.js");
 const req_afficher_rejoindre = require("./req_afficher_rejoindre.js");
 const req_creer = require("./req_creer.js");
+const req_generer = require("./req_generer.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
+	
+let carte = [];
 
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
@@ -78,7 +81,10 @@ const traite_requete = function (req, res) {
 				req_afficher_rejoindre(req, res);
 				break;
 			case '/req_creer':
-				req_creer(req, res);
+				req_creer(req, res, query, carte);
+				break;
+			case '/req_generer':
+				carte = req_generer(req, res, query);
 				break;
 
 			default:

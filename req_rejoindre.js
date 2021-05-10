@@ -1,5 +1,5 @@
 //=========================================================================
-// Traitement de "req_afficher_creation"
+// Traitement de "req_afficher_rejoindre"
 // Auteurs : P. Thiré & T. Kerbrat
 // Version : 15/09/2020
 //=========================================================================
@@ -15,10 +15,11 @@ const trait = function (req, res, query) {
 
 	// AFFICHAGE DE LA modele_formulaire_inscription
 
-	page = fs.readFileSync('m_creation_partie.html', 'utf-8');
+	page = fs.readFileSync('m_rejoindre_partie.html', 'utf-8');
 
 	marqueurs = {};
-	marqueurs.carteAff = "";
+	marqueurs.erreur = "";
+	marqueurs.pseudo = "";
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { 'Content-Type': 'text/html' });
