@@ -34,6 +34,7 @@ const trait = function (req, res, query, carte, pseudo) {
 			if(index_p[i].partie === nom_parties) {
 				page = fs.readFileSync("m_creation_partie.html", "UTF-8");
 				
+				marqueurs.taille = `<input type="number name="hauteur" required value="${carte.length}"> x <input type="number" name="largeur" required value="${carte[0].length}"><p>`;
 				marqueurs.carteAff = trans_html(carte, 5);
 				marqueurs.erreur = "Une partie est déjà en cours avec ce nom, merci d'en choisir un autre";
 				page = page.supplant(marqueurs);

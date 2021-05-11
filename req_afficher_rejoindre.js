@@ -24,9 +24,6 @@ const trait = function (req, res, query) {
 	content = fs.readFileSync("./index_parties.json",'utf-8');
 	parties = JSON.parse(content);
 
-console.log( parties);
-console.log (parties.length);
-
 	for (let i = 0; i < parties.length; i++) {
 		//ici faut mettre un truc pour générer de l'html et le join à la fin
 	
@@ -36,14 +33,10 @@ console.log (parties.length);
 		ligne += parties[i].status_p;
 		ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}"><button>Rejoindre</button></a></br>`
 
-
-		console.log(ligne);
-		
 		aff.push(ligne);
 	}
 
 	aff = aff.join("");  
-
 
 	marqueurs = {};
 	marqueurs.parties = aff;

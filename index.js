@@ -25,7 +25,6 @@ const req_menu = require("./req_menu.js");
 const req_afficher_creation = require("./req_afficher_creation.js");
 const req_afficher_rejoindre = require("./req_afficher_rejoindre.js");
 const req_creer = require("./req_creer.js");
-const req_generer = require("./req_generer.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");

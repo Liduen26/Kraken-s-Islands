@@ -19,8 +19,6 @@ const trait = function (req, res, query) {
 	carte = generation(haut, larg);
 
 	//faire un nouv marqureurs pour créer des zones de texte dynamiques
-	console.log(carte.length);
-	console.log(carte[0].length);
 
 	marqueurs.taille = `<input type="number" name="hauteur" required value="${carte.length}"> x <input type="number" name="largeur" required value="${carte[0].length}"><p>`;
 
