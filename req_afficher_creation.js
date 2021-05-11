@@ -19,6 +19,7 @@ const trait = function (req, res, query) {
 
 	marqueurs = {};
 	marqueurs.carteAff = "";
+	marqueurs.erreur = "";
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { 'Content-Type': 'text/html' });
