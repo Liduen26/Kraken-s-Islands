@@ -31,6 +31,7 @@ const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
 	
 let carte = [];
+let pseudo;
 
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
@@ -41,7 +42,7 @@ const traite_requete = function (req, res) {
 	let requete;
 	let pathname;
 	let query;
-	let pseudo;
+	let prefab = {};
 
 	console.log("URL reçue : " + req.url);
 	requete = url.parse(req.url, true);
@@ -76,12 +77,15 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_afficher_creation':
 				req_afficher_creation(req, res);
+				prefab.hauteur = 40;
+				prafab.largeur = 40;
+				carte = req_generer(req, res, prefab);
 				break;
 			case '/req_afficher_rejoindre':
 				req_afficher_rejoindre(req, res);
 				break;
 			case '/req_creer':
-				req_creer(req, res, query, carte);
+				req_creer(req, res, query, carte, pseudo);
 				break;
 			case '/req_generer':
 				carte = req_generer(req, res, query);

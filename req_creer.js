@@ -27,7 +27,6 @@ const trait = function (req, res, query, carte, pseudo) {
 
 
 	contenu = fs.readFileSync("index_parties.json", "UTF-8");
-	console.log(contenu);
 	index_p = JSON.parse(contenu);
 	
 	for(let i = 0;i < index_p.length;i++) {
@@ -48,7 +47,7 @@ const trait = function (req, res, query, carte, pseudo) {
 		index_p.push({
 			"partie": nom_parties,
 			"pseudo": pseudo,
-			"status": "en attente"});
+			"status_p": "en attente"});
 
 		//écriture de la carte dans un fichier .json
 		fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(carte), "UTF-8");
