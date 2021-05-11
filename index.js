@@ -76,10 +76,7 @@ const traite_requete = function (req, res) {
 				req_menu(req, res, pseudo);
 				break;
 			case '/req_afficher_creation':
-				req_afficher_creation(req, res);
-				/*prefab.hauteur = 40;
-				prefab.largeur = 40;
-				carte = req_generer(req, res, prefab);*/
+				carte = req_afficher_creation(req, res, query);
 				break;
 			case '/req_afficher_rejoindre':
 				req_afficher_rejoindre(req, res);
@@ -87,10 +84,7 @@ const traite_requete = function (req, res) {
 			case '/req_creer':
 				req_creer(req, res, query, carte, pseudo);
 				break;
-			case '/req_generer':
-				carte = req_generer(req, res, query);
-				break;
-
+	
 			default:
 				req_statique(req, res, query);
 				break;
