@@ -1,5 +1,5 @@
 //=========================================================================
-// Traitement de "req_afficher_rejoindre"
+// Traitement de "req_rejoindre"
 // Auteurs : P. Thiré & T. Kerbrat
 // Version : 15/09/2020
 //=========================================================================
@@ -13,7 +13,6 @@ const trait = function (req, res, query) {
 	let marqueurs;
 	let page;
 
-	// AFFICHAGE DE LA modele_formulaire_inscription
 
 	page = fs.readFileSync('m_rejoindre_partie.html', 'utf-8');
 

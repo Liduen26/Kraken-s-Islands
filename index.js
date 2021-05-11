@@ -77,9 +77,9 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_afficher_creation':
 				req_afficher_creation(req, res);
-				prefab.hauteur = 40;
-				prafab.largeur = 40;
-				carte = req_generer(req, res, prefab);
+				/*prefab.hauteur = 40;
+				prefab.largeur = 40;
+				carte = req_generer(req, res, prefab);*/
 				break;
 			case '/req_afficher_rejoindre':
 				req_afficher_rejoindre(req, res);

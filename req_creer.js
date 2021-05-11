@@ -16,7 +16,7 @@ const trait = function (req, res, query, carte, pseudo) {
 	let nom_parties = query.nom_partie;
 	let contenu;
 	let index_p = [];
-	let unique;
+	let unique = true;
 	//let erreur = "";
 	// AFFICHAGE DE LA modele_formulaire_inscription
 
@@ -35,6 +35,7 @@ const trait = function (req, res, query, carte, pseudo) {
 			
 			marqueurs.erreur = "Une partie est déjà en cours avec ce nom, merci d'en choisir un autre";
 			page = page.supplant(marqueurs);
+		console.log("1");
 			unique = false;
 		} else {
 			unique = true;
@@ -42,7 +43,7 @@ const trait = function (req, res, query, carte, pseudo) {
 	}
 
 	if(unique === true) {
-		page = fs.readFileSync('m_salle_attente.html', 'utf-8');
+		page = fs.readFileSync('m_salle_attente.html', "UTF-8");
 
 		index_p.push({
 			"partie": nom_parties,
@@ -55,8 +56,9 @@ const trait = function (req, res, query, carte, pseudo) {
 
 		marqueurs.partie = nom_parties;
 		page = page.supplant(marqueurs);
-
+		console.log("2");
 	}
+	
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
