@@ -58,12 +58,11 @@ const trait = function (req, res, query) {
 		page = page.supplant(marqueurs);
 	}
 
-	res.writeHead(200, { 'Content-Type': 'text/html' });
+	res.writeHead(200, { 'Content-Type': 'text/html',
+						 'Set-Cookie': pseudo });
 	res.write(page);
 	res.end();
 
-	pseudo = marqueurs.pseudo;
-	return pseudo;
 };
 
 //---------------------------------------------------------------------------
