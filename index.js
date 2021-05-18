@@ -72,7 +72,7 @@ const traite_requete = function (req, res) {
 				req_inscrire(req, res, query);
 				break;
 			case'/req_afficher_menu':
-				req_menu(req, res, pseudo);
+				req_menu(req, res, query);
 				break;
 			case '/req_afficher_creation':
 				carte = req_afficher_creation(req, res, query);
