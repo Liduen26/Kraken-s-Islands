@@ -28,9 +28,9 @@ const trait = function (req, res, query) {
 		//ici faut mettre un truc pour générer de l'html et le join à la fin
 	
 		ligne = "";
-		ligne += parties[i].partie;
-		ligne += parties[i].pseudo;
-		ligne += parties[i].status_p;
+		ligne += parties[i].partie + " | ";
+		ligne += parties[i].pseudo + " | ";
+		ligne += parties[i].status_p + " | " ;
 		ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}"><button>Rejoindre</button></a></br>`
 
 		aff.push(ligne);
