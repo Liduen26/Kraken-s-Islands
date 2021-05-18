@@ -59,7 +59,7 @@ const trait = function (req, res, query) {
 	}
 
 	res.writeHead(200, { 'Content-Type': 'text/html',
-						 'Set-Cookie': pseudo });
+						 'Set-Cookie': query.pseudo });
 	res.write(page);
 	res.end();
 

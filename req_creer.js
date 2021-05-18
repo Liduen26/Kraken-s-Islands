@@ -49,7 +49,7 @@ const trait = function (req, res, query, carte, pseudo) {
 
 			index_p.push({
 				"partie": nom_parties,
-				"pseudo": pseudo,
+				"pseudo": req.headers.cookie,
 				"status_p": "en attente"});
 
 			//écriture de la carte dans un fichier .json
