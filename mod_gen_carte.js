@@ -9,7 +9,7 @@ const fs = require("fs");
 //ce bloc de const est voué à disparaitre, ce sera des variables qu'on gèrera dans l'html
 const h_eau = 0.60;
 const h_terre = 0.75;
-const zoom = 0.08;
+const zoom = 0.06;
 const t_ilecentre = 4;
 
 function generation(hauteur, largeur) {

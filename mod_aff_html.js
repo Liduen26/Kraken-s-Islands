@@ -11,7 +11,7 @@ function trans_html(carte, tpixel){
 	
 	while(y < carte.length) {
 		x = 0;
-		display.push(`<span style="display:flex"><span>`);
+		display.push(`<span style="display:flex">`);
 
 		while(x < carte[y].length) {
 			switch(carte[y][x]){
@@ -33,7 +33,7 @@ function trans_html(carte, tpixel){
 			x++;
 		}
 		//saut de ligne
-		display.push("</br></span>");
+		display.push("</span>");
 		y++;
 	}
 	display = display.join("");
