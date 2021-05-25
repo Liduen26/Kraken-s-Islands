@@ -57,7 +57,7 @@ const trait = function (req, res, query, carte, pseudo) {
 			fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(carte), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");
 
-			marqueurs.partie = nom_parties;
+			marqueurs.partie = req.headers.cookie;
 			page = page.supplant(marqueurs);
 		}
 	}
