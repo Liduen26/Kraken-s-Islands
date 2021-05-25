@@ -145,3 +145,15 @@ button:hover, input[type="submit"]:hover {
 .b_connexion:active {
     background: rgba(0, 0, 0, 0.15);
 }
+
+
+.cadre_bateau {
+	height: 50vh;
+}
+
+.shooner {
+	display: flex;
+	background: url(./shooner.jpg) center/cover;
+	width: 200px;
+	height: 50vh;
+}
