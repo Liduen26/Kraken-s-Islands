@@ -27,7 +27,7 @@ const req_afficher_rejoindre = require("./req_afficher_rejoindre.js");
 const req_creer = require("./req_creer.js");
 const req_actualiser_attente = require("./req_actualiser_attente");
 const req_rejoindre = require("./req_rejoindre");
-
+const req_quitter_partie = require ("./req_quitter_partie");
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
 	
@@ -68,22 +68,25 @@ const traite_requete = function (req, res) {
 				req_afficher_inscription(req, res, query);
 				break;
 			case '/req_identifier':
-				pseudo = req_identifier(req, res, query);
+				req_identifier(req, res, query);
 				break;
 			case '/req_inscrire':
 				req_inscrire(req, res, query);
 				break;
-			case'/req_afficher_menu':
+			case'/req_menu':
 				req_menu(req, res, query);
 				break;
 			case '/req_afficher_creation':
 				carte = req_afficher_creation(req, res, query);
 				break;
+			case `/req_quitter_partie`:
+				req_quitter_partie (req, res, query)
+				break;
 			case '/req_afficher_rejoindre':
 				req_afficher_rejoindre(req, res);
 				break;
 			case '/req_creer':
-				req_creer(req, res, query, carte, pseudo);
+				req_creer(req, res, query, carte);
 				break;
 			case '/req_actualiser_attente':
 				req_actualiser_attente(req, res, query);

@@ -7,6 +7,7 @@ const fs = require("fs");
 
 //paramètre de la carte | à changer aussi dans le generation.js si on aff dans la console
 //ce bloc de const est voué à disparaitre, ce sera des variables qu'on gèrera dans l'html
+
 const h_eau = 0.60;
 const h_terre = 0.75;
 const zoom = 0.06;
@@ -81,7 +82,8 @@ function generation(hauteur, largeur) {
 	}
 	
 	//écriture de la carte dans un fichier .json
-	fs.writeFileSync("carte.json", JSON.stringify(carte), "UTF-8");
+
+fs.writeFileSync("carte.json", JSON.stringify(carte), "UTF-8");
 
 	return carte;
 }

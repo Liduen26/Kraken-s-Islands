@@ -19,7 +19,6 @@ const trait = function (req, res, query) {
 	
 	marqueurs.pseudo = req.headers.cookie;
 	page = page.supplant(marqueurs);
-	fs.unlinkSync (`./partie/partie_${nom_parties}.json`t);
 
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
