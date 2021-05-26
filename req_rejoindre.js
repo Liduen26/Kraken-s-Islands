@@ -9,17 +9,25 @@ const fs = require("fs");
 require('remedial');
 
 const trait = function (req, res, query) {
-
-	let marqueurs;
+	let marqueurs = {};
 	let page;
+	let contenu;
+	let partie;
+	let i = 0;
+	
+	page = fs.readFileSync('m_choix_bateau.html', 'utf-8');
 
+	contenu = fs.readFileSync("index_parties.json", "UTF-8");
+	partie = JSON.parse(contenu);
 
-	page = fs.readFileSync('m_rejoindre_partie.html', 'utf-8');
+	for(i = 0;i < partie.length;i++) {
+		if(partie[i].Player_1 === query.Player_1) {
+			partie[i].Player_2 = req.headers.cookie;
+			partie[i].status_p = "en cours";
+		}
+	}
 
-	marqueurs = {};
-	marqueurs.erreur = "";
-	marqueurs.pseudo = "";
-	page = page.supplant(marqueurs);
+	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);

@@ -29,14 +29,25 @@ const trait = function (req, res, query) {
 	
 		ligne = "";
 		ligne += parties[i].partie + " | ";
-		ligne += parties[i].pseudo + " | ";
-		ligne += parties[i].status_p + " | " ;
-		ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}"><button>Rejoindre</button></a></br>`
+		ligne += parties[i].Player_1 + " | ";
 
+		if(parties[i].Player_2 === null) {
+			ligne += "aucun | ";
+		} else {
+			ligne += parties[i].Player_2 + " | ";
+		}
+
+		ligne += parties[i].status_p + " | " ;
+
+		if(parties[i].status_p === "en attente") {
+			ligne += `<a href="req_rejoindre?Player_1=${parties[i].Player_1}"><button>Rejoindre</button></a></br>`;
+		} else {
+			ligne += "<br>";
+		}
 		aff.push(ligne);
 	}
 
-	aff = aff.join("");  
+	aff = aff.join("");
 
 	marqueurs = {};
 	marqueurs.parties = aff;

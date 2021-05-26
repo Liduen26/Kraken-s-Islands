@@ -26,6 +26,7 @@ const req_afficher_creation = require("./req_afficher_creation.js");
 const req_afficher_rejoindre = require("./req_afficher_rejoindre.js");
 const req_creer = require("./req_creer.js");
 const req_actualiser_attente = require("./req_actualiser_attente");
+const req_rejoindre = require("./req_rejoindre");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
@@ -86,6 +87,9 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_actualiser_attente':
 				req_actualiser_attente(req, res, query);
+				break;
+			case '/req_rejoindre':
+				req_rejoindre(req, res, query);
 				break;
 
 			default:
