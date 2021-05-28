@@ -127,7 +127,6 @@ button:hover, input[type="submit"]:hover {
 }
 
 .b_connexion {
-    display: flex;
     background: none;
     border: none;
 
