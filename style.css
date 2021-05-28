@@ -82,6 +82,7 @@ h2 {
     
 }
 
+
 button:hover, input[type="submit"]:hover {
     /* background: url(./boisbutton_1280_s.jpg);    */
 }
@@ -108,6 +109,16 @@ button:hover, input[type="submit"]:hover {
     text-shadow: 0.03rem 0.03rem 0.05rem rgba(0, 0, 0, 0.5);
 }
 
+.menu_bg {
+	background: url() no-repeat center/cover;
+    height: 500px;
+    width: 600px;
+    margin-left: 17%;
+}
+
+.b_creer {
+}
+	
 
 .z-text {
     background: none;
