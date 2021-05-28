@@ -3,22 +3,32 @@
 	<head>
 		<title>Inscription</title>
 		<meta charset="UTF-8"/>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h2>Inscription</h2>
+		<header>
+			<h2><label>Inscription<label></h2>
+		</header>
 
 		{erreur}
 
-		<form action="/req_inscrire" method="GET">
-			<label>Pseudo :</label></br>
-			<input type="text" name="pseudo" value="" required="">
-			<br/>
-			<label>Mot de passe :</label></br>
-			<input type="text" name="password" value="" required="">
-			<p>
-			<button name="action" value="creer">Créer compte</button>
-		</form>
+		<div class="connexion_bg">
+			<div class="connexion_content">
+				<form action="/req_inscrire" method="GET">
 
-		<a href="req_retour_accueil"><button>Retour</button> </a>
+					<label for="pseudo">Pseudo : <br>
+						<input class="z-text" type="text" name="pseudo" required>
+					</label><p>
+
+					<label for="mdp">Mot de passe : <br>
+						<input class="z-text" type="password" name="password" required>
+					</label><p>
+
+					<input class="b_connexion" type="submit" value="Créer compte">
+				</form>
+			</div>
+		</div>
+
+		<a href="req_retour_accueil"><button class="b_retour">Retour</button></a>
 	</body>
 </html>
