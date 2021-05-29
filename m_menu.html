@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Menu</title>
-        <meta charset="UTF-8"/>
-		<link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-		<header>
-			<h2><label>Menu</label></h2>
-		</header>
-			
-			<div class="menu_bg">
+<head>
+	<title>Menu</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h2><label>Menu</label></h2>
+	</header>
+	
+	<div class="cadre_menu">
+		<div class="planche" id="planche_menu">
+			<label>Bonjour <em>{pseudo}<em></label>
+		</div>
 
-			Bonjour <em>{pseudo}<em>
-			<p>
 
-			<a href="/req_afficher_creation?hauteur=40&largeur=40"><button>Créer une partie</button></a>
-			</br>
-			<a href="/req_afficher_rejoindre"><button>Rejoindre une partie</button></a>
+		<a href="/req_afficher_creation?hauteur=40&largeur=40"><button class="b_accueil_int">Créer une partie</button></a>
+		</br>
+		<a href="/req_afficher_rejoindre"><button class="b_accueil_int">Rejoindre une partie</button></a>
 
-			<p>
-			<a href="/req_retour_accueil"> <button>Retour</button></a>
+		<p>
+		<a href="/req_retour_accueil"><button class="b_retour">Retour</button></a>
+	</div>
 
-    </body>
+</body>
 
 </html>
 

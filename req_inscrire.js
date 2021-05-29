@@ -75,11 +75,10 @@ const trait = function (req, res, query) {
 		} else {
 			// SI CREATION OK, ON ENVOIE PAGE DE CONFIRMATION
 
-			page = fs.readFileSync('m_confirmation_inscription.html', 'UTF-8');
+			page = fs.readFileSync('m_connexion.html', 'UTF-8');
 
 			marqueurs = {};
-			marqueurs.pseudo = query.pseudo;
-			marqueurs.password = query.password;
+			marqueurs.erreur = "";
 			page = page.supplant(marqueurs);
 		}
 	}
