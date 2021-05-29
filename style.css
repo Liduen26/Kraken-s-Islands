@@ -167,3 +167,34 @@ button:hover, input[type="submit"]:hover {
 	width: 200px;
 	height: 50vh;
 }
+
+.planche_container {
+    display: flex;
+    align-items: baseline;
+}
+
+.planche_1, .planche_2 {
+    background: url(./planche.jpg) no-repeat center/cover;
+    padding: 30px;
+    height: 2vw;
+    width: 25vw;
+    text-align: center;
+    color: rgb(220 186 159);
+    font-family: 'Courgette', serif;
+    font-size: 2em;
+    text-shadow:-0.7px -1px 0 rgba(39 15 22 ), 1px 2px 0 rgba(219, 162, 118, 0.486); 
+    border-radius: 5%;
+    box-shadow: var(--shadow-box);
+}
+
+.planche_2 {
+    position: absolute;
+    bottom: 65%;
+    right: 13%;
+}
+
+ .planche_1 {
+    position: absolute;
+    top: 75%;
+    left: 10%;
+ }
