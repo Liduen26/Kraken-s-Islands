@@ -1,22 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Choix du bateau</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix du bateau</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header>
-		<h2><label>Choisissez votre bateau</label></h2>
-	</header>
+    <header>
+        <h2><label>Choisissez votre bateau</label></h2>
+    </header>
 
-	<div>
-		<div class="cadre_bateau">
-			<span class="shooner"></span>
-		</div>
+    <form method="get" class="form_choix">
+        <div class="bateaux">
+            <div class="cadre_bateau">
+                <label class="label_bateau">
+                    <div class="center_bateau">
+                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <span class="schooner"></span>
+                        <span class="nom_bateau">Schooner</span>
+                    </div>
+                    <div class="stats">
+                        stats : <br>
+                        25 pv<br>
+                        10 attaque<br>
+                        40 dissimulation
+                    </div>
+                </label>       
+                
+            </div>
+    
+            <div class="cadre_bateau">
+                <label class="label_bateau">
+                    <div class="center_bateau">
+                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <span class="brick"></span>
+                        <span class="nom_bateau">Brick</span>
+                    </div>
+                    <div class="stats">
+                        stats : <br>
+                        25 pv<br>
+                        10 attaque<br>
+                        40 dissimulation
+                    </div>
+                </label> 
+                
+            </div>
+    
+            <div class="cadre_bateau">
+                <label class="label_bateau">
+                    <div class="center_bateau">
+                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <span class="fregate"></span>
+                        <span class="nom_bateau">Frégate</span>
+                    </div>
+                    <div class="stats">
+                        stats : <br>
+                        25 pv<br>
+                        10 attaque<br>
+                        40 dissimulation
+                    </div>
+                </label> 
+                
+            </div>
+    
+            <div class="cadre_bateau">
+                <label class="label_bateau">
+                    <div class="center_bateau">
+                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <span class="galion"></span>
+                        <span class="nom_bateau">Galion</span>
+                    </div>
+                    <div class="stats">
+                        stats : <br>
+                        25 pv<br>
+                        10 attaque<br>
+                        40 dissimulation
+                    </div>
+                </label> 
+                
+            </div>
+        </div>
+        
+        <div class="cadre_pret">
+            <input type="submit" value="Prêt" class="b_accueil_int">
+        </div>
+    </form>
+    
 
-	</div>
-
-	<a href="/req_scoreboard"><button class="b_retour">Retour</button></a>
+    
+    
+    <a><button class="b_retour">Retour</button></a>
 </body>
 </html>

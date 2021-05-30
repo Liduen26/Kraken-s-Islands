@@ -208,3 +208,76 @@ button:hover, input[type="submit"]:hover {
 	flex-direction: column;
 	align-items: center;
 }
+
+.bateaux {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.center_bateau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio_bateau {
+    margin: 3px;
+}
+
+.cadre_bateau {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.315);
+    padding: 5px;
+}
+
+.nom_bateau {
+    color: white;
+    font-family: 'Courgette', serif;
+    font-size: 1.8em;
+    text-shadow: var(--shadow-text);
+}
+
+.schooner {
+    display: flex;
+    background: url(./ACRO_Schooner.png) center/cover;
+    width: 19em;
+    height: 18em;
+}
+
+.brick {
+    display: flex;
+    background: url(./ACRO_Brick.png) center/cover;
+    width: 19em;
+    height: 18em;
+}
+
+.fregate {
+    display: flex;
+    background: url(./ACRO_Fregate.png) center/cover;
+    width: 19em;
+    height: 18em;
+}
+
+.galion {
+    display: flex;
+    background: url(./ACRO_Man_o_war.png) center/cover;
+    width: 19em;
+    height: 18em;
+}
+
+.stats {
+    padding: 20px;
+    color: whitesmoke;
+    font-family: 'Courgette', serif;
+    font-size: 1.2em;
+    text-shadow: var(--shadow-text);
+}
+
+.form_choix {
+    display: flex;
+    flex-direction: column;
+}
+
