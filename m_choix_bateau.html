@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +11,12 @@
         <h2><label>Choisissez votre bateau</label></h2>
     </header>
 
-    <form method="get" class="form_choix">
+    <form method="get" action="/req_choix_bateau" class="form_choix">
         <div class="bateaux">
             <div class="cadre_bateau">
                 <label class="label_bateau">
                     <div class="center_bateau">
-                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <input type="radio" name="choixbateau" value="schooner" class="radio_bateau">
                         <span class="schooner"></span>
                         <span class="nom_bateau">Schooner</span>
                     </div>
@@ -34,7 +33,7 @@
             <div class="cadre_bateau">
                 <label class="label_bateau">
                     <div class="center_bateau">
-                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <input type="radio" name="choixbateau" value="brick" class="radio_bateau">
                         <span class="brick"></span>
                         <span class="nom_bateau">Brick</span>
                     </div>
@@ -51,7 +50,7 @@
             <div class="cadre_bateau">
                 <label class="label_bateau">
                     <div class="center_bateau">
-                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <input type="radio" name="choixbateau" value="fregate" class="radio_bateau">
                         <span class="fregate"></span>
                         <span class="nom_bateau">Frégate</span>
                     </div>
@@ -68,7 +67,7 @@
             <div class="cadre_bateau">
                 <label class="label_bateau">
                     <div class="center_bateau">
-                        <input type="radio" name="choixbateau" class="radio_bateau">
+                        <input type="radio" name="choixbateau" value="galion" class="radio_bateau">
                         <span class="galion"></span>
                         <span class="nom_bateau">Galion</span>
                     </div>

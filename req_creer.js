@@ -17,6 +17,7 @@ const trait = function (req, res, query,carte) {
 	let contenu;
 	let index_p = [];
 	let unique = true;
+	let sauvegarde = {};
 
 	contenu = fs.readFileSync("index_parties.json", "UTF-8");
 	index_p = JSON.parse(contenu);
@@ -53,8 +54,10 @@ const trait = function (req, res, query,carte) {
 				"Player_2": null,
 				"status_p": "en attente"});
 
+			sauvegarde.carte = carte;
+
 			//écriture de la carte dans un fichier .json
-			fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(carte), "UTF-8");
+			fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");
 
 			marqueurs.partie = req.headers.cookie;

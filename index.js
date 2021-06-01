@@ -27,7 +27,10 @@ const req_afficher_rejoindre = require("./req_afficher_rejoindre.js");
 const req_creer = require("./req_creer.js");
 const req_actualiser_attente = require("./req_actualiser_attente");
 const req_rejoindre = require("./req_rejoindre");
-const req_quitter_partie = require ("./req_quitter_partie");
+const req_quitter_partie = require("./req_quitter_partie");
+const req_choix_bateau = require("./req_choix_bateau");
+const req_actualiser_attente2 = require("./req_actualiser_attente2");
+
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
 	
@@ -93,6 +96,12 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_rejoindre':
 				req_rejoindre(req, res, query);
+				break;
+			case '/req_choix_bateau':
+				req_choix_bateau(req, res, query);
+				break;
+			case '/req_actualiser_attente2':
+				req_actualiser_attente2(req, res, query);
 				break;
 
 			default:
