@@ -281,3 +281,6 @@ button:hover, input[type="submit"]:hover {
     flex-direction: column;
 }
 
+.cadre_pret {
+	text-align: center;
+}
