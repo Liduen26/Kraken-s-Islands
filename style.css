@@ -281,3 +281,83 @@ button:hover, input[type="submit"]:hover {
     flex-direction: column;
 }
 
+.bonus_container { 
+    border: 1px solid rgb(245, 248, 245);
+    
+}
+ 
+
+  
+ 
+.deplacement_container {
+    border: 1px solid rgb(15, 15, 15);
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ligne_1 {
+
+}
+
+.ligne_2 {
+
+}
+
+.ligne_3 {
+
+}
+
+
+.shoot_container {
+    border: 1px solid rgb(2, 50, 95);    
+} 
+    
+
+
+.droite {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:20%;
+    border: 1px solid rgb(0, 17, 255);
+}
+
+
+.centre {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:60%;
+    border: 1px solid rgb(9, 255, 0);
+
+}
+
+
+.gauche {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:20%;
+    border: 1px solid red;
+}
+
+.tour {
+    
+}
+
+
+.pv {
+    height: 20%;
+    
+}
+
+.ptsvie {
+    background-color: rgb(255, 255, 255);
+
+}
+
