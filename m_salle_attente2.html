@@ -3,7 +3,7 @@
 <head>
 	<title>Salle d'attente</title>
 	<meta charset="UTF-8">
-	<meta http-equiv="refresh" content="3; url=/req_actualiser_attente2">
+	<meta http-equiv="refresh" content="6; url=/req_actualiser_attente2?nom_partie={partie_query}">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
         <h2><label>Veuillez patienter</label></h2>
     </header>
 
-	{partie} </br>
+	{partie}<br>
 
-	<a href="req_quitter_partie?nom_partie={Quitter}"><button>Quitter</button></a>
+	<a href="req_quitter_partie?nom_partie={partie_query}"><button>Quitter</button></a>
 </body>
 </html>

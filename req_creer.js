@@ -8,7 +8,7 @@
 const fs = require("fs");
 const trans_html = require("./mod_aff_html.js");
 
-const trait = function (req, res, query,carte) {
+const trait = function (req, res, query, carte) {
 
 	let marqueurs = {};
 	let page;
@@ -60,8 +60,8 @@ const trait = function (req, res, query,carte) {
 			fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");
 
-			marqueurs.partie = req.headers.cookie;
-			marqueurs.Quitter = query.nom_partie;
+			marqueurs.partie = nom_parties;
+			marqueurs.partie_query = nom_parties;
 			page = page.supplant(marqueurs);
 		}
 	}

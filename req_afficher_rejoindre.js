@@ -40,7 +40,7 @@ const trait = function (req, res, query) {
 		ligne += parties[i].status_p + " | " ;
 
 		if(parties[i].status_p === "en attente") {
-			ligne += `<a href="req_rejoindre?Player_1=${parties[i].Player_1}"><button>Rejoindre</button></a></br>`;
+			ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}&Player_1=${parties[i].Player_1}"><button>Rejoindre</button></a></br>`;
 		} else {
 			ligne += "<br>";
 		}
