@@ -10,13 +10,12 @@ function actualiser(req, res, query) {
 	let parties;
 	let i;
 	let marqueurs = {};
-	let meta_r = `<meta http-equiv="refresh" content="5; url=http://google.fr">`;
 	let verif = false;
 
 	page = fs.readFileSync("./m_salle_attente.html", "UTF-8");
 	
-	marqueurs.partie = req.headers.cookie;
-	page = page.supplant(marqueurs);
+	marqueurs.partie = query.nom_partie;
+	
 
 	contenu = fs.readFileSync("./index_parties.json", "UTF-8");
 	parties = JSON.parse(contenu);
@@ -29,6 +28,9 @@ function actualiser(req, res, query) {
 			}
 		}
 	}
+
+	marqueurs.partie_query = query.nom_partie;
+	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { "Content-Type": "text/html"});
 	res.write(page);
