@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const req_statique = require("./req_statique");
 const generation = require("./mod_gen_carte");
-const trans_html = require("./mod_aff_html");
+const mod_aff_html = require("./mod_aff_html");
 
 let mon_serveur;
 let port;
@@ -36,15 +36,24 @@ function index(req, res) {
 function req_aff(req, res) {
 	let page;
 	let marqueurs = {};
-	let carte = [];
+	let partie;
+	let coordonnées;
+	let x, y;
 
 	page = fs.readFileSync("m_test_gen.html", "UTF-8");
 	
-	carte = generation(); 
-//	console.log(carte);
+	partie = JSON.parse( fs.readFileSync("partie_Test.json"));
+
+	for (y = 0; y <= partie.carte.length; y++) {
+		for (x=0; x<= partie.carte[0].length; x++) {
+			if (partie.Nasicas.coordonnées.y === y && partie.Nasicas.coordonnées.x === x) {
+				partie.carte[y][x] = "b";
+			}
+		}
+	}
 	
 	//rentrée de la carte dans l'html
-	marqueurs.carteAff = trans_html(carte, 1);
+	marqueurs.carteAff = mod_aff_html(partie.carte, 15);
 	page = page.supplant(marqueurs);
 
 	//affichage de la page html
