@@ -37,7 +37,7 @@ function req_aff(req, res) {
 	let page;
 	let marqueurs = {};
 	let partie;
-	let coordonnées;
+	let coordonnees;
 	let x, y;
 
 	page = fs.readFileSync("m_test_gen.html", "UTF-8");
@@ -45,13 +45,13 @@ function req_aff(req, res) {
 	// partie = JSON.parse( fs.readFileSync("partie_Test.json"));
 	partie = { carte: generation(undefined, 250, 200) };
 
-	// for (y = 0; y <= partie.carte.length; y++) {
-	// 	for (x=0; x<= partie.carte[0].length; x++) {
-	// 		if (partie.Nasicas.coordonnées.y === y && partie.Nasicas.coordonnées.x === x) {
-	// 			partie.carte[y][x] = "b";
-	// 		}
-	// 	}
-	// }
+	for (y = 0; y <= partie.carte.length; y++) {
+		for (x=0; x<= partie.carte[0].length; x++) {
+			if (partie.Nasicas.coordonnees.y === y && partie.Nasicas.coordonnees.x === x) {
+				partie.carte[y][x] = "b";
+			}
+		}
+	}
 	
 	//rentrée de la carte dans l'html
 	marqueurs.carteAff = mod_aff_html(partie.carte, 1);

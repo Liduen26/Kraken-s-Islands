@@ -11,6 +11,9 @@ function actualiser(req, res, query) {
 	let i;
 	let marqueurs = {};
 	let verif = false;
+	let sauvegarde = {};
+	let x1, x2;
+	let valide = false;
 
 	page = fs.readFileSync("./m_salle_attente.html", "UTF-8");
 	
