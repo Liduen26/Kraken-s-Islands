@@ -31,7 +31,6 @@ function actualiser(req, res, query) {
 				
 				bateaux = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
 
-				console.log(bateaux);
 				marqueurs.schooner = `Stats: <br>PV:${bateaux.schooner.pv} <br>Attaque:${bateaux.schooner.atq}<br>Visibilité:${bateaux.schooner.camo}`;
 				
 				marqueurs.brick = `Stats: <br>PV:${bateaux.brick.pv} <br>Attaque:${bateaux.brick.atq}<br>Visibilité:${bateaux.brick.camo}`;
