@@ -12,6 +12,7 @@ function choix(req, res, query) {
 	let nom_partie;
 	let pseudo;
 	let marqueurs = {};
+	let bateau = {};
 
 	page = fs.readFileSync("m_salle_attente2.html", "UTF-8");
 	
@@ -23,6 +24,18 @@ function choix(req, res, query) {
 	pseudo = req.headers.cookie;
 	sauvegarde[pseudo] = {};
 	sauvegarde[pseudo].bateau = query.choixbateau;
+
+	bateau = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8");
+	
+	switch (sauvegarde[pseudo].bateau) {
+		case "schooner": 
+			sauvegarde.pseudo
+
+
+
+
+
+
 
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde) ,"UTF-8");
 	
