@@ -17,20 +17,16 @@ function choix(req, res, query) {
 	
 	nom_partie = query.nom_partie;
 	
-	contenu = fs.readFileSync(`partie/partie_${nom_partie}.json`, "UTF-8");
+	contenu = fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8");
 	sauvegarde = JSON.parse(contenu);
-
-	console.log(sauvegarde.Liduen);
 		
 	pseudo = req.headers.cookie;
 	sauvegarde[pseudo] = {};
 	sauvegarde[pseudo].bateau = query.choixbateau;
 
-	console.log(sauvegarde.Liduen);
-
-	fs.writeFileSync(`partie/partie_${nom_partie}.json`, JSON.stringify(sauvegarde) ,"UTF-8");
+	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde) ,"UTF-8");
 	
-	marqueurs.partie_query = query.nom_partie;
+	marqueurs.partie_query = nom_partie;
 	page = page.supplant(marqueurs);
 	
 	res.writeHead(200, {"Content-type": "text/html"});

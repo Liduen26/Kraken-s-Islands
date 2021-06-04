@@ -29,6 +29,9 @@ const trait = function (req, res, query) {
 
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 
+	marqueurs.partie_query = query.nom_partie;
+	page = page.supplant(marqueurs);
+
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();

@@ -57,7 +57,7 @@ const trait = function (req, res, query, carte) {
 			sauvegarde.carte = carte;
 
 			//écriture de la carte dans un fichier .json
-			fs.writeFileSync (`./partie/partie_${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
+			fs.writeFileSync (`./partie/${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");
 
 			marqueurs.partie = nom_parties;

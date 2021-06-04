@@ -1,4 +1,4 @@
-//module d'actualisation de la salle d'attente
+//module d'actualisation de la salle d'attente du bateau
 
 "use strict";
 
@@ -10,8 +10,8 @@ function actualiser(req, res, query) {
 	let i;
 	let marqueurs = {};
 	let player1, player2;
-	let parties;
 	let nom_partie = query.nom_partie;
+	let sauvegarde;
 
 	page = fs.readFileSync("./m_salle_attente2.html", "UTF-8");
 
@@ -23,14 +23,16 @@ function actualiser(req, res, query) {
 
 	for(i = 0;i < parties.length;i++) {
 		if(parties[i].partie === nom_partie) {
-			player1 = parties[i].Player_1;
-			player2 = parties[i].Player_2;
+			console.log(player1 = parties[i].Player_1);
+			console.log(player2 = parties[i].Player_2);
 		}
 	}
 
-	sauvegarde = JSON.parse(fs.readFileSync(`partie/partie_${nom_partie}.json`, "UTF-8"));
-
-
+	sauvegarde = JSON.parse(fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
+	
+	if(sauvegarde[player1].bateau !== "" && sauvegarde[player2].bateau !== "") {
+		page = fs.readFileSync("./m_scoreboard.html", "UTF-8");
+	}
 
 	res.writeHead(200, { "Content-Type": "text/html"});
 	res.write(page);
