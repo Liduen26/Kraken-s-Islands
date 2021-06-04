@@ -23,8 +23,8 @@ function actualiser(req, res, query) {
 
 	for(i = 0;i < parties.length;i++) {
 		if(parties[i].partie === nom_partie) {
-			console.log(player1 = parties[i].Player_1);
-			console.log(player2 = parties[i].Player_2);
+			player1 = parties[i].Player_1;
+			player2 = parties[i].Player_2;
 		}
 	}
 

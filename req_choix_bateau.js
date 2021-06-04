@@ -21,9 +21,7 @@ function choix(req, res, query) {
 	contenu = fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8");
 	sauvegarde = JSON.parse(contenu);
 		
-	pseudo = req.headers.cookie;
-	sauvegarde[pseudo] = {};
-	sauvegarde[pseudo].bateau = query.choixbateau;
+	sauvegarde[req.headers.cookie].bateau = query.choixbateau;
 
 	bateau = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8");
 	
