@@ -23,17 +23,22 @@ function choix(req, res, query) {
 		
 	sauvegarde[req.headers.cookie].bateau = query.choixbateau;
 
-	bateau = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8");
+	bateau = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
 	
-	switch (sauvegarde[pseudo].bateau) {
+	switch (sauvegarde[req.headers.cookie].bateau) {
 		case "schooner": 
-			sauvegarde.pseudo
-
-
-
-
-
-
+			sauvegarde[req.headers.cookie].stats = bateau.schooner;
+			break;
+		case "brick":
+			sauvegarde[req.headers.cookie].stats = bateau.brick;
+			break;
+		case "fregate":
+			sauvegarde[req.headers.cookie].stats = bateau.brick;
+            break;
+		case "galion":
+			sauvegarde[req.headers.cookie].stats = bateau.brick;
+            break;
+	}
 
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde) ,"UTF-8");
 	

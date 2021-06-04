@@ -14,6 +14,7 @@ function actualiser(req, res, query) {
 	let sauvegarde = {};
 	let x1, x2;
 	let valide = false;
+	let bateaux;
 
 	page = fs.readFileSync("./m_salle_attente.html", "UTF-8");
 	
@@ -27,6 +28,17 @@ function actualiser(req, res, query) {
 		if(parties[i].Player_1 === req.headers.cookie) {
 			if(parties[i].Player_2 !== null) {
 				page = fs.readFileSync("./m_choix_bateau.html", "UTF-8");
+				
+				bateaux = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
+
+				console.log(bateaux);
+				marqueurs.schooner = `Stats: <br>PV:${bateaux.schooner.pv} <br>Attaque:${bateaux.schooner.atq}<br>Visibilité:${bateaux.schooner.camo}`;
+				
+				marqueurs.brick = `Stats: <br>PV:${bateaux.brick.pv} <br>Attaque:${bateaux.brick.atq}<br>Visibilité:${bateaux.brick.camo}`;
+				
+				marqueurs.fregate = `Stats: <br>PV:${bateaux.fregate.pv} <br>Attaque:${bateaux.fregate.atq}<br>Visibilité:${bateaux.fregate.camo}`;
+				
+				marqueurs.galion = `Stats: <br>PV:${bateaux.galion.pv} <br>Attaque:${    bateaux.galion.atq}<br>Visibilité:${bateaux.galion.camo}`;
 
 			}
 		}
