@@ -1,2 +1,2 @@
-index_parties.json
 *.json
+!stats_bateaux.json
