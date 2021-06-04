@@ -14,6 +14,10 @@ const trait = function (req, res, query) {
 	let contenu;
 	let partie;
 	let i = 0;
+	let valide;
+	let x2;
+	let sauvegarde = {};
+	let nom_partie;
 	
 	page = fs.readFileSync('m_choix_bateau.html', 'utf-8');
 
@@ -24,9 +28,16 @@ const trait = function (req, res, query) {
 		if(partie[i].Player_1 === query.Player_1) {
 			partie[i].Player_2 = req.headers.cookie;
 			partie[i].status_p = "en cours";
+			nom_partie = partie[i].partie;
 		}
 	}
+	
+	sauvegarde = JSON.parse(fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 
+	//Parmètres J2
+
+	sauvegarde[req.headers.cookie] = {};
+	sauvegarde[req.headers.cookie].bateau = "";
 	sauvegarde[req.headers.cookie].coordonees = {};
 
 	//création du spwan aléatoire sur le coté de la carte du J2
@@ -41,12 +52,11 @@ const trait = function (req, res, query) {
 		}
 	}
 	
+	//création des coordonées
 	sauvegarde[req.headers.cookie].coordonees.x = x2;
 	sauvegarde[req.headers.cookie].coordonees.y = 0;
 
-
-	//création des bonus
-	
+	//création des bonus	
 	sauvegarde[req.headers.cookie].bonus = {};
 	sauvegarde[req.headers.cookie].bonus.espion = 2;
 	sauvegarde[req.headers.cookie].bonus.oeil = 1;
@@ -54,14 +64,13 @@ const trait = function (req, res, query) {
 	sauvegarde[req.headers.cookie].bonus.barils = 4;
 	sauvegarde[req.headers.cookie].bonus.kraken = 0;
 
-	//création des stats
-	
+	//création des stats	
 	sauvegarde[req.headers.cookie].stats = {};
 	sauvegarde[req.headers.cookie].stats.pv = 0;
-	sauvegarde[req.headers.cookie].stats.attaque = 0;
+	sauvegarde[req.headers.cookie].stats.atq = 0;
 	sauvegarde[req.headers.cookie].stats.camo = 0;
 
-
+	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 
 	marqueurs.partie_query = query.nom_partie;

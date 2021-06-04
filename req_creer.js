@@ -1,4 +1,4 @@
-/=========================================================================
+//=========================================================================
 // Traitement de "salle d'attente"
 // Auteurs : P. Thiré & T. Kerbrat
 // Version : 15/09/2020
@@ -18,6 +18,8 @@ const trait = function (req, res, query, carte) {
 	let index_p = [];
 	let unique = true;
 	let sauvegarde = {};
+	let valide;
+	let x1;
 
 	contenu = fs.readFileSync("index_parties.json", "UTF-8");
 	index_p = JSON.parse(contenu);
@@ -56,7 +58,7 @@ const trait = function (req, res, query, carte) {
 
 			sauvegarde.carte = carte;
 
-			// Parametre J1//
+			//Parametres J1
 
 			sauvegarde[req.headers.cookie] = {};
             sauvegarde[req.headers.cookie].bateau = "";
@@ -87,7 +89,7 @@ const trait = function (req, res, query, carte) {
 
 			sauvegarde[req.headers.cookie].stats = {};
 			sauvegarde[req.headers.cookie].stats.pv = 0;
-			sauvegarde[req.headers.cookie].stats.attaque = 0;
+			sauvegarde[req.headers.cookie].stats.atq = 0;
 			sauvegarde[req.headers.cookie].stats.camo = 0;
 
 			//écriture de la carte dans un fichier .json
