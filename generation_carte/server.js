@@ -42,18 +42,20 @@ function req_aff(req, res) {
 
 	page = fs.readFileSync("m_test_gen.html", "UTF-8");
 	
-	partie = JSON.parse( fs.readFileSync("partie_Test.json"));
+	// partie = JSON.parse( fs.readFileSync("partie_Test.json"));
+	partie = { carte: generation(undefined, 250, 200) };
 
-	for (y = 0; y <= partie.carte.length; y++) {
-		for (x=0; x<= partie.carte[0].length; x++) {
-			if (partie.Nasicas.coordonnées.y === y && partie.Nasicas.coordonnées.x === x) {
-				partie.carte[y][x] = "b";
-			}
-		}
-	}
+	// for (y = 0; y <= partie.carte.length; y++) {
+	// 	for (x=0; x<= partie.carte[0].length; x++) {
+	// 		if (partie.Nasicas.coordonnées.y === y && partie.Nasicas.coordonnées.x === x) {
+	// 			partie.carte[y][x] = "b";
+	// 		}
+	// 	}
+	// }
 	
 	//rentrée de la carte dans l'html
-	marqueurs.carteAff = mod_aff_html(partie.carte, 15);
+	marqueurs.carteAff = mod_aff_html(partie.carte, 1);
+	marqueurs.nbpx = 2;
 	page = page.supplant(marqueurs);
 
 	//affichage de la page html
