@@ -1,0 +1,144 @@
+import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+:root{
+    --color-text: rgba(231, 81, 81, 0.877);
+    --color-text2: rgba(7, 86, 204, 0.96);
+    --shadow-text: 2px 1px 2px rgba(0, 0, 0, 0.8);
+    --shadow-box: 0.17rem 0.2rem 0.6rem rgba(0, 0, 0, 0.938);
+}
+
+body {
+    background: url(./bois_bg.jpg) center/cover;
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    /* border: 1px solid whitesmoke  */
+}
+
+header {
+    margin: 20px;
+    padding: 0px;
+}
+
+h1 {
+    text-transform: uppercase;
+    color: var(--color-text);
+    text-align: center;
+    font-family: 'Courgette', serif;
+    font-size: 5.2em;
+    text-shadow: var(--shadow-text);
+}
+
+h2 {
+    color: var(--color-text);
+	text-align: center;
+    font-family: 'Courgette', serif;
+    font-size: 3.5em;
+    text-shadow: var(--shadow-text);
+}
+
+.b_retour {
+    position: absolute;
+    bottom: 2em;
+    right: 2.3em;
+
+    height: 60px;
+    width: 110px;
+    background: url(./boisbutton_1280.jpg) ;
+
+    color: var(--color-text);
+    font-family: 'Courgette', serif;
+    font-size: 1.5em;
+    text-shadow: var(--shadow-text);
+
+    border-radius: 1.7em;
+    box-shadow: var(--shadow-box);
+    border: 0px;
+}
+
+.b_accueil {
+    text-align: center;
+    margin: 50px;
+
+}
+
+.b_accueil_int {
+    height: 100px;
+.bonus_container { 
+    border: 1px solid rgb(245, 248, 245);
+
+}
+
+/*>>>>>>> 2e8c5a2ddc7d892b5bb0fada9d526c25388a6e14*/
+
+.deplacement_container {
+    border: 1px solid rgb(15, 15, 15);
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ligne_1 {
+
+}
+
+.ligne_2 {
+
+}
+
+.ligne_3 {
+
+}
+
+.shoot_container {
+    border: 1px solid rgb(2, 50, 95);
+} 
+
+.droite {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:20%;
+    border: 1px solid rgb(0, 17, 255);
+}
+
+
+.centre {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:60%;
+    border: 1px solid rgb(9, 255, 0);
+
+}
+
+.gauche {
+    display: flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items: center;
+    width:20%;
+    border: 1px solid red;
+}
+
+.tour {
+
+}
+
+
+.pv {
+    height: 20%;
+
+}
+
+.ptsvie {
+    background-color: rgb(255, 255, 255);
+
+}
+
