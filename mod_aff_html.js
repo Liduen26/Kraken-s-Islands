@@ -28,7 +28,7 @@ function trans_html(carte, tpixel){
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte
 	
-			display.push(`<span style="display: flex; width: ${tpixel}px; height: ${tpixel}px;background-color: ${color}"></span>`);
+			display.push(`<span class="${color.substring(0, 2)}" style="width: ${tpixel}px; height: ${tpixel}px;"></span>`);
 		
 			x++;
 		}

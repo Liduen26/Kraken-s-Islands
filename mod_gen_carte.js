@@ -11,9 +11,9 @@ const fs = require("fs");
 const h_eau = 0.60;
 const h_terre = 0.75;
 const zoom = 0.06;
-const t_ilecentre = 4;
 
 function generation(hauteur, largeur) {
+	const t_ilecentre = Math.min(hauteur, largeur) / 7;
 	
 	const simplex = new SimplexNoise(Math.random);
 	let carte = [];
@@ -39,7 +39,7 @@ function generation(hauteur, largeur) {
 			x_p = x * zoom;
 			y_p = y * zoom;
 			//génération des valeurs via le simplex-noise (bruit cohérent)
-			carte[y][x] = simplex.noise2D(x_p, y_p);
+			carte[y][x] = Math.max(simplex.noise2D(x_p, y_p), 0);
 			
 			//Calcul via pythagore pour avoir la distance
 			dx = (largeur / 2) - x;		
@@ -47,15 +47,11 @@ function generation(hauteur, largeur) {
 			d_centre = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 			
 			//generation de l'ile centrale
-			if (d_centre < t_ilecentre) {		
-				carte[y][x] = (Math.pow(Math.cos(carte[y][x]), 3));
-				
-				/* Vieilles courbes de gen | a virer ?
-				-(Math.cos(carte[y][x],0.5))*Math.pow(carte[y][x],2)+1;       
-				 (-(Math.pow((0.5*carte[y][x]), 2))+1);
-				carte[y][x] = Math.pow(carte[y][x]
-				console.log(carte[y][x]) */
-			}
+			if(d_centre < t_ilecentre * 1.5) {		
+				const cos = Math.cos(d_centre / (t_ilecentre * 0.5)) + 1.2;
+				carte[y][x] = cos * (cos + carte[y][x]);
+
+			}	
 			
 			//changement des valeurs de 0,....... à 0, 1, ou 2
 			if(carte[y][x] > h_eau && carte[y][x] < h_terre) {
@@ -82,8 +78,7 @@ function generation(hauteur, largeur) {
 	}
 	
 	//écriture de la carte dans un fichier .json
-
-fs.writeFileSync("carte.json", JSON.stringify(carte), "UTF-8");
+	fs.writeFileSync("carte.json", JSON.stringify(carte), "UTF-8");
 
 	return carte;
 }

@@ -16,7 +16,7 @@ const trait = function (req, res, query) {
 
 	page = fs.readFileSync('m_creation_partie.html', 'utf-8');
 
-	carte = generation(haut, larg);
+	carte = generation(undefined, haut, larg);
 
 	//faire un nouv marqureurs pour créer des zones de texte dynamiques
 
