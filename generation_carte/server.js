@@ -9,6 +9,7 @@ const fs = require("fs");
 const req_statique = require("./req_statique");
 const generation = require("./mod_gen_carte");
 const mod_aff_html = require("./mod_aff_html");
+const req_deplacement = require("./req_deplacement.js");
 
 let mon_serveur;
 let port;
@@ -16,15 +17,21 @@ let port;
 function index(req, res) {
 	let requete;
 	let pathname;
+	let query;
 	
 	console.log("url reçue : " + req.url);
 	requete = url.parse(req.url, true);
 	pathname = requete.pathname;
+	query = requete.query;
 
 	//gestion des requètes
 	switch(pathname) {
 		case '/':
 		case '/req_aff':
+			req_aff(req, res);
+			break;
+		case '/req_deplacement':
+			req_deplacement(req, res, query);
 			req_aff(req, res);
 			break;
 		default:
@@ -42,17 +49,17 @@ function req_aff(req, res) {
 
 	page = fs.readFileSync("m_test_gen.html", "UTF-8");
 	
-	// partie = JSON.parse( fs.readFileSync("partie_Test.json"));
-	partie = { carte: generation(undefined, 50, 30) };
+	 partie = JSON.parse( fs.readFileSync("test.json", "UTF-8"));
+	//partie = { carte: generation(undefined, 50, 30) };
 
-	/*
+	
 	for (y = 0; y <= partie.carte.length; y++) {
 		for (x=0; x<= partie.carte[0].length; x++) {
 			if (partie.Nasicas.coordonnees.y === y && partie.Nasicas.coordonnees.x === x) {
 				partie.carte[y][x] = "b";
 			}
 		}
-	}*/
+	}
 	
 	//rentrée de la carte dans l'html
 	marqueurs.carteAff = mod_aff_html(partie.carte, 15);
