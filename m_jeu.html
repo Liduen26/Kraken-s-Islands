@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Jeu</title>
-		<link rel="stylesheeet" href="style.css">
+		<link rel="stylesheet" href="style.css">
 
 	</head>
 	<body>
@@ -49,7 +49,7 @@
 			</div>
 		
 			<div class="centre">
-				carteAff
+				{carteAff}
 			</div>
 
 			<div class="droite">
@@ -57,9 +57,7 @@
 					<a><button class="b_connnexion">Kraken</button></a>
 				</div>
 				<div class="tour">
-					<a href="/req_tour_suivant2"><a><button class="b_connnexion">Tour suivant</button></a>
-=======
-					<a href="/req_tour_suivant"><button class="b_connnexion">Tour suivant</button></a>
+					<a href="/req_tour_suivant?nom_partie={query_partie}&player={player}"><button class="b_connnexion">Tour suivant</button></a>
 				</div>
 				<div class="pv">
 					<label class="ptsvie">Point de vie : <br> </label>

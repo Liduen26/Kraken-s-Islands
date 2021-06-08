@@ -8,7 +8,7 @@ function actualiser(req, res, query) {
 	let page;
 	let sauvegarde;
 
-	page = fs.readFileSync("./m_attente_jeu.html", "UTF-8");
+	page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 	
 	marqueurs.partie_query = query.nom_partie;
 

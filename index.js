@@ -38,7 +38,7 @@ const req_quitter_partie = require("./req_quitter_partie");
 const req_choix_bateau = require("./req_choix_bateau");
 const req_actualiser_attente2 = require("./req_actualiser_attente2");
 const req_tour_suivant = require("./req_tour_suivant.js");
-//const req_tour_suivant2 = require("./req_tour_suivant.js");
+const req_actualiser_jeu = require("./req_actualiser_jeu.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
@@ -117,6 +117,9 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_tour_suivant':
 				req_tour_suivant(req, res, query);
+				break;
+			case '/req_actualiser_jeu':
+				req_actualiser_jeu(req, res, query);
 				break;
 
 			default:
