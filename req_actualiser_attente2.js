@@ -32,7 +32,11 @@ function actualiser(req, res, query) {
 	sauvegarde = JSON.parse(fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 	
 	if(sauvegarde[player1].bateau !== "" && sauvegarde[player2].bateau !== "") {
-		page = fs.readFileSync("./m_jeu.html", "UTF-8");
+		if(sauvegarde[req.headers.cookie].play === true) {
+			page = fs.readFileSync("./m_jeu.html", "UTF-8");
+		} else {
+			page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
+		}
 		
 		marqueurs.carteAff = aff(sauvegarde.carte, 15);
 		marqueurs.query_partie = query.nom_partie;
