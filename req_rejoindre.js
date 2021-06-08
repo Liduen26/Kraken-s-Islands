@@ -71,6 +71,8 @@ const trait = function (req, res, query) {
 	sauvegarde[req.headers.cookie].stats.atq = 0;
 	sauvegarde[req.headers.cookie].stats.camo = 0;
 
+	sauvegarde[req.headers.cookie].play = false;
+
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 

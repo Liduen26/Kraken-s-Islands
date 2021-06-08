@@ -92,6 +92,8 @@ const trait = function (req, res, query, carte) {
 			sauvegarde[req.headers.cookie].stats.atq = 0;
 			sauvegarde[req.headers.cookie].stats.camo = 0;
 
+			sauvegarde[req.headers.cookie].play = true;
+
 			//écriture de la carte dans un fichier .json
 			fs.writeFileSync (`./partie/${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");
