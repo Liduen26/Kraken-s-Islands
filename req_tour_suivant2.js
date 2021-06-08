@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 let page;
+let marqueurs
 
 function attente(req, res, query) {
 
