@@ -6,18 +6,20 @@ const fs = require("fs");
 
 function t_suivant(req, res, query) {
 	let page;
-	let sauvegarde;
+	let sauvegarde = {};
+	let marqueurs = {};
 
-	page = fs.readFileSync("./m_tour_suivant.html", "UTF-8");
+	page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 	page = page.supplant(marqueurs);
 	
-	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${partie_query}.json`, "UTF-8"));
+	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
 
 	sauvegarde[req.headers.cookie].play = false;
 
-	fs.writeFileSync(`./partie/${partie_query}.json`, JSON.stringify(sauvegarde), "UTF-8");
+	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	
-	marqueurs.player1 = req.headers.cookie;
+	marqueurs.partie_query = query.nom_partie;
+	marqueurs.player = req.headers.cookie;
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { "Content-Type": "text/html"});
