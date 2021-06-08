@@ -3,6 +3,7 @@
 "use strict";
 
 const fs = require("fs");
+const aff = require("./mod_aff_html.js");
 
 function actualiser(req, res, query) {
 	let page;
@@ -36,7 +37,8 @@ function actualiser(req, res, query) {
 	}
 
 	fs.writeFileSync(`partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
-
+	
+	marqueurs.carteAff = aff(sauvegarde.carte, 15);
 	marqueurs.partie_query = query.nom_partie;
 	marqueurs.player = query.player;
 	page = page.supplant(marqueurs);

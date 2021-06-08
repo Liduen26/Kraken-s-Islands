@@ -3,6 +3,7 @@
 "use strict"
 
 const fs = require("fs");
+const aff = require("./mod_aff_html.js");
 
 function t_suivant(req, res, query) {
 	let page;
@@ -15,6 +16,7 @@ function t_suivant(req, res, query) {
 	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
 
 	sauvegarde[req.headers.cookie].play = false;
+	marqueurs.carteAff = aff(sauvegarde.carte, 15);
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	
