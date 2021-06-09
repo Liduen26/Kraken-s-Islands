@@ -2,28 +2,24 @@
 
 const url = require("url");
 const fs = require("fs");
-
-
-let requete;
-let pathname;
-let deplacement;
-let partie;
-let carte;
-let x,y;
-let dx,dy;;
-
+const mod_aff = require("./mod_aff.js");
 
 function index(req, res, query) {
+	let deplacement;
+	let partie;
+	let carte;
+	let dx,dy;
+	let page;
+
+	page = fs.readFileSync("m_jeu.html", "UTF-8");
 
 	deplacement = query.direction;
 	partie = JSON.parse (fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8")); 
 
 	dx = partie[req.headers.cookie].coordonnees.x;
 	dy = partie[req.headers.cookie].coordonnees.y;
-	
-	
-	switch(deplacement) {
 		
+	switch(deplacement) {	
 		case 'haut':
 			if (partie[req.headers.cookie].coordonnees.y > 0) {
 				dy--;
@@ -61,7 +57,9 @@ function index(req, res, query) {
 			break;
 	}
 
-	fs.writeFileSync(`test.json`, JSON.stringify(partie) ,"UTF-8");
+	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
+
+	mod_aff(req, res, page, query.nom_partie);
 }
 
 

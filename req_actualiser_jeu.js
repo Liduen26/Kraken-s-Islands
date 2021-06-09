@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const aff = require("./mod_aff_html.js");
+const mod_aff = require("./mod_aff.js");
 
 function actualiser(req, res, query) {
 	let page;
@@ -15,8 +16,6 @@ function actualiser(req, res, query) {
 
 	page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 	
-	marqueurs.partie_query = query.nom_partie;
-
 	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
 	//détection du pseudo de l'autre joueur pour vérifier s'il joue
 	parties = JSON.parse(fs.readFileSync("./index_parties.json", "UTF-8"));
@@ -38,14 +37,7 @@ function actualiser(req, res, query) {
 
 	fs.writeFileSync(`partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	
-	marqueurs.carteAff = aff(sauvegarde.carte, 15);
-	marqueurs.partie_query = query.nom_partie;
-	marqueurs.player = query.player;
-	page = page.supplant(marqueurs);
-
-	res.writeHead(200, { "Content-Type": "text/html"});
-	res.write(page);
-	res.end();
+	mod_aff(req, res, page, query.nom_partie);
 }
 
 //----------------------------------------------------------

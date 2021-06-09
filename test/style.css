@@ -399,6 +399,7 @@ button:hover, input[type="submit"]:hover {
 .l-tir {
   background-color: blue; 
   border: 1px dotted #000000e0;
+  width: 20px;
 }
 
 .l-tir:hover {

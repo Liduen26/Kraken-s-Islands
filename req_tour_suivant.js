@@ -1,9 +1,10 @@
-//module d'actualisation de la salle d'attente 
+//module d'actualisation de la salle d'attente du tour suivant 
 
 "use strict"
 
 const fs = require("fs");
 const aff = require("./mod_aff_html.js");
+const mod_aff = require("./mod_aff.js");
 
 function t_suivant(req, res, query) {
 	let page;
@@ -20,13 +21,7 @@ function t_suivant(req, res, query) {
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	
-	marqueurs.partie_query = query.nom_partie;
-	marqueurs.player = req.headers.cookie;
-	page = page.supplant(marqueurs);
-
-	res.writeHead(200, { "Content-Type": "text/html"});
-    res.write(page);
-    res.end();
+	mod_aff(req, res, page, query.nom_partie);
 }
 
 //----------------------------------------------------------

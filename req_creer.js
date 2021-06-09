@@ -11,15 +11,13 @@ function trait(req, res, query, carte) {
 	let page;
 	
 	let nom_parties = query.nom_partie;
-	let contenu;
 	let index_p = [];
 	let unique = true;
 	let sauvegarde = {};
 	let valide;
 	let x1;
 
-	contenu = fs.readFileSync("index_parties.json", "UTF-8");
-	index_p = JSON.parse(contenu);
+	index_p = JSON.parse(fs.readFileSync("index_parties.json", "UTF-8"));
 
 	//on vérifie si le nom de la partie n'est pas vide
 	if(query.nom_partie === "") {

@@ -8,14 +8,13 @@ function mod_aff(req, res, page, nom_partie) {
     
     let marqueurs = {};
     let partie;
-    let coordonnees;
     let x, y;
 
     partie = JSON.parse( fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 
     for (y = 0; y <= partie.carte.length; y++) {
         for (x=0; x<= partie.carte[0].length; x++) {
-            if (partie.Nasicas.coordonnees.y === y && partie.Nasicas.coordonnees.x === x) {
+            if (partie[req.headers.cookie].coordonnees.y === y && partie[req.headers.cookie].coordonnees.x === x) {
                 partie.carte[y][x] = "b";
             }
         }
@@ -23,6 +22,7 @@ function mod_aff(req, res, page, nom_partie) {
 
     //rentrée de la carte dans l'html
     marqueurs.carteAff = mod_aff_html(partie.carte, 15);
+	marqueurs.partie_query = nom_partie;
     page = page.supplant(marqueurs);
 
     //affichage de la page html
