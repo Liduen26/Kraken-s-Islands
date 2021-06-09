@@ -1,14 +1,10 @@
-//=========================================================================
-// Traitement de "req_identifier"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requête d'identification, pour se connecter, ou pas
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
-const trait = function (req, res, query) {
+function trait(req, res, query) {
 
 	let marqueurs;
 	let page;
@@ -63,7 +59,7 @@ const trait = function (req, res, query) {
 	res.write(page);
 	res.end();
 
-};
+}
 
 //---------------------------------------------------------------------------
 

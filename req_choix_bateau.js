@@ -50,4 +50,6 @@ function choix(req, res, query) {
 	res.end();
 }
 
+//----------------------------------------------------------
+
 module.exports = choix;

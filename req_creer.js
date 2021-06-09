@@ -1,14 +1,11 @@
-//=========================================================================
-// Traitement de "salle d'attente"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requête créant la partie et les fichiers qui vont avec
+
 "use strict";
 
 const fs = require("fs");
 const trans_html = require("./mod_aff_html.js");
 
-const trait = function (req, res, query, carte) {
+function trait(req, res, query, carte) {
 
 	let marqueurs = {};
 	let page;
@@ -108,7 +105,7 @@ const trait = function (req, res, query, carte) {
 	res.write(page);
 	res.end();
 
-};
+}
 
 //--------------------------------------------------------------------------
 

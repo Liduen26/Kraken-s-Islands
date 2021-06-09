@@ -1,4 +1,4 @@
-//affichage de la page de création de partie et génération de la carte
+//requête d'affichage de la page de création de partie et génération de la carte
 
 "use strict";
 
@@ -6,7 +6,7 @@ const fs = require("fs");
 const generation = require("./mod_gen_carte.js");
 const trans_html = require("./mod_aff_html.js");
 
-const trait = function (req, res, query) {
+function trait(req, res, query) {
 
 	let marqueurs = {};
 	let page;
@@ -31,7 +31,7 @@ const trait = function (req, res, query) {
 	res.end();
 
 	return carte;
-};
+}
 
 //--------------------------------------------------------------------------
 
