@@ -6,6 +6,7 @@ const fs = require("fs");
 
 function attente(req, res, query) {
 	let page;
+	let marqueurs;
 
 	page = fs.readFileSync("./m_tour_suivant.html", "UTF-8");
 	page = page.supplant(marqueurs);

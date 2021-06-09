@@ -50,8 +50,8 @@ function trait(req, res, query) {
 	}
 	
 	//création des coordonées
-	sauvegarde[req.headers.cookie].coordonees.x = x2;
-	sauvegarde[req.headers.cookie].coordonees.y = 0;
+	sauvegarde[req.headers.cookie].coordonnees.x = x2;
+	sauvegarde[req.headers.cookie].coordonnees.y = 0;
 
 	//création des bonus	
 	sauvegarde[req.headers.cookie].bonus = {};

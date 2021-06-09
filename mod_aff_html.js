@@ -24,11 +24,14 @@ function trans_html(carte, tpixel){
 				case 2:
 					color = "green";
 					break;
+				case "b":
+					color = "brown";
+					break;
 			}
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte
 	
-			display.push(`<span class="${color.substring(0, 2)}" style="width: ${tpixel}px; height: ${tpixel}px;"></span>`);
+			display.push(`<span class="${color.substring(0, 2)}" style=" width: ${tpixel}px; heigth: ${tpixel}px";></span>`);
 		
 			x++;
 		}
