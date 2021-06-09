@@ -1,9 +1,10 @@
+//requête permettant de quitter une partie dans une salle d'attente, et de supprimer son fichier
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
-const trait = function (req, res, query) {
+function trait(req, res, query) {
 
     let marqueurs = {}; 
     let page;

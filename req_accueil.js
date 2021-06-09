@@ -1,15 +1,10 @@
-//=========================================================================
-// Traitement de "req_commencer"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requète d'affichage de la page d'accueil
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
-const trait = function (req, res) {
-
+function trait(req, res) {
 	let marqueurs;
 	let page;
 
@@ -17,11 +12,11 @@ const trait = function (req, res) {
 
 	page = fs.readFileSync('m_accueil.html', 'utf-8');
 
-
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
-};
+}
+
 //--------------------------------------------------------------------------
 
 module.exports = trait;

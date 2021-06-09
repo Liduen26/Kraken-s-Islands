@@ -1,14 +1,10 @@
-//=========================================================================
-// Traitement de "req_menu"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requête d'affichage de la page menu
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
-const trait = function (req, res, query) {
+function trait(req, res, query) {
 
 	let marqueurs = {};
 	let page;
@@ -23,7 +19,8 @@ const trait = function (req, res, query) {
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
-};
+}
+
 //--------------------------------------------------------------------------
 
 module.exports = trait;

@@ -1,12 +1,8 @@
-//=========================================================================
-// Traitement de "req_commencer"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requete d'affichage de la page de crédits
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
 const trait = function (req, res) {
 
@@ -21,7 +17,8 @@ const trait = function (req, res) {
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
-};
+}
+
 //--------------------------------------------------------------------------
 
 module.exports = trait;

@@ -1,14 +1,10 @@
-//=========================================================================
-// Traitement de "req_rejoindre"
-// Auteurs : P. Thiré & T. Kerbrat
-// Version : 15/09/2020
-//=========================================================================
+//requête permettant de rejoindre une partie
+
 "use strict";
 
 const fs = require("fs");
-require('remedial');
 
-const trait = function (req, res, query) {
+function trait(req, res, query) {
 	let marqueurs = {};
 	let page;
 	let contenu;
@@ -92,7 +88,7 @@ const trait = function (req, res, query) {
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.write(page);
 	res.end();
-};
+}
 
 //--------------------------------------------------------------------------
 

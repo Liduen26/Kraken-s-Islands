@@ -3,9 +3,9 @@
 "use strict"
 
 const fs = require("fs");
-let page;
 
 function attente(req, res, query) {
+	let page;
 
 	page = fs.readFileSync("./m_tour_suivant.html", "UTF-8");
 	page = page.supplant(marqueurs);
@@ -14,6 +14,8 @@ function attente(req, res, query) {
     res.write(page);
     res.end();
 }
+
+//----------------------------------------------------------
 
 module.exports = attente;
 
