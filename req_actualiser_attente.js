@@ -17,18 +17,13 @@ function actualiser(req, res, query) {
 	let bateaux;
 
 	page = fs.readFileSync("./m_salle_attente.html", "UTF-8");
-	
-	marqueurs.partie = query.nom_partie;
-	
-
 	contenu = fs.readFileSync("./index_parties.json", "UTF-8");
 	parties = JSON.parse(contenu);
-	
+
 	for(i = 0;i < parties.length; i++) {
-		if(parties[i].Player_1 === req.headers.cookie) {
+		if(parties[i].partie === query.nom_partie) {
 			if(parties[i].Player_2 !== null) {
 				page = fs.readFileSync("./m_choix_bateau.html", "UTF-8");
-				
 				bateaux = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
 
 				marqueurs.schooner = `Stats: <br>PV:${bateaux.schooner.pv} <br>Attaque:${bateaux.schooner.atq}<br>Visibilité:${bateaux.schooner.camo}`;
@@ -44,6 +39,7 @@ function actualiser(req, res, query) {
 	}
 
 	marqueurs.partie_query = query.nom_partie;
+	marqueurs.partie = query.nom_partie;
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, { "Content-Type": "text/html"});

@@ -42,6 +42,9 @@ function actualiser(req, res, query) {
 
 	}
 
+	marqueurs.partie_query = query.nom_partie;
+
+
 }
 
 //-----------------------------------------------------------------
