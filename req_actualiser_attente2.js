@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const aff = require("./mod_aff_html.js");
+const mod_aff = require ("./mod_aff.js");
 
 function actualiser(req, res, query) {
 	let page;
@@ -37,16 +38,10 @@ function actualiser(req, res, query) {
 		} else {
 			page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 		}
-		
-		marqueurs.carteAff = aff(sauvegarde.carte, 15);
-		marqueurs.query_partie = query.nom_partie;
-		marqueurs.player = req.headers.cookie;
-		page = page.supplant(marqueurs);
+		mod_aff (req, res, page, nom_partie);
+
 	}
 
-	res.writeHead(200, { "Content-Type": "text/html"});
-	res.write(page);
-	res.end();
 }
 
 //-----------------------------------------------------------------

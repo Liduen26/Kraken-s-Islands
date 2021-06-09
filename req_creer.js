@@ -59,7 +59,7 @@ function trait(req, res, query, carte) {
 
 			sauvegarde[req.headers.cookie] = {};
             sauvegarde[req.headers.cookie].bateau = "";
-			sauvegarde[req.headers.cookie].coordonees = {};
+			sauvegarde[req.headers.cookie].coordonnees = {};
 
             //création du spwan aléatoire sur le coté de la carte du J1
 			while (valide !== true) {
@@ -70,8 +70,8 @@ function trait(req, res, query, carte) {
 					valide = false;
 				}
 			}
-			sauvegarde[req.headers.cookie].coordonees.x = x1;
-			sauvegarde[req.headers.cookie].coordonees.y = 0;
+			sauvegarde[req.headers.cookie].coordonnees.x = x1;
+			sauvegarde[req.headers.cookie].coordonnees.y = 0;
 			
 			//création des bonus
 			
