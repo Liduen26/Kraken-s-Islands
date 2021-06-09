@@ -1,4 +1,3 @@
-
 "use strict";
 
 const url = require("url");
@@ -24,13 +23,12 @@ function index(req, res, query) {
 	
 	x = partie.Nasicas.coordonnees.x;
 	y = partie.Nasicas.coordonnees.y;
-	dx = x+1;
-	dy = y+1;
 
 	switch(deplacement) {
 		case 'haut':
-			if (partie.Nasicas.coordonnees.y > 0) { console.log("ouais"+partie.carte[dy][dx]); 
-				if (partie.carte[dy][dx] === 0) { console.log("nan bof");
+			dy = y--;
+			if (partie.Nasicas.coordonnees.y > 0) { 
+				if (partie.carte[dy][dx] === 0) { 
 					partie.Nasicas.coordonnees.y = partie.Nasicas.coordonnees.y-1;
 				} else { 
 					dy --; 
@@ -38,9 +36,9 @@ function index(req, res, query) {
 			}
 			break;
 		case 'droite':
-		console.log("ouais"+partie.carte[dy][dx]);
+			dx = x+1;
 			if ( partie.Nasicas.coordonnees.x < partie.carte[0].length ) {
-				if (partie.carte[dy][dx] === 0) { console.log("ouais"+partie.carte[dy][dx]);
+				if (partie.carte[dy][dx] === 0) { 
 					partie.Nasicas.coordonnees.x = partie.Nasicas.coordonnees.x+1;
 				} else { 
 					dx --; 
@@ -49,22 +47,17 @@ function index(req, res, query) {
 			}
 			break;
 		case 'gauche':
-		console.log("ouais"+partie.carte[dy][dx]);
+			dx = x-1
 			if ( partie.Nasicas.coordonnees.x > 0 ) {
-				if (partie.carte[dy][dx] === 0) { console.log("ouais"+partie.carte[dy][dx]);
+				if (partie.carte[dy][dx] === 0) { 
 					partie.Nasicas.coordonnees.x = partie.Nasicas.coordonnees.x-1;
-				} else { 
-					x = x-1; 
-					dx--; 
-					console.log(partie.Nasicas.coordonnees.x,partie.carte[dy][dx],partie.Nasicas.coordonnees.y,dx,x);
 					}
 
 			}
 			break;
 		case 'bas':
-		console.log("ouais"+partie.carte[dy][dx]);
 			if ( partie.Nasicas.coordonnees.y < partie.carte.length ) {
-				if (partie.carte[dy][dx] === 0) {console.log("ouais"+partie.carte[dy][dx]);
+				if (partie.carte[dy][dx] === 0) {
 					partie.Nasicas.coordonnees.y = partie.Nasicas.coordonnees.y+1;
 				} else { 
 				dy --; 
