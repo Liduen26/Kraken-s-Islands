@@ -35,7 +35,7 @@ function trait(req, res, query) {
 
 	sauvegarde[req.headers.cookie] = {};
 	sauvegarde[req.headers.cookie].bateau = "";
-	sauvegarde[req.headers.cookie].coordonees = {};
+	sauvegarde[req.headers.cookie].coordonnees = {};
 
 	//création du spwan aléatoire sur le coté de la carte du J2
 	

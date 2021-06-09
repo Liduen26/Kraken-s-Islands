@@ -15,51 +15,47 @@ let dx,dy;;
 
 function index(req, res, query) {
 
-
 	deplacement = query.direction;
-	partie = JSON.parse (fs.readFileSync("test.json", "UTF-8")); 
-	// "./partie/${nom_parties}.json" //
+	partie = JSON.parse (fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8")); 
 
-	
-
-	dx = partie.Nasicas.coordonnees.x;
-	dy = partie.Nasicas.coordonnees.y;
+	dx = partie[req.headers.cookie].coordonnees.x;
+	dy = partie[req.headers.cookie].coordonnees.y;
 	
 	
 	switch(deplacement) {
 		
 		case 'haut':
-			if (partie.Nasicas.coordonnees.y > 0) {
+			if (partie[req.headers.cookie].coordonnees.y > 0) {
 				dy--;
 				if (partie.carte[dy][dx] === 0) { 
-					partie.Nasicas.coordonnees.y -= 1;
+					partie[req.headers.cookie].coordonnees.y -= 1;
 				}
 			}
 			break;
 		
 		case 'droite':
-			if ( partie.Nasicas.coordonnees.x < partie.carte[0].length ) {
+			if ( partie[req.headers.cookie].coordonnees.x < partie.carte[0].length ) {
 				dx++;
                 if (partie.carte[dy][dx] === 0) { 
-                    partie.Nasicas.coordonnees.x += 1;
+                    partie[req.headers.cookie].coordonnees.x += 1;
 				}
 			}
 			break;
 		
 		case 'gauche':
-			if ( partie.Nasicas.coordonnees.x > 0 ) {
+			if ( partie[req.headers.cookie].coordonnees.x > 0 ) {
 				dx--;
                 if (partie.carte[dy][dx] === 0) { 
-                    partie.Nasicas.coordonnees.x -= 1;
+                    partie[req.headers.cookie].coordonnees.x -= 1;
 				}
 			}
 			break;
 		
 		case 'bas':
-			if ( partie.Nasicas.coordonnees.y < partie.carte.length ) {
+			if ( partie[req.headers.cookie].coordonnees.y < partie.carte.length ) {
 				dy++;
                 if (partie.carte[dy][dx] === 0) { 
-                    partie.Nasicas.coordonnees.y += 1;
+                    partie[req.headers.cookie].coordonnees.y += 1;
 				}
 			}
 			break;

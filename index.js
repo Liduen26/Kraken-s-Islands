@@ -34,6 +34,7 @@ const req_tour_suivant = require("./req_tour_suivant.js");
 const req_actualiser_jeu = require("./req_actualiser_jeu.js");
 const req_afficher_tir = require("./req_afficher_tir.js");
 const req_tir = require("./req_tir.js");
+const req_deplacement = require ("./req_deplacement.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
@@ -121,6 +122,9 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_tir':
 				req_tir(req, res, query);
+				break;
+			case '/req_deplacement':
+				req_deplacement (req, res, query);
 				break;
 
 			default:
