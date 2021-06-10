@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 
-function trans_html(carte, tpixel){
+function trans_html(req, res, query){
 	let display = [];
 	let y = 0, x = 0;
 	let color = "";

@@ -26,5 +26,37 @@
 		</div>
 		<a><button>Tir</button></a>
 	</form>
+
+	<script>
+		let checkboxes;
+
+		window.addEventListener("load", function () {
+			checkboxes = document.querySelectorAll("form input[type=checkbox]");
+
+			for(let checkbox of checkboxes) {
+				checkbox.addEventListener("click", handleChecked);
+			}
+		});
+
+		function handleChecked(event) {
+			const count = countChecked(checkboxes);
+			
+			if (count >= 3) {
+				for (let checkbox of checkboxes) {
+					if (checkbox.checked === false) {
+						checkbox.setAttribute("disabled", true);
+					}
+				}
+			} else {
+				for (let checkbox of checkboxes) {
+					checkbox.removeAttribute("disabled");
+				}
+			}
+		}
+
+		function countChecked(checkboxes) {
+			return Array.from(checkboxes.values()).reduce((acc, box) => acc + (box.checked ? 1 : 0), 0);
+		}
+	</script>
 </body>
 </html>
