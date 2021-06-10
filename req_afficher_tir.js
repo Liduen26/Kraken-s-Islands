@@ -38,7 +38,7 @@ function tir(req, res, query) {
             //c'est tout ces carrés de couleurs assemblés qui font une carte
     		
 			if(color === "blue") {
-				display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="check-tir" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir" style="width: 15px; height: 15px"></label>`);
+				display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir" style="width: 15px; height: 15px"></label>`);
 			} else {
             	display.push(`<span class="${color.substring(0, 2)}" style=" width: 15px; height: 15px";></span>`);
 			}
