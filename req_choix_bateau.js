@@ -33,10 +33,10 @@ function choix(req, res, query) {
 			sauvegarde[req.headers.cookie].stats = bateau.brick;
 			break;
 		case "fregate":
-			sauvegarde[req.headers.cookie].stats = bateau.brick;
+			sauvegarde[req.headers.cookie].stats = bateau.fregate;
             break;
 		case "galion":
-			sauvegarde[req.headers.cookie].stats = bateau.brick;
+			sauvegarde[req.headers.cookie].stats = bateau.galion;
             break;
 	}
 

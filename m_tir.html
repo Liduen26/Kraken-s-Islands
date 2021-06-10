@@ -1,67 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Jeu</title>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css">
-	<meta http-equiv="refresh" content="3; url=/req_actualiser_jeu?nom_partie={partie_query}&player={player}">
 </head>
 <body>
-	<div style="display: flex; justify-content: space-between; align-items: stretch; height: 100%; ">
-	   
-		<div class="gauche">
-			<div class="bonus_container">
-				<div class="ligne">
-					<a><button disabled class="b_connnexion">L'espion</button></a>
-					<a><button disabled class="testb_connnexion">Sabotage</button></a>
-				</div>
+	<div class="full-height-flex">
+	<form method="GET" action="/req_tir" class="full-height-flex" style="justify-content: space-between;">
+			<div class="gauche">
+				<div class="bonus_container">
+					<div class="ligne">
+						<a><button class="b_connnexion">L'espion</button></a>
+						<a><button class="b_connnexion">Sabotage</button></a>
+					</div>
 
-				<div class="ligne">
-					<a><button disabled class="b_connnexion">Yeux de faucon</button></a>
-					<a><button disabled class="b_connnexion">Barils</button></a>
-				</div>
-			</div> 
-			
-			<div class="shoot_container">
-				<div class="ligne">
-					<a href="/req_tirer"><button class="b_connnexion">Tirer</button></a>
-				</div>
-			</div>
-
-			<div class="deplacement_container">
-				<div class="ligne_1">
-					<a><button disabled class="b_connnexion">Haut</button></a>
-				</div>
+					<div class="ligne">
+						<a><button class="b_connnexion">Yeux de faucon</button></a>
+						<a><button class="b_connnexion">Barils</button></a>
+					</div>
+				</div> 
 				
-				<div class="ligne_2">
-					<a><button disabled class="b_connnexion">Droite</button></a>
-					<a><button disabled class="b_connnexion">Gauche</button></a>
+				<div class="shoot_container">
+					<div class="ligne">
+						<a href="/req_tir"><button class="b_connnexion">Tirer</button></a>
+					</div>
 				</div>
 
-				<div class="ligne_3">
-					<a><button disabled class="b_connnexion">Bas</button></a>
-				</div>				
-			</div>
-		</div>
-	
-		<div class="centre">
-			{carteAff}
-		</div>
+				<div class="deplacement_container">
+					<div class="ligne_1">
+						<a href="/req_deplacement?direction=haut&nom_partie={partie_query}"><button class="b_connnexion">Haut</button></a>
+					</div>
+					
+					<div class="ligne_2">
+						<a href="/req_deplacement?direction=gauche&nom_partie={partie_query}"><button class="b_connnexion">Gauche</button></a>
+						<a href="/req_deplacement?direction=droite&nom_partie={partie_query}"><button class="b_connnexion">Droite</button></a>
+					</div>
 
-		<div class="droite">
-			<div class="ligne">
-				<a><button disabled class="b_connnexion">Kraken</button></a>
+					<div class="ligne_3">
+						<a href="/req_deplacement?direction=bas&nom_partie={partie_query}"><button class="b_connnexion">Bas</button></a>
+					</div>
+				</div>
 			</div>
-			<div class="tour">
-				<a><button disabled class="b_connnexion">Tour suivant</button></a>
+		
+			<div class="centre">
+				{carteAff}
+				<input type="hidden" name="nom_partie" value="{partie_query}">
 			</div>
-			<div class="pv">
-				<label disabled class="ptsvie">Point de vie : <br> </label>
-				<label disabled class="ptsvie">Point de vie 2: </label>
+
+			<div class="droite">
+				<div class="ligne">
+					<a><button class="b_connnexion">Kraken</button></a>
+				</div>
+				<div class="tour">
+					<a href="/req_tour_suivant?nom_partie={partie_query}"><button class="b_connnexion">Tour suivant</button></a>
+				</div>
+				<div class="pv">
+					<label class="ptsvie">Point de vie : <br> </label>
+					<label class="ptsvie">Point de vie 2: </label>
+				</div>			
 			</div>
-		</div>
+		</form>
    </div>
+
+   <script>
+        let checkboxes;
+
+        window.addEventListener("load", function () {
+            checkboxes = document.querySelectorAll("form input[type=checkbox]");
+            for(let checkbox of checkboxes) {
+				console.log("la");
+                checkbox.addEventListener("click", handleChecked);
+            }
+        });
+
+        function handleChecked(event) {
+            const count = countChecked(checkboxes);
+           	console.log("ici"); 
+            if (count >= 3) {
+                for (let checkbox of checkboxes) {
+                    if (checkbox.checked === false) {
+                        checkbox.setAttribute("disabled", true);
+                    }
+                }
+            } else {
+                for (let checkbox of checkboxes) {
+                    checkbox.removeAttribute("disabled");
+                }
+            }
+        }
+
+        function countChecked(checkboxes) {
+            return Array.from(checkboxes.values()).reduce((acc, box) => acc + (box.checked ? 1 : 0), 0);
+        }
+    </script>
+
 </body>
 </html	

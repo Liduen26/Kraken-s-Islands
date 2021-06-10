@@ -289,8 +289,13 @@ button:hover, input[type="submit"]:hover {
     border: 1px solid rgb(245, 248, 245);
     
 }
-  
-/*>>>>>>> 2e8c5a2ddc7d892b5bb0fada9d526c25388a6e14*/
+
+.full-height-flex {
+	display: flex;
+	align-items: stretch;
+	height: 100%;
+	width: 100%;
+}
 
 .deplacement_container {
     border: 1px solid rgb(15, 15, 15);
@@ -382,3 +387,36 @@ button:hover, input[type="submit"]:hover {
 	border: 1px dotted #000000e0;
 
 }
+
+.z-tir {
+  position: absolute;
+  left: -9999px;
+}
+
+.container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+
+.l-tir {
+  background-color: blue; 
+  border: 1px dotted #000000e0;
+  width: 20px;
+}
+
+.l-tir:hover {
+  background-color: #00f8;
+}
+
+.z-tir:checked + .l-tir:hover {
+     background-color: #ca595388;
+}
+
+.z-tir:checked + .l-tir {
+  background-color: #ca5953;
+}
+
+
