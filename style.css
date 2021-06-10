@@ -329,7 +329,6 @@ button:hover, input[type="submit"]:hover {
 .centre {
     display: flex;
     flex-direction : column;
-    justify-content: space-between;
     align-items: center;
     width:60%;
     border: 1px solid rgb(9, 255, 0);
