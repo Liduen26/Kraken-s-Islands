@@ -48,14 +48,14 @@ function index(req, res, query) {
 			break;
 		
 		case 'bas':
-			if ( partie[req.headers.cookie].coordonnees.y < partie.carte.length ) {
+			if ( partie[req.headers.cookie].coordonnees.y < partie.carte.length -1 ) {
 				dy++;
                 if (partie.carte[dy][dx] === 0) { 
                     partie[req.headers.cookie].coordonnees.y += 1;
 				}
 			}
 			break;
-	}
+	} console.log("J1: " + partie[req.headers.cookie].coordonnees.x, +"," + partie[req.headers.cookie].coordonnees.y);
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
 
