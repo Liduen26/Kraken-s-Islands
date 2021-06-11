@@ -89,6 +89,8 @@ function trait(req, res, query, carte) {
 
 			sauvegarde[req.headers.cookie].play = true;
 
+			sauvegarde[req.headers.cookie].a_tire = false;
+
 			//écriture de la carte dans un fichier .json
 			fs.writeFileSync (`./partie/${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
 			fs.writeFileSync("index_parties.json", JSON.stringify(index_p), "UTF-8");

@@ -38,7 +38,7 @@ function actualiser(req, res, query) {
 		} else {
 			page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 		}
-		mod_aff (req, res, page, nom_partie);
+		mod_aff(req, res, page, nom_partie);
 
 	}
 

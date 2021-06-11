@@ -68,6 +68,8 @@ function trait(req, res, query) {
 	sauvegarde[req.headers.cookie].stats.camo = 0;
 
 	sauvegarde[req.headers.cookie].play = false;
+	
+	sauvegarde[req.headers.cookie].a_tire = false;
 
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
