@@ -10,6 +10,7 @@ function win (req,, nom_partie) {
 	let resultat;
 	let player 1;
 	let player_2;
+	let i;
 
 	sauvegarde = JSON.parse (fs.readFileSync (`partie/${nom_partie}.json`,"UTF-8"));
 	parties = JSON.parse(fs.readFileSync("./index_parties.json", "UTF-8"));
@@ -36,7 +37,7 @@ function win (req,, nom_partie) {
 
     }else if (sauvegarde.player_1.stats.pv === 0) {
         sauvegarde.player_2.resultat = 1;
-
+		console.log("J1 a atteind l'arrivée ");
 
 	}else {
 		sauvegarde.player_1.resultat = 0;
@@ -50,6 +51,7 @@ function win (req,, nom_partie) {
     
 	}else if (sauvegarde.player_1.stats.pv === 0) {
 		sauvegarde.player_2.resultat = 1;
+		console.log("J1 a atteind l'arrivée ");
 
 	}else {
         sauvegarde.player_2.resultat = 0;
