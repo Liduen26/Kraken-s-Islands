@@ -4,7 +4,7 @@
 const fs = require("fs");
 const mod_aff_html = require("./mod_aff_html");
 
-function mod_aff(req, res, page, nom_partie) {
+function mod_aff(req, res, page, nom_partie, tir) {
     
     let marqueurs = {};
     let partie;
@@ -21,7 +21,7 @@ function mod_aff(req, res, page, nom_partie) {
     }
 
     //rentrée de la carte dans l'html
-    marqueurs.carteAff = mod_aff_html(partie.carte, 15);
+    marqueurs.carteAff = mod_aff_html(partie.carte, 15, tir);
 	marqueurs.partie_query = nom_partie;
     page = page.supplant(marqueurs);
 
