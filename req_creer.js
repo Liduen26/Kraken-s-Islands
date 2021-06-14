@@ -92,6 +92,11 @@ function trait(req, res, query, carte) {
 			sauvegarde[req.headers.cookie].zone.y_p = 0;
 			sauvegarde[req.headers.cookie].zone.x_p = 0;
 
+			// Zone d'arrivée
+			sauvegarde[req.headers.cookie].goal = sauvegarde.carte.length;
+			sauvegarde[req.headers.cookie].resultat;
+
+
 
 			sauvegarde[req.headers.cookie].play = true;
 

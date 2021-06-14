@@ -73,6 +73,10 @@ function trait(req, res, query) {
 	sauvegarde[req.headers.cookie].zone.x = 0;
 	sauvegarde[req.headers.cookie].zone.y_p = 0;
 	sauvegarde[req.headers.cookie].zone.x_p = 0;
+
+	// score
+	sauvegarde[req.headers.cookie].goal = 0;
+	sauvegarde[req.headers.cookie].resultat = 0;
 	
 
 	sauvegarde[req.headers.cookie].play = false;
