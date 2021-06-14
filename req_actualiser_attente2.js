@@ -5,6 +5,7 @@
 const fs = require("fs");
 const aff = require("./mod_aff_html.js");
 const mod_aff = require ("./mod_aff.js");
+const mod_win = require ("./mod_win.js");
 
 function actualiser(req, res, query) {
 	let page;

@@ -3,6 +3,7 @@
  
 const fs = require("fs");
 const mod_aff_html = require("./mod_aff_html");
+const mod_win = require ("./mod_win.js");
 
 function mod_aff(req, res, page, nom_partie) {
     
@@ -50,6 +51,7 @@ function mod_aff(req, res, page, nom_partie) {
 
 
 
+	mod_win (req, nom_partie);
 
     //affichage de la page html
     page = page.supplant(marqueurs);
