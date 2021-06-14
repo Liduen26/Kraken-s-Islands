@@ -18,10 +18,6 @@ function actualiser(req, res, query) {
 
 	page = fs.readFileSync("./m_salle_attente2.html", "UTF-8");
 
-	marqueurs.partie = query.nom_partie;
-	marqueurs.partie_query = query.nom_partie;
-	page = page.supplant(marqueurs);
-
 	parties = JSON.parse(fs.readFileSync("index_parties.json", "UTF-8"));
 
 	for(i = 0;i < parties.length;i++) {
@@ -41,6 +37,13 @@ function actualiser(req, res, query) {
 		}
 		mod_aff(req, res, page, nom_partie);
 
+	} else {
+		marqueurs.partie = query.nom_partie;
+		marqueurs.partie_query = query.nom_partie;
+		page = page.supplant(marqueurs);
+		res.writeHead(200, {'Content-type': 'text/html'});
+		res.write(page);
+		res.end();
 	}
 
 	marqueurs.partie_query = query.nom_partie;

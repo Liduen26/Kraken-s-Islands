@@ -26,6 +26,13 @@ function actualiser(req, res, query) {
 		page = fs.readFileSync("./m_jeu.html", "UTF-8");
 		sauvegarde[req.headers.cookie].play = true;
 	}
+	
+	//partie finie ?
+	if(sauvegarde[player_autre].resultat === 1) {
+		page = fs.readFileSync("./m_scoreboard.html", "UTF-8");
+		
+	}
+
 
 	fs.writeFileSync(`partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	

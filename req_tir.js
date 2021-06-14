@@ -5,6 +5,7 @@
 const fs = require("fs");
 const mod_aff = require("./mod_aff.js");
 const mod_autre = require("./mod_autre_pseudo.js");
+const mod_win = require("./mod_win.js");
 
 function tir(req, res, query) {
 	let page;
@@ -43,15 +44,16 @@ function tir(req, res, query) {
 		sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
 
 		sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 5);
-		sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 4;
+		sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 3;
 
 		sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 5);
-		sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 4;
+		sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 3;
 
 
 		fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 
 	}
+	page = mod_win(req, query.nom_partie, page);
 	mod_aff(req, res, page, query.nom_partie);
 }
 

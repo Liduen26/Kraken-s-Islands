@@ -3,8 +3,9 @@
 const url = require("url");
 const fs = require("fs");
 const mod_aff = require("./mod_aff.js");
+const mod_win = require("./mod_win.js");
 
-function index(req, res, query) {
+function deplacement(req, res, query) {
 	let deplacement;
 	let partie;
 	let carte;
@@ -58,9 +59,9 @@ function index(req, res, query) {
 	} console.log("J1: " + partie[req.headers.cookie].coordonnees.x, +"," + partie[req.headers.cookie].coordonnees.y);
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
-
+	page = mod_win(req, query.nom_partie, page);
 	mod_aff(req, res, page, query.nom_partie);
 }
 
 
-module.exports = index;
+module.exports = deplacement;

@@ -123,11 +123,9 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_tir':
 				req_tir(req, res, query);
-				mod_win (req, query.nom_partie);
 				break;
 			case '/req_deplacement':
 				req_deplacement (req, res, query);
-				mod_win (req, query.nom_partie);
 				break;
 
 
