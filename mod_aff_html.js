@@ -36,6 +36,8 @@ function trans_html(carte, tpixel, tir){
 			if(tir !== undefined) {
 				if(color === "blue") {
 					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir" style="width: 15px; height: 15px"></label>`);
+				} else if(color === "zone") {
+					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir-z" style="width: 15px; height: 15px"></label>`);
 				} else {
 					display.push(`<span class="${color}" style=" width: 15px; height: 15px";></span>`);
 				}

@@ -66,6 +66,14 @@ function trait(req, res, query) {
 	sauvegarde[req.headers.cookie].stats.pv = 0;
 	sauvegarde[req.headers.cookie].stats.atq = 0;
 	sauvegarde[req.headers.cookie].stats.camo = 0;
+	
+	//création de la zone
+	sauvegarde[req.headers.cookie].zone = {}; 
+	sauvegarde[req.headers.cookie].zone.y = 0;
+	sauvegarde[req.headers.cookie].zone.x = 0;
+	sauvegarde[req.headers.cookie].zone.y_p = 0;
+	sauvegarde[req.headers.cookie].zone.x_p = 0;
+	
 
 	sauvegarde[req.headers.cookie].play = false;
 	

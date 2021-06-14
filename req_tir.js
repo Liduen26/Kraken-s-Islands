@@ -37,8 +37,20 @@ function tir(req, res, query) {
 	}
 
 	sauvegarde[req.headers.cookie].a_tire = true;
+	
+	//génération de la zone
+	sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
+    sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
+
+    sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 5);
+    sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 4;
+
+    sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 5);
+    sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 4;
+
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
+	
 
 
 	mod_aff(req, res, page, query.nom_partie);
