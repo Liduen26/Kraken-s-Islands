@@ -12,8 +12,6 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
     let sauvegarde;
 	let parties;
     let x, y, i;
-	let player_1;
-	let player_2;
 	let player_autre = mod_autre(req, nom_partie);
 
     sauvegarde = JSON.parse( fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
@@ -36,28 +34,10 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
     marqueurs.carteAff = mod_aff_html(sauvegarde.carte, 15, tir);
 	marqueurs.partie_query = nom_partie;
 
-    //récupération du nom des joueurs	 
-    parties = JSON.parse(fs.readFileSync("./index_parties.json", "UTF-8"));
-
-    for(i = 0;i < parties.length; i++) {
-        if(parties[i].partie === nom_partie) {
-            if(parties[i].Player_1 === req.headers.cookie) {
-                player_1 = parties[i].Player_1;
-                player_2 = parties[i].Player_2;
-            } else {
-                player_2 = parties[i].Player_1;
-				player_1 = parties[i].Player_2;
-            }
-        }
-    }   
-	console.log(player_1);
 
 
-
-	mod_win (req, nom_partie);
-
-	marqueurs.pvJ1 = player_1 + ":" + sauvegarde[player_1].stats.pv;
-	marqueurs.pvJ2 = player_2 + ":" + sauvegarde[player_2].stats.pv;
+	marqueurs.pvJ1 = req.headers.cookie + ":" + sauvegarde[req.headers.cookie].stats.pv;
+	marqueurs.pvJ2 = player_autre + ":" + sauvegarde[player_autre].stats.pv;
 
     //affichage de la page html
     page = page.supplant(marqueurs);
