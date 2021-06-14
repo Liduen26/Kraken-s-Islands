@@ -14,45 +14,45 @@ function tir(req, res, query) {
 	let sauvegarde;
 
 	page = fs.readFileSync("m_jeu.html", "UTF-8");
-
-	//découpage des co de tir
-	if(Array.isArray(query.tir) === true) {
-		for(i = 0;i < query.tir.length; i++) {
-			coord_tir[i] = [];
-			coord_tir[i] = query.tir[i].split("_");
-			
+	if(query.tir !== undefined) {
+		//découpage des co de tir
+		if(Array.isArray(query.tir) === true) {
+			for(i = 0;i < query.tir.length; i++) {
+				coord_tir[i] = [];
+				coord_tir[i] = query.tir[i].split("_");
+				
+			}
+		} else {
+			coord_tir[0] = [];
+			coord_tir[0] = query.tir.split("_");
 		}
-	} else {
-		coord_tir[0] = [];
-		coord_tir[0] = query.tir.split("_");
-	}
 
-	player_autre = mod_autre(req, query.nom_partie);
+		player_autre = mod_autre(req, query.nom_partie);
 
-	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
-	for(i = 0;i < coord_tir.length; i++) {
-		if(sauvegarde[player_autre].coordonnees.y === Number(coord_tir[i][0]) && sauvegarde[player_autre].coordonnees.x === Number(coord_tir[i][1])) {
-			sauvegarde[player_autre].stats.pv -= sauvegarde[req.headers.cookie].stats.atq;
+		sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
+		for(i = 0;i < coord_tir.length; i++) {
+			if(sauvegarde[player_autre].coordonnees.y === Number(coord_tir[i][0]) && sauvegarde[player_autre].coordonnees.x === Number(coord_tir[i][1])) {
+				sauvegarde[player_autre].stats.pv -= sauvegarde[req.headers.cookie].stats.atq;
+			}
 		}
+
+		sauvegarde[req.headers.cookie].a_tire = true;
+
+		//génération de la zone
+		sauvegarde[req.headers.cookie].zone = {};
+		sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
+		sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
+
+		sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 5);
+		sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 4;
+
+		sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 5);
+		sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 4;
+
+
+		fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
+
 	}
-
-	sauvegarde[req.headers.cookie].a_tire = true;
-	
-	//génération de la zone
-	sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
-    sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
-
-    sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 5);
-    sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 4;
-
-    sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 5);
-    sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 4;
-
-
-	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
-	
-
-
 	mod_aff(req, res, page, query.nom_partie);
 }
 
