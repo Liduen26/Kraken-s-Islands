@@ -39,7 +39,6 @@ function tir(req, res, query) {
 		sauvegarde[req.headers.cookie].a_tire = true;
 
 		//génération de la zone
-		sauvegarde[req.headers.cookie].zone = {};
 		sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
 		sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
 
