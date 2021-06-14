@@ -5,6 +5,7 @@
 const fs = require("fs");
 const aff = require("./mod_aff_html.js");
 const mod_aff = require("./mod_aff.js");
+const mod_autre = require("./mod_autre_pseudo");
 
 function actualiser(req, res, query) {
 	let page;
@@ -17,17 +18,8 @@ function actualiser(req, res, query) {
 	page = fs.readFileSync("./m_attente_tour.html", "UTF-8");
 	
 	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
-	//détection du pseudo de l'autre joueur pour vérifier s'il joue
-	parties = JSON.parse(fs.readFileSync("./index_parties.json", "UTF-8"));
-	for(i = 0;i < parties.length;i++) {
-		if(parties[i].partie === query.nom_partie) {
-			if(parties[i].Player_1 === req.headers.cookie) {
-				player_autre = parties[i].Player_2;
-			} else {
-				player_autre = parties[i].Player_1;
-			}
-		}
-	}
+	
+	player_autre = mod_autre(req, query.nom_partie);
 
 	//est-ce qu'il joue ?
 	if(sauvegarde[player_autre].play === false) {

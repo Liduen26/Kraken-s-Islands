@@ -357,7 +357,7 @@ button:hover, input[type="submit"]:hover {
 
 
 .pv {
-    height: 20%;
+    margin: 15px;
     
 }
 
@@ -366,25 +366,30 @@ button:hover, input[type="submit"]:hover {
 
 }
 
-.bl {
+.blue {
 	background-color: blue; 
 	border: 1px dotted #000000e0;
 }
 
-.ye {
+.yellow {
 	background-color: yellow; 
 	border: 1px dotted #000000e0;
 }
 
-.gr {
+.green {
 	background-color: green; 
 	border: 1px dotted #000000e0;
 }
 
-.br {
+.bateau {
 	background-color: brown; 
 	border: 1px dotted #000000e0;
 
+}
+
+.zone {
+    background-color: #88a7ec; 
+	border: 1px dotted #000000e0;
 }
 
 .z-tir {
@@ -403,10 +408,14 @@ button:hover, input[type="submit"]:hover {
 .l-tir {
   background-color: blue; 
   border: 1px dotted #000000e0;
-  width: 20px;
 }
 
-.l-tir:hover {
+.l-tir-z {
+  background-color: #88a7ec; 
+  border: 1px dotted #000000e0;
+}
+
+.l-tir:hover, .l-tir-z:hover {
   background-color: #00f8;
 }
 
@@ -414,7 +423,11 @@ button:hover, input[type="submit"]:hover {
      background-color: #ca595388;
 }
 
-.z-tir:checked + .l-tir {
+.z-tir:checked + .l-tir-z:hover, {
+     background-color: #ca595388;
+}
+
+.z-tir:checked + .l-tir, .z-tir:checked + .l-tir-z {
   background-color: #ca5953;
 }
 

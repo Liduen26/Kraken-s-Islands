@@ -66,8 +66,18 @@ function trait(req, res, query) {
 	sauvegarde[req.headers.cookie].stats.pv = 0;
 	sauvegarde[req.headers.cookie].stats.atq = 0;
 	sauvegarde[req.headers.cookie].stats.camo = 0;
+	
+	//création de la zone
+	sauvegarde[req.headers.cookie].zone = {}; 
+	sauvegarde[req.headers.cookie].zone.y = 0;
+	sauvegarde[req.headers.cookie].zone.x = 0;
+	sauvegarde[req.headers.cookie].zone.y_p = 0;
+	sauvegarde[req.headers.cookie].zone.x_p = 0;
+	
 
 	sauvegarde[req.headers.cookie].play = false;
+	
+	sauvegarde[req.headers.cookie].a_tire = false;
 
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");

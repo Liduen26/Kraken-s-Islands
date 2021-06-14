@@ -8,7 +8,7 @@ const fs = require("fs");
 //paramètre de la carte | à changer aussi dans le generation.js si on aff dans la console
 const h_eau = 0.60;
 const h_terre = 0.75;
-const zoom = 0.06;
+const zoom = 0.07;
 
 function generation(seed, hauteur, largeur) {
 	const t_ilecentre = Math.min(hauteur, largeur) / 6;

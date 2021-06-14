@@ -72,7 +72,6 @@ function trait(req, res, query, carte) {
 			sauvegarde[req.headers.cookie].coordonnees.y = 0;
 			
 			//création des bonus
-			
 			sauvegarde[req.headers.cookie].bonus = {};
 			sauvegarde[req.headers.cookie].bonus.espion = 2;
 			sauvegarde[req.headers.cookie].bonus.oeil = 1;
@@ -81,13 +80,22 @@ function trait(req, res, query, carte) {
 			sauvegarde[req.headers.cookie].bonus.kraken = 0;
 
 			//création des stats
-
 			sauvegarde[req.headers.cookie].stats = {};
 			sauvegarde[req.headers.cookie].stats.pv = 0;
 			sauvegarde[req.headers.cookie].stats.atq = 0;
 			sauvegarde[req.headers.cookie].stats.camo = 0;
 
+			//création de la zone
+			sauvegarde[req.headers.cookie].zone = {};
+			sauvegarde[req.headers.cookie].zone.y = 0;
+			sauvegarde[req.headers.cookie].zone.x = 0;
+			sauvegarde[req.headers.cookie].zone.y_p = 0;
+			sauvegarde[req.headers.cookie].zone.x_p = 0;
+
+
 			sauvegarde[req.headers.cookie].play = true;
+
+			sauvegarde[req.headers.cookie].a_tire = false;
 
 			//écriture de la carte dans un fichier .json
 			fs.writeFileSync (`./partie/${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");
