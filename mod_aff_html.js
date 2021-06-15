@@ -30,6 +30,9 @@ function trans_html(carte, tpixel, tir){
 				case "z":
 					color = "zone";
 					break;
+				case "zb":
+					color = "z-detect";
+					break;
 			}
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte

@@ -387,6 +387,12 @@ button:hover, input[type="submit"]:hover {
 
 }
 
+.z-detect {
+    background-color: #007eff;
+    border: 1px dotted #000000e0;
+}
+
+
 .zone {
     background-color: #88a7ec; 
 	border: 1px dotted #000000e0;
