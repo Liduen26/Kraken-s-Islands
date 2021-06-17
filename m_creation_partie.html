@@ -10,22 +10,32 @@
 		<h2><label>Création de votre partie</label></h2>
 	</header>
 
-	<form action="req_creer" method="GET">
-		Nom de la partie : </br>
-		<input type="text" name="nom_partie" required> <br>
-		{erreur}
-		<p>			
-		<input type="submit" value="Valider">
-	</form>
-	
-	<form action="req_afficher_creation" method="GET">
-		Taille de la carte : </br>
-		{taille}
-		<input type="submit" value="Carte">
-	</form>
+	<div class="content">
+		<div class="p1_bg">
+			<div class="form_content">
+				<form action="req_afficher_creation" method="GET">
+					Taille de la carte : </br>
+					{taille}
+					<input type="submit" value="Carte">
+				</form>
 
-	<div class="cadre_carte" >
-		{carteAff}
+				<form action="req_creer" method="GET">
+					Nom de la partie : </br>
+					<input type="text" name="nom_partie" required> <br>
+					{erreur}
+					<p>			
+					<input type="submit" value="Valider">
+				</form>
+			</div>
+		</div>
+
+		<div class="p2_bg">
+			<div class="map_content">	
+				<div class="cadre_carte" >
+					{carteAff}
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<a href="req_menu"><button class="b_retour">Retour</button></a>
