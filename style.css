@@ -40,6 +40,80 @@ h2 {
     text-shadow: var(--shadow-text);
 }
 
+.content {
+
+    position: absolute;
+    top: 24%;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+}
+
+
+.p1_bg {
+    
+	background: url(./parchment.png) no-repeat center/cover;
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    right: 55%;
+    left: 10%;
+	
+
+}
+
+.form_content {
+    color: var(--color-text);
+    font-family: 'Courgette', serif;
+    font-size: 1.5em;
+    text-shadow: 0.03rem 0.03rem 0.05rem rgb(0 0 0 / 50%);
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    right: 15%;
+    left: 15%;
+}
+
+.p2_bg {
+    
+	background: url(./papier.jpg) no-repeat center/cover;
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    right: 10%;
+    left: 55%;
+	
+}
+
+.map_content {
+	
+	position: absolute;
+    top: 10%;
+    bottom: 15%;
+    right: 15%;
+    left: 15%;
+}
+
+/*.cadre_carte {
+	
+	flex-direction: row;
+	justify-content: center;
+}*/
+
+.b1_retour {
+	
+	height: 60px;
+    width: 110px;
+    background: url(./piece.jpg) ;
+
+	position: absolute;
+    bottom: 2em;
+    right: 2.3em;
+	border-radius: 1.7em;
+    box-shadow: var(--shadow-box);
+}
+
+
 .b_retour {
     position: absolute;
     bottom: 2em;
