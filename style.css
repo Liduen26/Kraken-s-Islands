@@ -43,15 +43,15 @@ h2 {
 .b_retour {
     position: absolute;
     bottom: 2em;
-    right: 2.3em;
+    right: 2em;
 
-    height: 60px;
-    width: 110px;
+    height: 80px;
+    width: 160px;
     background: url(./boisbutton_1280.jpg) ;
 
     color: var(--color-text);
     font-family: 'Courgette', serif;
-    font-size: 1.5em;
+    font-size: 2.3em;
     text-shadow: var(--shadow-text);
 
     border-radius: 1.7em;
@@ -129,6 +129,7 @@ button:hover, input[type="submit"]:hover {
     font-family: 'Courgette', serif;
     font-size: 1.4em;
     
+    width: 98%;
 }
 
 .z-text:focus {
