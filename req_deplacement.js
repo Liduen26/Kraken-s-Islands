@@ -20,43 +20,53 @@ function deplacement(req, res, query) {
 	dx = partie[req.headers.cookie].coordonnees.x;
 	dy = partie[req.headers.cookie].coordonnees.y;
 		
-	switch(deplacement) {	
-		case 'haut':
-			if (partie[req.headers.cookie].coordonnees.y > 0) {
-				dy--;
-				if (partie.carte[dy][dx] === 0) { 
-					partie[req.headers.cookie].coordonnees.y -= 1;
+	if (partie[autre_joueur].saboter === false) {
+
+		switch(deplacement) {	
+			case 'haut':
+				if (partie[req.headers.cookie].coordonnees.y > 0) {
+					dy--;
+					if (partie.carte[dy][dx] === 0) { 
+						partie[req.headers.cookie].coordonnees.y -= 1;
+					}
 				}
-			}
-			break;
-		
-		case 'droite':
-			if ( partie[req.headers.cookie].coordonnees.x < partie.carte[0].length ) {
-				dx++;
-                if (partie.carte[dy][dx] === 0) { 
-                    partie[req.headers.cookie].coordonnees.x += 1;
+				break;
+			
+			case 'droite':
+				if ( partie[req.headers.cookie].coordonnees.x < partie.carte[0].length ) {
+					dx++;
+					if (partie.carte[dy][dx] === 0) { 
+						partie[req.headers.cookie].coordonnees.x += 1;
+					}
 				}
-			}
-			break;
-		
-		case 'gauche':
-			if ( partie[req.headers.cookie].coordonnees.x > 0 ) {
-				dx--;
-                if (partie.carte[dy][dx] === 0) { 
-                    partie[req.headers.cookie].coordonnees.x -= 1;
+				break;
+			
+			case 'gauche':
+				if ( partie[req.headers.cookie].coordonnees.x > 0 ) {
+					dx--;
+					if (partie.carte[dy][dx] === 0) { 
+						partie[req.headers.cookie].coordonnees.x -= 1;
+					}
 				}
-			}
-			break;
-		
-		case 'bas':
-			if ( partie[req.headers.cookie].coordonnees.y < partie.carte.length -1 ) {
-				dy++;
-                if (partie.carte[dy][dx] === 0) { 
-                    partie[req.headers.cookie].coordonnees.y += 1;
+				break;
+			
+			case 'bas':
+				if ( partie[req.headers.cookie].coordonnees.y < partie.carte.length -1 ) {
+					dy++;
+					if (partie.carte[dy][dx] === 0) { 
+						partie[req.headers.cookie].coordonnees.y += 1;
+					}
 				}
-			}
-			break;
-	} console.log("J1: " + partie[req.headers.cookie].coordonnees.x, +"," + partie[req.headers.cookie].coordonnees.y);
+				break;
+		} 
+		console.log("J1: " + partie[req.headers.cookie].coordonnees.x, +"," + partie[req.headers.cookie].coordonnees.y);
+
+                for ( i=4; i>0; i--) {
+					if (partie[req.headers.cookie].coordonnees.x && partie[req.headers.cookie].coordonnees.y === partie[req.headers.cookie].bombe.i || partie[autre_joueur].bombe.i ) {
+						partie[autre_joueur].stats.vie =- ((30*(partie[autre_joueur].stats.vie))/100);
+					}
+				}
+	}
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
 	sauvegarde = mod_kraken(req, sauvegarde);

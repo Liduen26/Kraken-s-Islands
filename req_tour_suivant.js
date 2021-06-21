@@ -21,6 +21,11 @@ function t_suivant(req, res, query) {
 
 	sauvegarde[req.headers.cookie].play = false;
 	sauvegarde[player_autre].a_tire = false;
+		
+		if ( sauvegarde[req.headers.cookie].faucon > 0) {
+			sauvegarde[req.headers.cookie].faucon --;
+		}
+
 	marqueurs.carteAff = aff(sauvegarde.carte, 15);
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
