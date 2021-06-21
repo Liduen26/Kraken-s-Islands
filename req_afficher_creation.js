@@ -13,6 +13,10 @@ function trait(req, res, query) {
 	let carte = [];
 	let haut = query.hauteur;
 	let larg = query.largeur;
+	let sauvegarde = {};
+	let display = [];
+	let y = 0, x = 0;
+    let color = "";
 
 	page = fs.readFileSync('m_creation_partie.html', 'utf-8');
 
@@ -21,8 +25,8 @@ function trait(req, res, query) {
 	//faire un nouv marqureurs pour créer des zones de texte dynamiques
 
 	marqueurs.taille = `<input type="number" name="hauteur" required value="${carte.length}"> x <input type="number" name="largeur" required value="${carte[0].length}"><p>`;
-
-	marqueurs.carteAff = trans_html(carte, 5);
+	
+    marqueurs.carteAff = trans_html(carte, 5);
 	marqueurs.erreur = "";
 	page = page.supplant(marqueurs);
 

@@ -5,17 +5,7 @@
 const fs = require("fs");
 const mod_autre = require("./mod_autre_pseudo.js");
 
-function vu(req, nom_partie, sauvegarde) {
-	/*
-	prend le json
-	regarde la disance entre les deux bateaux
-	si dist < à stats.dis
-	alors afficher les deux pour le joueur
-	
-	*/
-
-	console.log("vu");
-
+function vu(req, nom_partie, sauvegarde, dist) {
 	let page; 
 	let player_autre = mod_autre(req, nom_partie);
 	let distance_bateau;
@@ -25,13 +15,26 @@ function vu(req, nom_partie, sauvegarde) {
 
 	y = sauvegarde[player_autre].coordonnees.y;
 	x = sauvegarde[player_autre].coordonnees.x;
-
 	
 	if (partie[req.headers.cookie].faucon > 0) {
 		sauvegarde[player_autre].stats.camo += 2;
-		if(distance_bateau <= sauvegarde[player_autre].stats.camo) {
-			sauvegarde.carte[y][x] = "b";
 		}
+
+	if(distance_bateau <= sauvegarde[player_autre].stats.camo) {
+		if(req.headers.cookie === sauvegarde.equipe1) {
+			if (distance_bateau <= sauvegarde[req.headers.cookie].stats.camo) {
+				sauvegarde.carte[y][x] = "b_2_p";
+			} else {
+				sauvegarde.carte[y][x] = "b_2";
+			}
+		} else {
+			if (distance_bateau <= sauvegarde[req.headers.cookie].stats.camo) {
+				sauvegarde.carte[y][x] = "b_p";
+			} else {
+				sauvegarde.carte[y][x] = "b";
+			}
+		}
+	}
 
 	return sauvegarde;
 }	
