@@ -14,8 +14,6 @@ function win (req, nom_partie, page) {
 	sauvegarde = JSON.parse (fs.readFileSync (`partie/${nom_partie}.json`,"UTF-8"));
 
 	// condition de victoire
-	console.log("avant if");
-
 	if (sauvegarde[req.headers.cookie].coordonnees.y === sauvegarde[req.headers.cookie].goal) {
 		sauvegarde[req.headers.cookie].resultat = 1;
 		console.log ("arrivée");

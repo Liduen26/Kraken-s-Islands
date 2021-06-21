@@ -24,6 +24,7 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
     for (y = 0; y <= sauvegarde.carte.length - 1; y++) {
         for (x=0; x<= sauvegarde.carte[0].length; x++) {
 			dist = Math.hypot((sauvegarde[req.headers.cookie].coordonnees.y - y), (sauvegarde[req.headers.cookie].coordonnees.x - x));
+
 			if (sauvegarde[req.headers.cookie].coordonnees.y === y && sauvegarde[req.headers.cookie].coordonnees.x === x) {
 				if(req.headers.cookie === sauvegarde.equipe1) {
 					if(dist <= sauvegarde[req.headers.cookie].stats.camo) {
