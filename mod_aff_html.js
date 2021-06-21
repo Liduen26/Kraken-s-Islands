@@ -2,7 +2,7 @@
 
 "use strict";
 
-function trans_html(carte, tpixel, tir){
+function trans_html(carte, tpixel){
 	let display = [];
 	let y = 0, x = 0;
 	let color = "";
@@ -23,30 +23,13 @@ function trans_html(carte, tpixel, tir){
 					break;
 				case 2:
 					color = "green";
-					break;
-				case "b":
-					color = "bateau";
-					break;
-				case "z":
-					color = "zone";
-					break;
-				case "zb":
-					color = "z-detect";
-					break;
+					break;			
 			}
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte
-			if(tir !== undefined) {
-				if(color === "blue") {
-					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir" style="width: 15px; height: 15px"></label>`);
-				} else if(color === "zone") {
-					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="l-tir-z" style="width: 15px; height: 15px"></label>`);
-				} else {
-					display.push(`<span class="${color}" style=" width: 15px; height: 15px";></span>`);
-				}
-			} else {
-				display.push(`<span class="${color}" style=" width: ${tpixel}px; height: ${tpixel}px";></span>`);
-			}
+	
+			display.push(`<span class="${color}" style=" width: ${tpixel}px; height: ${tpixel}px";></span>`);
+		
 			x++;
 		}
 		//saut de ligne

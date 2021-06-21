@@ -49,9 +49,11 @@ function trait(req, res, query) {
 		}
 	}
 	
+	sauvegarde.equipe2 = req.headers.cookie;
+
 	//création des coordonées
 	sauvegarde[req.headers.cookie].coordonnees.x = x2;
-	sauvegarde[req.headers.cookie].coordonnees.y = 0;
+	sauvegarde[req.headers.cookie].coordonnees.y = sauvegarde.carte.length - 1;
 
 	//création des bonus	
 	sauvegarde[req.headers.cookie].bonus = {};

@@ -68,6 +68,8 @@ function trait(req, res, query, carte) {
 					valide = false;
 				}
 			}
+			sauvegarde.equipe1 = req.headers.cookie;
+
 			sauvegarde[req.headers.cookie].coordonnees.x = x1;
 			sauvegarde[req.headers.cookie].coordonnees.y = 0;
 			

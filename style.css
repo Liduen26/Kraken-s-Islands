@@ -457,9 +457,8 @@ button:hover, input[type="submit"]:hover {
 }
 
 .bateau {
-	background-color: brown; 
 	border: 1px dotted #000000e0;
-
+	width: 15px;
 }
 
 .z-detect {
@@ -486,29 +485,37 @@ button:hover, input[type="submit"]:hover {
   transform: translate(-50%, -50%);  
 }
 
-.l-tir {
+.blue-tir {
   background-color: blue; 
   border: 1px dotted #000000e0;
+  width: 15px;
+  height: 15px;
 }
 
-.l-tir-z {
+.zone-tir {
   background-color: #88a7ec; 
   border: 1px dotted #000000e0;
+  width: 15px;
+  height: 15px;
 }
 
-.l-tir:hover, .l-tir-z:hover {
+.z-detect-tir {
+  background-color: #007eff; 
+  border: 1px dotted #000000e0;
+  width: 15px;
+  height: 15px;
+}
+
+.blue-tir:hover, .zone-tir:hover, .z-detect-tir:hover {
   background-color: #00f8;
 }
 
-.z-tir:checked + .l-tir:hover {
+.z-tir:checked + .blue-tir:hover, .z-tir:checked + .zone-tir:hover, .z-detect-tir:checked + .l-tir-z:hover, {
      background-color: #ca595388;
 }
 
-.z-tir:checked + .l-tir-z:hover, {
-     background-color: #ca595388;
-}
 
-.z-tir:checked + .l-tir, .z-tir:checked + .l-tir-z {
+.z-tir:checked + .blue-tir, .z-tir:checked + .zone-tir, .z-tir:checked + .z-detect-tir {
   background-color: #ca5953;
 }
 
