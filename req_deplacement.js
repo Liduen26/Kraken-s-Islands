@@ -59,6 +59,8 @@ function deplacement(req, res, query) {
 	} console.log("J1: " + partie[req.headers.cookie].coordonnees.x, +"," + partie[req.headers.cookie].coordonnees.y);
 
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
+	sauvegarde = mod_kraken(req, sauvegarde);
+
 	page = mod_win(req, query.nom_partie, page);
 	mod_aff(req, res, page, query.nom_partie);
 }
