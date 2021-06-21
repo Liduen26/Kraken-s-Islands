@@ -27,9 +27,11 @@ function vu(req, nom_partie, sauvegarde) {
 	x = sauvegarde[player_autre].coordonnees.x;
 
 	
-	if(distance_bateau <= sauvegarde[player_autre].stats.camo) {
-		sauvegarde.carte[y][x] = "b";
-	}
+	if (partie[req.headers.cookie].faucon > 0) {
+		sauvegarde[player_autre].stats.camo += 2;
+		if(distance_bateau <= sauvegarde[player_autre].stats.camo) {
+			sauvegarde.carte[y][x] = "b";
+		}
 
 	return sauvegarde;
 }	
