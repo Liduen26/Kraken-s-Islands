@@ -6,15 +6,17 @@ const mod_aff = require("./mod_aff.js");
 const mod_win = require("./mod_win.js");
 const mod_autre = require("./mod_autre_pseudo.js");
 const mod_kraken = require("./mod_kraken.js");
+const autre_joueur = require("./mod_autre_pseudo.js");
 
 function deplacement(req, res, query) {
 	let deplacement;
 	let sauvegarde;
 	let carte;
-	let dx,dy;
+	let dx,dy,bx,by;
 	let page;
-	let autre_pseudo = mod_autre(req, query.nom_partie);
-	let i;
+	let autre_joueur = mod_autre(req, query.nom_partie);
+	let i,x,y;
+	let bombe;
 
 	page = fs.readFileSync("m_jeu.html", "UTF-8");
 
@@ -23,8 +25,9 @@ function deplacement(req, res, query) {
 
 	dx = sauvegarde[req.headers.cookie].coordonnees.x;
 	dy = sauvegarde[req.headers.cookie].coordonnees.y;
+
 		
-	if (sauvegarde[autre_pseudo].saboter === false) {
+	if (sauvegarde[autre_joueur].saboter === false) {
 		console.log(sauvegarde[req.headers.cookie]);
 
 		switch(deplacement) {
@@ -65,19 +68,30 @@ function deplacement(req, res, query) {
 				}
 		} 
 		sauvegarde[req.headers.cookie].tour += 1;
-		/*	
-			for (i = 4;i > 0;i--) {
-				if (sauvegarde[req.headers.cookie].coordonnees.x && sauvegarde[req.headers.cookie].coordonnees.y === sauvegarde[req.headers.cookie].bombe[i] || sauvegarde[autre_joueur].bombe[i] ) {
-					sauvegarde[autre_joueur].stats.vie =- ((30*(sauvegarde[autre_joueur].stats.vie))/100);
-				}
-			}*/
+			
+		// (dx,dy) = sauvegarde[req.headers.cookie].coordonnees.x,y //
+		// (bx,by) = sauvegarde[req.headers.cookie].bombes[i].x,y    //
+		
+		for (i = sauvegarde[req.headers.cookie].bonus.bombes.length -1; i >= 0; i--) {
+			console.log (sauvegarde[req.headers.cookie].bonus.bombes.length);	
+			console.log ("avant if " +i+ " dx, dy "+ dx + dy +" bx, by "+ bx + by + "X,Y " );
+			console.log ( sauvegarde[req.headers.cookie].bonus.bombes[1]);
+			bx = sauvegarde[req.headers.cookie].bonus.bombes[i].x;
+			by = sauvegarde[req.headers.cookie].bonus.bombes[i].y;
+
+			if (dx === bx && dy === by) {
+				console.log ("attention bombe");
+				sauvegarde[autre_joueur].stats.pv =- ((30*(sauvegarde[autre_joueur].stats.pv))/100);
+			}
+		}
 	}
+	
 
 	sauvegarde = mod_kraken(req, sauvegarde, query.nom_partie);
 	console.log(sauvegarde[req.headers.cookie].bonus);
 
 	sauvegarde[req.headers.cookie].bonus.kraken = 0;
-	fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(sauvegarde) ,"UTF-8");
+	fs.writeFileSync(`./partie/${query.nom_partie}.json`,JSON.stringify(sauvegarde) ,"UTF-8");
 	page = mod_win(req, query.nom_partie, page);
 	mod_aff(req, res, page, query.nom_partie);
 }
