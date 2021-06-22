@@ -4,6 +4,7 @@ const url = require("url");
 const fs = require("fs");
 const mod_aff = require("./mod_aff.js");
 const mod_win = require("./mod_win.js");
+const autre_joueur = require("./mod_autre_pseudo.js");
 
 function deplacement(req, res, query) {
 	let deplacement;

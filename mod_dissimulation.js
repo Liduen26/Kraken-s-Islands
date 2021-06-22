@@ -16,7 +16,7 @@ function vu(req, nom_partie, sauvegarde, dist) {
 	y = sauvegarde[player_autre].coordonnees.y;
 	x = sauvegarde[player_autre].coordonnees.x;
 	
-	if (partie[req.headers.cookie].faucon > 0) {
+	if (sauvegarde[req.headers.cookie].faucon > 0) {
 		sauvegarde[player_autre].stats.camo += 2;
 		}
 
