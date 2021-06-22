@@ -72,6 +72,8 @@ function trait(req, res, query, carte) {
 
 			sauvegarde[req.headers.cookie].coordonnees.x = x1;
 			sauvegarde[req.headers.cookie].coordonnees.y = 0;
+
+			sauvegarde[req.headers.cookie].saboter = false;
 			
 			//création des bonus
 			sauvegarde[req.headers.cookie].bonus = {};

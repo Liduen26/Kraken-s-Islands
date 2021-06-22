@@ -63,7 +63,7 @@ function bonus (req, res, query)  {
         case 'barils':
             if (barils > 0) {
                 barils --;
-				partie[req.headers.cookie].bombe[barils] = req.headers.cookie].coordonnees;
+				partie[req.headers.cookie].bombe[barils] = sauvegarde[req.headers.cookie].coordonnees;
 
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
