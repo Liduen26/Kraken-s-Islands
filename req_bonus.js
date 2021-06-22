@@ -9,6 +9,7 @@ const mod_autre = require("./mod_autre_pseudo.js");
 function bonus (req, res, query)  {
 	
     let partie;
+	let x, y;
     let carte;
     let page;
 	let bonus;
@@ -47,7 +48,7 @@ function bonus (req, res, query)  {
             if (sabotage > 0) {
                 sabotage --;
 				saboter = true;
-				partie[autre_joueur].saboter = true;
+				partie[player_autre].saboter = true;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -63,7 +64,7 @@ function bonus (req, res, query)  {
         case 'barils':
             if (barils > 0) {
                 barils --;
-				partie[req.headers.cookie].bombe[barils] = sauvegarde[req.headers.cookie].coordonnees;
+				partie[req.headers.cookie].bonus.bombe.push = partie[req.headers.cookie].coordonnees;
 
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }

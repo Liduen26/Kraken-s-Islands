@@ -4,8 +4,12 @@ const url = require("url");
 const fs = require("fs");
 const mod_aff = require("./mod_aff.js");
 const mod_win = require("./mod_win.js");
+<<<<<<< HEAD
 const mod_autre = require("./mod_autre_pseudo.js");
 const mod_kraken = require("./mod_kraken.js");
+=======
+const autre_joueur = require("./mod_autre_pseudo.js");
+>>>>>>> b9196ad2f905c248ab41f447cef99a2720365bb2
 
 function deplacement(req, res, query) {
 	let deplacement;

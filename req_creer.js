@@ -80,8 +80,9 @@ function trait(req, res, query, carte) {
 			sauvegarde[req.headers.cookie].bonus.espion = 2;
 			sauvegarde[req.headers.cookie].bonus.oeil = 1;
 			sauvegarde[req.headers.cookie].bonus.sabotage = 2;
-			sauvegarde[req.headers.cookie].bonus.barils = 4;
 			sauvegarde[req.headers.cookie].bonus.kraken = 0;
+			sauvegarde[req.headers.cookie].bonus.barils = 4;
+			sauvegarde[req.headers.cookie].bonus.bombes = [];
 
 			//création des stats
 			sauvegarde[req.headers.cookie].stats = {};
