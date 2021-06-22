@@ -13,6 +13,6 @@ function tir(req, res, query) {
 
 	mod_aff(req, res, page, query.nom_partie, tir );
 	
-	}
+}
 
 module.exports = tir;

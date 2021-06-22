@@ -3,6 +3,7 @@
 "use strict";
 
 const fs = require("fs");
+const mod_init_json = require("./mod_init_json.js");
 const trans_html = require("./mod_aff_html.js");
 
 function trait(req, res, query, carte) {
@@ -52,11 +53,9 @@ function trait(req, res, query, carte) {
 				"status_p": "en attente"});
 
 			sauvegarde.carte = carte;
+			
+			sauvegarde = mod_init_json(req, sauvegarde);
 
-			//Parametres J1
-
-			sauvegarde[req.headers.cookie] = {};
-            sauvegarde[req.headers.cookie].bateau = "";
 			sauvegarde[req.headers.cookie].coordonnees = {};
 
             //création du spwan aléatoire sur le coté de la carte du J1
@@ -68,45 +67,16 @@ function trait(req, res, query, carte) {
 					valide = false;
 				}
 			}
-			sauvegarde.equipe1 = req.headers.cookie;
-
+			
+			//création des coordonées et attributs du j1
 			sauvegarde[req.headers.cookie].coordonnees.x = x1;
 			sauvegarde[req.headers.cookie].coordonnees.y = 0;
-
-			sauvegarde[req.headers.cookie].saboter = false;
 			
-			//création des bonus
-			sauvegarde[req.headers.cookie].bonus = {};
-			sauvegarde[req.headers.cookie].bonus.espion = 2;
-			sauvegarde[req.headers.cookie].bonus.oeil = 1;
-			sauvegarde[req.headers.cookie].bonus.sabotage = 2;
-			sauvegarde[req.headers.cookie].bonus.kraken = 0;
-			sauvegarde[req.headers.cookie].bonus.barils = 4;
-			sauvegarde[req.headers.cookie].bonus.bombes = [];
+			sauvegarde.equipe1 = req.headers.cookie;
 
-			//création des stats
-			sauvegarde[req.headers.cookie].stats = {};
-			sauvegarde[req.headers.cookie].stats.pv = 0;
-			sauvegarde[req.headers.cookie].stats.atq = 0;
-			sauvegarde[req.headers.cookie].stats.camo = 0;
-			sauvegarde[req.headers.cookie].saboter = 0;
-			sauvegarde[req.headers.cookie].oeil = 0;
-
-
-			//création de la zone
-			sauvegarde[req.headers.cookie].zone = {};
-			sauvegarde[req.headers.cookie].zone.y = 0;
-			sauvegarde[req.headers.cookie].zone.x = 0;
-			sauvegarde[req.headers.cookie].zone.y_p = 0;
-			sauvegarde[req.headers.cookie].zone.x_p = 0;
-
-			// Zone d'arrivée
 			sauvegarde[req.headers.cookie].goal = sauvegarde.carte.length;
-			sauvegarde[req.headers.cookie].resultat = 0;
 
 			sauvegarde[req.headers.cookie].play = true;
-
-			sauvegarde[req.headers.cookie].a_tire = false;
 
 			//écriture de la carte dans un fichier .json
 			fs.writeFileSync (`./partie/${nom_parties}.json`, JSON.stringify(sauvegarde), "UTF-8");

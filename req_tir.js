@@ -38,8 +38,9 @@ function tir(req, res, query) {
 		}
 
 		sauvegarde[req.headers.cookie].a_tire = true;
+		sauvegarde[req.headers.cookie].tour += 1;
 
-		//génération de la zone
+		//génération de la zone de fumée
 		sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
 		sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
 
