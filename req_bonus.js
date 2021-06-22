@@ -35,6 +35,8 @@ function bonus (req, res, query)  {
 		case 'espion':
 			if (espion > 0) {
 				espion --;
+				
+				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
 				x = partie[player_autre].coordonnees.x;
 				y = partie[player_autre].coordonnees.y;
@@ -49,6 +51,8 @@ function bonus (req, res, query)  {
                 sabotage --;
 				saboter = true;
 				partie[player_autre].saboter = true;
+				
+				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -57,6 +61,8 @@ function bonus (req, res, query)  {
             if (oeil > 0) {
                 oeil --;
     			partie[req.headers.cookie].faucon = 2;
+				
+				partie[req.headers.cookie].tour += 1;
 				fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -66,6 +72,7 @@ function bonus (req, res, query)  {
                 barils --;
 				partie[req.headers.cookie].bonus.bombe.push = partie[req.headers.cookie].coordonnees;
 
+				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -75,11 +82,13 @@ function bonus (req, res, query)  {
                 kraken --;
 				 partie[autre_joueur].stats.vie =- ((70*(partie[autre_joueur].stats.vie))/100);
 
+				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
 		console.log (espion, sabotage, oeil, barils, kraken);
 	}
+
 
     page = mod_win(req, query.nom_partie, page);
     mod_aff(req, res, page, query.nom_partie);

@@ -53,6 +53,18 @@ function trans_html(req, sauvegarde, tpixel, tir){
 				if(color === "blue" || color === "zone" || color === "z-detect") {
 					//case à cocher 
 					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="${color}-tir"></label>`);
+				} else if (color === "bateau_p") {
+					//bateau selon sa classe
+					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat}_p.png) center/cover"></span>`);
+				
+				} else if (color === "bateau_2") {
+					//bateau selon sa classe
+					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2.png) center/cover"></span>`);
+
+				} else if (color === "bateau_2_p") {
+					//bateau selon sa classe
+					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2_p.png) center/cover"></span>`);
+
 				} else {
 					//span normal
 					display.push(`<span class="${color}" style=" width: ${tpixel}px; height: ${tpixel}px";></span>`);

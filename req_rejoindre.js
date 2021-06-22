@@ -3,6 +3,7 @@
 "use strict";
 
 const fs = require("fs");
+const mod_init_json = require("./mod_init_json.js");
 
 function trait(req, res, query) {
 	let marqueurs = {};
@@ -30,11 +31,9 @@ function trait(req, res, query) {
 	}
 	
 	sauvegarde = JSON.parse(fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
+	
+	sauvegarde = mod_init_json(req, sauvegarde);
 
-	//Parmètres J2
-
-	sauvegarde[req.headers.cookie] = {};
-	sauvegarde[req.headers.cookie].bateau = "";
 	sauvegarde[req.headers.cookie].coordonnees = {};
 
 	//création du spwan aléatoire sur le coté de la carte du J2
@@ -49,45 +48,16 @@ function trait(req, res, query) {
 		}
 	}
 	
-	sauvegarde.equipe2 = req.headers.cookie;
-
-	//création des coordonées
+	//création des coordonées et attributs du J2
 	sauvegarde[req.headers.cookie].coordonnees.x = x2;
 	sauvegarde[req.headers.cookie].coordonnees.y = sauvegarde.carte.length - 1;
 
-	sauvegarde[req.headers.cookie].saboter = false;
-
-	//création des bonus	
-	sauvegarde[req.headers.cookie].bonus = {};
-	sauvegarde[req.headers.cookie].bonus.espion = 2;
-	sauvegarde[req.headers.cookie].bonus.oeil = 1;
-	sauvegarde[req.headers.cookie].bonus.sabotage = 2;
-	sauvegarde[req.headers.cookie].bonus.kraken = 0;
-	sauvegarde[req.headers.cookie].bonus.barils = 4;
-	sauvegarde[req.headers.cookie].bonus.bombes = [];
-
-	//création des stats	
-	sauvegarde[req.headers.cookie].stats = {};
-	sauvegarde[req.headers.cookie].stats.pv = 0;
-	sauvegarde[req.headers.cookie].stats.atq = 0;
-	sauvegarde[req.headers.cookie].stats.camo = 0;
-	
-	//création de la zone
-	sauvegarde[req.headers.cookie].zone = {}; 
-	sauvegarde[req.headers.cookie].zone.y = 0;
-	sauvegarde[req.headers.cookie].zone.x = 0;
-	sauvegarde[req.headers.cookie].zone.y_p = 0;
-	sauvegarde[req.headers.cookie].zone.x_p = 0;
-
-	// score
 	sauvegarde[req.headers.cookie].goal = 0;
-	sauvegarde[req.headers.cookie].resultat = 0;
 	
-
+	sauvegarde.equipe2 = req.headers.cookie;
+	
 	sauvegarde[req.headers.cookie].play = false;
 	
-	sauvegarde[req.headers.cookie].a_tire = false;
-
 	fs.writeFileSync(`partie/${nom_partie}.json`, JSON.stringify(sauvegarde), "UTF-8");
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 

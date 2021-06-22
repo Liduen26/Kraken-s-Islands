@@ -27,7 +27,7 @@ function deplacement(req, res, query) {
 	if (sauvegarde[autre_pseudo].saboter === false) {
 		console.log(sauvegarde[req.headers.cookie]);
 
-		switch(deplacement) {	
+		switch(deplacement) {
 			case 'haut':
 				if (sauvegarde[req.headers.cookie].coordonnees.y > 0) {
 					dy--;
@@ -61,18 +61,19 @@ function deplacement(req, res, query) {
 					if (sauvegarde.carte[dy][dx] === 0) { 
 						sauvegarde[req.headers.cookie].coordonnees.y += 1;
 					}
-				}
 				break;
-		} 
-			
-                for (i = 4;i > 0;i--) {
-					if (sauvegarde[req.headers.cookie].coordonnees.x && sauvegarde[req.headers.cookie].coordonnees.y === sauvegarde[req.headers.cookie].bombe[i] || sauvegarde[autre_joueur].bombe[i] ) {
-						sauvegarde[autre_joueur].stats.vie =- ((30*(sauvegarde[autre_joueur].stats.vie))/100);
-					}
 				}
+		} 
+		sauvegarde[req.headers.cookie].tour += 1;
+		/*	
+			for (i = 4;i > 0;i--) {
+				if (sauvegarde[req.headers.cookie].coordonnees.x && sauvegarde[req.headers.cookie].coordonnees.y === sauvegarde[req.headers.cookie].bombe[i] || sauvegarde[autre_joueur].bombe[i] ) {
+					sauvegarde[autre_joueur].stats.vie =- ((30*(sauvegarde[autre_joueur].stats.vie))/100);
+				}
+			}*/
 	}
 
-	sauvegarde = mod_kraken(req, sauvegarde);
+	sauvegarde = mod_kraken(req, sauvegarde, query.nom_partie);
 	console.log(sauvegarde[req.headers.cookie].bonus);
 
 	sauvegarde[req.headers.cookie].bonus.kraken = 0;

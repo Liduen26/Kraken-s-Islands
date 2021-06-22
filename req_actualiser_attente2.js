@@ -29,6 +29,8 @@ function actualiser(req, res, query) {
 
 	sauvegarde = JSON.parse(fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 	
+	console.log(sauvegarde[player1].bateau, sauvegarde[player2].bateau);
+
 	if(sauvegarde[player1].bateau !== "" && sauvegarde[player2].bateau !== "") {
 		if(sauvegarde[req.headers.cookie].play === true) {
 			page = fs.readFileSync("./m_jeu.html", "UTF-8");

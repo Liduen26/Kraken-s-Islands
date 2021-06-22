@@ -56,7 +56,58 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
     marqueurs.carteAff = mod_aff_html2(req, sauvegarde, 15, tir);
 	marqueurs.partie_query = nom_partie;
 
+	//changement d'états des bouttons en fonction de la situation
+	if(sauvegarde[req.headers.cookie].tour === 0) {
+		//phase 1
+		marqueurs.d_espion = "disabled";
+		marqueurs.d_sabot = "disabled";
+		marqueurs.d_yeux = "disabled";
+		marqueurs.d_barils = "disabled";
+		marqueurs.d_tir = "disabled";
+		marqueurs.d_depl = "";
+		marqueurs.d_kraken = "disabled";
+		marqueurs.d_tour = "disabled";
 
+	} else if (sauvegarde[req.headers.cookie].tour === 1){
+		//phase 2
+		marqueurs.d_espion = "";
+		marqueurs.d_sabot = "";
+		marqueurs.d_yeux = "";
+		marqueurs.d_barils = "";
+		marqueurs.d_tir = "";
+		marqueurs.d_depl = "disabled";
+		marqueurs.d_kraken = "";
+		marqueurs.d_tour = "";
+
+	} else if (sauvegarde[req.headers.cookie].tour === 2){
+		//phase 3
+		marqueurs.d_espion = "disabled";
+		marqueurs.d_sabot = "disabled";
+		marqueurs.d_yeux = "disabled";
+		marqueurs.d_barils = "disabled";
+		marqueurs.d_tir = "disabled";
+		marqueurs.d_depl = "disabled";
+		marqueurs.d_kraken = "disabled";
+		marqueurs.d_tour = "";
+
+	}
+	
+	//changement d'état des bonus
+	if(sauvegarde[req.headers.cookie].bonus.espion === 0) {
+		marqueurs.d_espion = "disabled";
+	} 
+	if(sauvegarde[req.headers.cookie].bonus.sabotage === 0) {
+		marqueurs.d_sabot = "disabled";
+	} 
+	if(sauvegarde[req.headers.cookie].bonus.oeil === 0) {
+		marqueurs.d_yeux = "disabled";
+	}
+	if(sauvegarde[req.headers.cookie].bonus.barils === 0) {
+		marqueurs.d_barils = "disabled";
+	} 
+	if(sauvegarde[req.headers.cookie].bonus.kraken === 0) {
+		marqueurs.d_kraken = "disabled";
+	} 
 
 	marqueurs.pvJ1 = req.headers.cookie + ":" + sauvegarde[req.headers.cookie].stats.pv;
 	marqueurs.pvJ2 = player_autre + ":" + sauvegarde[player_autre].stats.pv;
