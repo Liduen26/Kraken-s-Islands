@@ -35,7 +35,8 @@ function bonus (req, res, query)  {
 		case 'espion':
 			if (espion > 0) {
 				espion --;
-    			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
+				partie[req.headers.cookie].bonus.espion = espion;
+				fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
 				x = partie[player_autre].coordonnees.x;
 				y = partie[player_autre].coordonnees.y;
 
@@ -49,6 +50,7 @@ function bonus (req, res, query)  {
                 sabotage --;
 				saboter = true;
 				partie[player_autre].saboter = true;
+				partie[req.headers.cookie].bonus.sabotage = sabotage;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -56,6 +58,7 @@ function bonus (req, res, query)  {
         case 'oeil':
             if (oeil > 0) {
                 oeil --;
+				partie[req.headers.cookie].bonus.oeil = oeil;
     			partie[req.headers.cookie].faucon = 2;
 				fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
@@ -64,8 +67,10 @@ function bonus (req, res, query)  {
         case 'barils':
             if (barils > 0) {
                 barils --;
-				partie[req.headers.cookie].bonus.bombe.push = partie[req.headers.cookie].coordonnees;
+				partie[req.headers.cookie].bonus.barils = barils;
+				partie[req.headers.cookie].bonus.bombes.push (partie[req.headers.cookie].coordonnees);
 
+console.log("test" + barils);
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -73,14 +78,13 @@ function bonus (req, res, query)  {
         case 'kraken':
             if (kraken > 0) {
                 kraken --;
-				 partie[autre_joueur].stats.vie =- ((70*(partie[autre_joueur].stats.vie))/100);
-
-    			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
+				partie[autre_joueur].stats.vie =- ((70*(partie[autre_joueur].stats.vie))/100);
+				partie[req.headers.cookie].bonus.kraken = kraken;
+				fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
-		console.log (espion, sabotage, oeil, barils, kraken);
+		console.log ("req_bonus:" + espion, sabotage, oeil, barils, kraken);
 	}
-
     page = mod_win(req, query.nom_partie, page);
     mod_aff(req, res, page, query.nom_partie);
 }

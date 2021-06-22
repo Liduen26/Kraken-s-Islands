@@ -19,6 +19,8 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
 
     sauvegarde = JSON.parse( fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 
+console.log (sauvegarde[req.headers.cookie]);
+
 	bat = sauvegarde[sauvegarde.equipe1].bateau;
 	//mise en place du bateau sur la carte selon les coord du joueur
     for (y = 0; y <= sauvegarde.carte.length - 1; y++) {
