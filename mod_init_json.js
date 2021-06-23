@@ -10,17 +10,18 @@ function init(req, sauvegarde) {
 
     sauvegarde[req.headers.cookie].bateau = "";
 
-	sauvegarde[req.headers.cookie].saboter = false;
-	sauvegarde[req.headers.cookie].oeil = 0;
 
 	//création des bonus
 	sauvegarde[req.headers.cookie].bonus = {};
 	sauvegarde[req.headers.cookie].bonus.espion = 2;
-	sauvegarde[req.headers.cookie].bonus.oeil = 1;
+	sauvegarde[req.headers.cookie].bonus.vision = false;
+	sauvegarde[req.headers.cookie].bonus.faucon = 1;
+	sauvegarde[req.headers.cookie].bonus.oeil = false;
 	sauvegarde[req.headers.cookie].bonus.sabotage = 2;
-	sauvegarde[req.headers.cookie].bonus.kraken = 0;
+	sauvegarde[req.headers.cookie].bonus.saboter = false;
 	sauvegarde[req.headers.cookie].bonus.barils = 4;
 	sauvegarde[req.headers.cookie].bonus.bombes = []; 
+	sauvegarde[req.headers.cookie].bonus.kraken = 0;
 
 	//création des stats
 	sauvegarde[req.headers.cookie].stats = {}; 

@@ -27,7 +27,7 @@ function deplacement(req, res, query) {
 	dy = sauvegarde[req.headers.cookie].coordonnees.y;
 
 		
-	if (sauvegarde[autre_joueur].saboter === false) {
+	if (sauvegarde[req.headers.cookie].bonus.saboter === false) {
 		console.log(sauvegarde[req.headers.cookie]);
 
 		switch(deplacement) {
@@ -67,21 +67,18 @@ function deplacement(req, res, query) {
 				break;
 				}
 		} 
-		sauvegarde[req.headers.cookie].tour += 1;
+//		sauvegarde[req.headers.cookie].tour += 1;
 			
 		// (dx,dy) = sauvegarde[req.headers.cookie].coordonnees.x,y //
 		// (bx,by) = sauvegarde[req.headers.cookie].bombes[i].x,y    //
 		
 		for (i = sauvegarde[req.headers.cookie].bonus.bombes.length -1; i >= 0; i--) {
-			console.log (sauvegarde[req.headers.cookie].bonus.bombes.length);	
-			console.log ("avant if " +i+ " dx, dy "+ dx + dy +" bx, by "+ bx + by + "X,Y " );
-			console.log ( sauvegarde[req.headers.cookie].bonus.bombes[1]);
 			bx = sauvegarde[req.headers.cookie].bonus.bombes[i].x;
 			by = sauvegarde[req.headers.cookie].bonus.bombes[i].y;
 
 			if (dx === bx && dy === by) {
 				console.log ("attention bombe");
-				sauvegarde[autre_joueur].stats.pv =- ((30*(sauvegarde[autre_joueur].stats.pv))/100);
+				sauvegarde[req.headers.cookie].stats.pv =- Math.round(30 * (sauvegarde[req.headers.cookie].stats.pv/100));
 			}
 		}
 	}

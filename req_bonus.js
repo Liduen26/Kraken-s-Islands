@@ -13,11 +13,10 @@ function bonus (req, res, query)  {
     let carte;
     let page;
 	let bonus;
-	let espion, sabotage, oeil, barils;
-	let kraken;
+	let espion, sabotage, faucon, barils,kraken;
+	let vision, saboter, oeil, bombes; 
 	let player_autre;
-	let saboter;
-	let faucon;
+	let rien = 0;
 
 	page   = fs.readFileSync("m_jeu.html", "UTF-8");
 	bonus  = query.bonus;
@@ -26,15 +25,22 @@ function bonus (req, res, query)  {
 
 	espion = partie[req.headers.cookie].bonus.espion;
 	sabotage = partie[req.headers.cookie].bonus.sabotage;
-	oeil   = partie[req.headers.cookie].bonus.oeil;
+	faucon = partie[req.headers.cookie].bonus.faucon;
 	barils = partie[req.headers.cookie].bonus.barils;
 	kraken = partie[req.headers.cookie].bonus.kraken;
+
+    vision = partie[req.headers.cookie].bonus.vision;
+    saboter = partie[req.headers.cookie].bonus.saboter;
+    oeil   = partie[req.headers.cookie].bonus.oeil;
+    bombes = partie[req.headers.cookie].bonus.bombes;
+
 
 
 	switch(bonus) {
 		case 'espion':
 			if (espion > 0) {
 				espion --;
+				partie[req.headers.cookie].bonus.vision = true;
 				partie[req.headers.cookie].bonus.espion = espion;
 				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
@@ -49,19 +55,18 @@ function bonus (req, res, query)  {
         case 'sabotage':
             if (sabotage > 0) {
                 sabotage --;
-				saboter = true;
-				partie[player_autre].saboter = true;
+				partie[player_autre].bonus.saboter = true;
 				partie[req.headers.cookie].bonus.sabotage = sabotage;
 				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
 
-        case 'oeil':
-            if (oeil > 0) {
-                oeil --;
-				partie[req.headers.cookie].bonus.oeil = oeil;
-    			partie[req.headers.cookie].faucon = 2;
+        case 'faucon':
+            if (faucon > 0) {
+                faucon --; console.log("faucon");
+				partie[req.headers.cookie].bonus.oeil = 2;
+				partie[req.headers.cookie].bonus.faucon = faucon;
 				partie[req.headers.cookie].tour += 1;
 				fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
@@ -69,12 +74,12 @@ function bonus (req, res, query)  {
 
         case 'barils':
             if (barils > 0) {
-                barils --;
+                barils --;console.log("barils");
 				partie[req.headers.cookie].bonus.barils = barils;
 				partie[req.headers.cookie].bonus.bombes.push (partie[req.headers.cookie].coordonnees);
 
 console.log("test" + barils);
-				partie[req.headers.cookie].tour += 1;
+///				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
         break;
@@ -82,18 +87,18 @@ console.log("test" + barils);
         case 'kraken':
             if (kraken > 0) {
                 kraken --;
-				partie[autre_joueur].stats.vie =- ((70*(partie[autre_joueur].stats.vie))/100);
+				partie[player_autre].stats.pv -= Math.round ( 70 * (partie[player_autre].stats.pv / 100));
 				partie[req.headers.cookie].bonus.kraken = kraken;
-				 partie[autre_joueur].stats.vie =- ((70*(partie[autre_joueur].stats.vie))/100);
 				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
+				console.log("kraken");
             }
         break;
-		console.log ("req_bonus:" + espion, sabotage, oeil, barils, kraken);
+		console.log ("req_bonus:" + espion, sabotage, faucon, barils, kraken);
 	}
     
 	page = mod_win(req, query.nom_partie, page);
-    mod_aff(req, res, page, query.nom_partie);
+    mod_aff(req, res, page, query.nom_partie, rien, rien, carte);
 }
 
 
