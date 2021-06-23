@@ -8,11 +8,23 @@
 </head>
 <body>
 	<header>
-	<h4><label>Parties en attente : </label></h4>
-</header>
-	{parties}
+		<h2><label>Parties en attente : </label></h2>
+	</header>
 
-	<p>
+	<div class="liste_container">
+		<div class="liste_ligne" id="titre">
+			<span class="liste_box" id="nom_partie"> Partie </span>
+			<span class="liste_box"> Joueur 1</span>
+			<span class="liste_box"> Joueur 2</span>
+			<span class="liste_box"> Statut</span>
+			<span class="liste_box"> Rejoindre</span>
+		</div>
+		{parties}
+	</div>
+
+
+
+	
 	<a href="/req_menu"><button class="b_retour">Retour</button></a>
 
 </body>

@@ -25,22 +25,29 @@ function trait(req, res, query) {
 		//ici faut mettre un truc pour générer de l'html et le join à la fin
 	
 		ligne = "";
-		ligne += parties[i].partie + " | ";
-		ligne += parties[i].Player_1 + " | ";
+		ligne += `<div class="liste_ligne">`;
+		ligne += `<span class="liste_box" id="nom_partie">` + parties[i].partie + " </span> ";
+		ligne += `<span class="liste_box">` + parties[i].Player_1 + " </span> ";
+		ligne += `<span class="liste_box">`;
 
 		if(parties[i].Player_2 === null) {
-			ligne += "aucun | ";
+			ligne += "aucun";
 		} else {
-			ligne += parties[i].Player_2 + " | ";
+			ligne += parties[i].Player_2;
 		}
+		ligne += "</span>";
 
-		ligne += parties[i].status_p + " | " ;
+		ligne += `<span class="liste_box">` + parties[i].status_p + " </span> " ;
+		ligne += `<span class="liste_box">`;
 
 		if(parties[i].status_p === "en attente") {
-			ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}&Player_1=${parties[i].Player_1}"><button>Rejoindre</button></a></br>`;
+			ligne += `<a href="req_rejoindre?nom_partie=${parties[i].partie}&Player_1=${parties[i].Player_1}"><button class="btn_rejoindre">Rejoindre</button></a>`;
 		} else {
-			ligne += "<br>";
+			ligne += `<span class="liste_box" id="faux_boutton">`;
 		}
+		ligne += "</span>";
+		ligne += `</div>`;
+		
 		aff.push(ligne);
 	}
 

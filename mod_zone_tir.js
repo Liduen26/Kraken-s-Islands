@@ -3,7 +3,6 @@
 "use strict"
 
 const fs = require("fs");
-const mod_aff = require("./mod_aff.js");
 const mod_autre = require("./mod_autre_pseudo");
 
 function zone(req, nom_partie, sauvegarde) {
@@ -13,7 +12,7 @@ function zone(req, nom_partie, sauvegarde) {
 	
 	//mise en place de la zone grise
 	for (y = 0; y <= sauvegarde.carte.length; y++) {
-        for (x=0; x<= sauvegarde.carte[0].length; x++) {
+        for (x = 0;x <= sauvegarde.carte[0].length; x++) {
             if ((x >= sauvegarde[player_autre].zone.x && x <= sauvegarde[player_autre].zone.x_p) && (y >= sauvegarde[player_autre].zone.y && y <= sauvegarde[player_autre].zone.y_p)) {
 				sauvegarde.carte[y][x] = "z";				
             }

@@ -22,9 +22,8 @@ function actualiser(req, res, query) {
 	player_autre = mod_autre(req, query.nom_partie);
 
 	//est-ce qu'il joue ?
-	if(sauvegarde[player_autre].play === false) {
+	if(sauvegarde[player_autre].play === false && sauvegarde[req.headers.cookie].play === true) {
 		page = fs.readFileSync("./m_jeu.html", "UTF-8");
-		sauvegarde[req.headers.cookie].play = true;
 	}
 	
 	//partie finie ?
