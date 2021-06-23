@@ -20,6 +20,8 @@ function t_suivant(req, res, query) {
 	sauvegarde = JSON.parse(fs.readFileSync(`./partie/${query.nom_partie}.json`, "UTF-8"));
 
 	sauvegarde[req.headers.cookie].play = false;
+	sauvegarde[player_autre].play = true;
+
 	sauvegarde[player_autre].a_tire = false;
 	sauvegarde[req.headers.cookie].tour = 0;
 		
