@@ -67,11 +67,8 @@ function deplacement(req, res, query) {
 				break;
 				}
 		} 
-//		sauvegarde[req.headers.cookie].tour += 1;
-			
-		// (dx,dy) = sauvegarde[req.headers.cookie].coordonnees.x,y //
-		// (bx,by) = sauvegarde[req.headers.cookie].bombes[i].x,y    //
-		
+		sauvegarde[req.headers.cookie].tour += 1;
+					
 		for (i = sauvegarde[req.headers.cookie].bonus.bombes.length -1; i >= 0; i--) {
 			bx = sauvegarde[req.headers.cookie].bonus.bombes[i].x;
 			by = sauvegarde[req.headers.cookie].bonus.bombes[i].y;
