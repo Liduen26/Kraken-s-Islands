@@ -19,7 +19,7 @@ function trait(req, res, query) {
     marqueurs.pseudo = req.headers.cookie;
     page = page.supplant(marqueurs);
 	nom_partie = query.nom_partie;
-    fs.unlinkSync (`./partie/partie_${nom_partie}.json`);
+    fs.unlinkSync (`./partie_${nom_partie}.json`);
 
 	liste_partie = fs.readFileSync('index_parties.json', 'utf-8');
 	liste_partie = JSON.parse(liste_partie);
