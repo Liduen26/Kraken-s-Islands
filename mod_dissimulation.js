@@ -16,11 +16,12 @@ function vu(req, nom_partie, sauvegarde, dist) {
 	y = sauvegarde[player_autre].coordonnees.y;
 	x = sauvegarde[player_autre].coordonnees.x;
 	
-	if (sauvegarde[req.headers.cookie].faucon > 0) {
-		sauvegarde[player_autre].stats.camo += 2;
-		}
+	if (sauvegarde[req.headers.cookie].bonus.oeil > 0) {
+    	sauvegarde[player_autre].stats.camo += 2;
+	}
 
-	if(distance_bateau <= sauvegarde[player_autre].stats.camo) {
+
+	if(distance_bateau <= sauvegarde[player_autre].stats.camo) { //|| sauvegarde[req.headers.cookie].bonus.vision === true) {//
 		if(req.headers.cookie === sauvegarde.equipe1) {
 			if (distance_bateau <= sauvegarde[req.headers.cookie].stats.camo) {
 				sauvegarde.carte[y][x] = "b_2_p";

@@ -8,13 +8,13 @@ const mod_zone_tir = require("./mod_zone_tir.js");
 const mod_autre = require("./mod_autre_pseudo.js");
 const mod_dissimulation = require("./mod_dissimulation.js");
 
-function mod_aff(req, res, page, nom_partie, tir, zone) {
+function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
     let marqueurs = {};
     let sauvegarde;
 	let parties;
     let x, y, i;
 	let player_autre = mod_autre(req, nom_partie);
-	let dist;
+	let dist, dist2;
 	let bat, bat_2;
 
     sauvegarde = JSON.parse( fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
@@ -23,11 +23,16 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
 	console.log(sauvegarde[req.headers.cookie]);
 
 	bat = sauvegarde[sauvegarde.equipe1].bateau;
-	//mise en place du bateau sur la carte selon les coord du joueur
-    for (y = 0; y <= sauvegarde.carte.length - 1; y++) {
-        for (x=0; x<= sauvegarde.carte[0].length; x++) {
-			dist = Math.hypot((sauvegarde[req.headers.cookie].coordonnees.y - y), (sauvegarde[req.headers.cookie].coordonnees.x - x));
 
+
+	//mise en place du bateau sur la carte selon les coord du joueur
+	if (sauvegarde[player_autre].bonus.oeil > 0) {
+		sauvegarde[req.headers.cookie].stats.camo += 2;
+	}
+
+	for (y = 0; y <= sauvegarde.carte.length - 1; y++) {
+		for (x=0; x<= sauvegarde.carte[0].length; x++) {
+			dist = Math.hypot((sauvegarde[req.headers.cookie].coordonnees.y - y), (sauvegarde[req.headers.cookie].coordonnees.x - x));
 			if (sauvegarde[req.headers.cookie].coordonnees.y === y && sauvegarde[req.headers.cookie].coordonnees.x === x) {
 				if(req.headers.cookie === sauvegarde.equipe1) {
 					if(dist <= sauvegarde[req.headers.cookie].stats.camo) {
@@ -35,18 +40,18 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
 					} else {
 						sauvegarde.carte[y][x] = "b";
 					}
-				} else {
+				}else { 
 					if(dist <= sauvegarde[req.headers.cookie].stats.camo) {
 						sauvegarde.carte[y][x] = "b_2_p";
 					} else {
 						sauvegarde.carte[y][x] = "b_2";
 					}
 				}
-            } else if (dist <= sauvegarde[req.headers.cookie].stats.camo && sauvegarde.carte[y][x] === 0) {
+			} else if (dist <= sauvegarde[req.headers.cookie].stats.camo && sauvegarde.carte[y][x] === 0) {
 				sauvegarde.carte[y][x] = "zb";
 			}
-        }
-    }
+		}
+	}
 
 	//mise en place de la zone d'après tir si elle doit y être
 	if(sauvegarde[player_autre].a_tire === true && sauvegarde[player_autre].play === false) {
@@ -102,7 +107,7 @@ function mod_aff(req, res, page, nom_partie, tir, zone) {
 	if(sauvegarde[req.headers.cookie].bonus.sabotage === 0) {
 		marqueurs.d_sabot = "disabled";
 	} 
-	if(sauvegarde[req.headers.cookie].bonus.oeil === 0) {
+	if(sauvegarde[req.headers.cookie].bonus.faucon === 0) {
 		marqueurs.d_yeux = "disabled";
 	}
 	if(sauvegarde[req.headers.cookie].bonus.barils === 0) {

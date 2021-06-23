@@ -8,7 +8,7 @@ const mod_aff = require("./mod_aff.js");
 const mod_autre = require("./mod_autre_pseudo");
 
 function t_suivant(req, res, query) {
-	let page;
+	let page,t;
 	let sauvegarde = {};
 	let marqueurs = {};
 	let zone = {};
@@ -24,9 +24,12 @@ function t_suivant(req, res, query) {
 
 	sauvegarde[player_autre].a_tire = false;
 	sauvegarde[req.headers.cookie].tour = 0;
-		
-	if ( sauvegarde[req.headers.cookie].faucon > 0) {
-		sauvegarde[req.headers.cookie].faucon --;
+	
+	sauvegarde[req.headers.cookie].bonus.vision = false;
+	sauvegarde[req.headers.cookie].bonus.saboter = false;
+
+	if (sauvegarde[req.headers.cookie].bonus.oeil > 0) {
+		sauvegarde[req.headers.cookie].bonus.oeil --;
 	}
 
 	marqueurs.carteAff = aff(sauvegarde.carte, 15);
