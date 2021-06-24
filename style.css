@@ -94,7 +94,7 @@ h2 {
 
 .carte_bg {    
 	background: url(./papier.jpg) no-repeat center/cover;
-    padding: 15px;
+    padding: 17px;
 
 }
 
@@ -208,6 +208,8 @@ button:hover, input[type="submit"]:hover {
 .b_connexion {
     background: none;
     border: none;
+    margin-top: 12px;
+    margin-bottom: 12px;
     
     color: var(--color-click);
     text-shadow: var(--shadow-text);
@@ -218,6 +220,10 @@ button:hover, input[type="submit"]:hover {
 
     border-radius: 30%;
     padding: 8px;
+}
+
+#b_principal {
+    font-size: 1em;
 }
 
 .b_connexion:hover {
@@ -297,6 +303,10 @@ button:hover, input[type="submit"]:hover {
     margin: 3px;
 }
 
+.radio_bateau:checked + .cadre_bateau {
+    border: 2px solid blue;
+}
+
 .cadre_bateau {
     display: flex;
     flex-direction: column;
@@ -306,7 +316,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .nom_bateau {
-    color: white;
+    color: var(--color-text);
     font-family: 'Courgette', serif;
     font-size: 1.8em;
     text-shadow: var(--shadow-text);
@@ -342,7 +352,7 @@ button:hover, input[type="submit"]:hover {
 
 .stats {
     padding: 20px;
-    color: whitesmoke;
+    color: var(--color-text);
     font-family: 'Courgette', serif;
     font-size: 1.2em;
     text-shadow: var(--shadow-text);
@@ -358,7 +368,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .bonus_container { 
-    border: 1px solid rgb(245, 248, 245);
+/*    border: 1px solid rgb(245, 248, 245);*/
     
 } 
 
@@ -370,7 +380,7 @@ button:hover, input[type="submit"]:hover {
 }
 
 .deplacement_container {
-    border: 1px solid rgb(15, 15, 15);
+/*    border: 1px solid rgb(15, 15, 15);*/
     display: flex;
     flex-direction:column;
     justify-content: space-between;
@@ -388,7 +398,7 @@ button:hover, input[type="submit"]:hover {
     justify-content: space-between;
     align-items: center;
     width:20%;
-    border: 1px solid rgb(0, 17, 255);
+/*    border: 1px solid rgb(0, 17, 255);*/
 }
 
 
@@ -396,8 +406,9 @@ button:hover, input[type="submit"]:hover {
     display: flex;
     flex-direction : column;
     align-items: center;
+    justify-content: center;
     width:60%;
-    border: 1px solid rgb(9, 255, 0);
+/*    border: 1px solid rgb(9, 255, 0);*/
 	overflow-y: scroll;
 
 }
@@ -409,7 +420,7 @@ button:hover, input[type="submit"]:hover {
     justify-content: space-between;
     align-items: center;
     width:20%;
-    border: 1px solid red;
+/*    border: 1px solid red;*/
 	margin-left: 15px;
 }
 
@@ -435,16 +446,20 @@ button:hover, input[type="submit"]:hover {
 
 }
 
+.ligne_2 {
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+}
+
 .mv_gauche {
 
     background: url(./bouton2.png) no-repeat center/cover;
-    transform: rotate(180deg);
+    transform: scaleX(-1);
     height: 55px;
     width: 50px;
     border: 0px;
     color: var(--color-click);
-
-
 }
 
 .mv_droite {
@@ -454,13 +469,12 @@ button:hover, input[type="submit"]:hover {
     width: 50px;
     border: 0px;
     color: var(--color-click);
-	margin-left: 20px;
-
+    
 }
 
 
 .pv {
-    margin: 15px;
+    margin: 20px;
     
 }
 

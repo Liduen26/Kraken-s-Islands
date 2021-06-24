@@ -62,14 +62,16 @@ function trait(req, res, query) {
 	fs.writeFileSync("index_parties.json", JSON.stringify(partie), "UTF-8");
 
 	bateaux = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
+	
+	//génération des stats des navires
+	marqueurs.schooner = `PV : ${bateaux.schooner.pv} <br>Attaque : ${bateaux.schooner.atq}<br>Visibilité : ${bateaux.schooner.camo}`;
+    
+	marqueurs.brick = `PV : ${bateaux.brick.pv} <br>Attaque : ${bateaux.brick.atq}<br>Visibilité : ${bateaux.brick.camo}`;
 
-	marqueurs.schooner = `Stats: <br>PV:${bateaux.schooner.pv} <br>Attaque:${bateaux.schooner.atq}<br>Visibilité:${bateaux.schooner.camo}`;
+	marqueurs.fregate = `PV : ${bateaux.fregate.pv} <br>Attaque : ${bateaux.fregate.atq}<br>Visibilité : ${bateaux.fregate.camo}`;
 
-	marqueurs.brick = `Stats: <br>PV:${bateaux.brick.pv} <br>Attaque:${bateaux.brick.atq}<br>Visibilité:${bateaux.brick.camo}`;
+	marqueurs.galion = `PV : ${bateaux.galion.pv} <br>Attaque : ${    bateaux.galion.atq}<br>Visibilité : ${bateaux.galion.camo}`;
 
-	marqueurs.fregate = `Stats: <br>PV:${bateaux.fregate.pv} <br>Attaque:${bateaux.fregate.atq}<br>Visibilité:${bateaux.fregate.camo}`;
-
-	marqueurs.galion = `Stats: <br>PV:${bateaux.galion.pv} <br>Attaque:${    bateaux.galion.atq}<br>Visibilité:${bateaux.galion.camo}`;
 
 	marqueurs.partie_query = query.nom_partie;
 	page = page.supplant(marqueurs);

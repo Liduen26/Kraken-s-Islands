@@ -26,13 +26,13 @@ function actualiser(req, res, query) {
 				page = fs.readFileSync("./m_choix_bateau.html", "UTF-8");
 				bateaux = JSON.parse(fs.readFileSync("stats_bateaux.json","UTF-8"));
 
-				marqueurs.schooner = `Stats: <br>PV:${bateaux.schooner.pv} <br>Attaque:${bateaux.schooner.atq}<br>Visibilité:${bateaux.schooner.camo}`;
+				marqueurs.schooner = `PV : ${bateaux.schooner.pv} <br>Attaque : ${bateaux.schooner.atq}<br>Visibilité : ${bateaux.schooner.camo}`;
 				
-				marqueurs.brick = `Stats: <br>PV:${bateaux.brick.pv} <br>Attaque:${bateaux.brick.atq}<br>Visibilité:${bateaux.brick.camo}`;
+				marqueurs.brick = `PV : ${bateaux.brick.pv} <br>Attaque : ${bateaux.brick.atq}<br>Visibilité : ${bateaux.brick.camo}`;
 				
-				marqueurs.fregate = `Stats: <br>PV:${bateaux.fregate.pv} <br>Attaque:${bateaux.fregate.atq}<br>Visibilité:${bateaux.fregate.camo}`;
+				marqueurs.fregate = `PV : ${bateaux.fregate.pv} <br>Attaque : ${bateaux.fregate.atq}<br>Visibilité : ${bateaux.fregate.camo}`;
 				
-				marqueurs.galion = `Stats: <br>PV:${bateaux.galion.pv} <br>Attaque:${    bateaux.galion.atq}<br>Visibilité:${bateaux.galion.camo}`;
+				marqueurs.galion = `PV : ${bateaux.galion.pv} <br>Attaque : ${    bateaux.galion.atq}<br>Visibilité : ${bateaux.galion.camo}`;
 
 			}
 		}

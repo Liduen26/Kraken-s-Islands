@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="full-height-flex">
-	<form method="GET" action="/req_tir" class="full-height-flex" style="justify-content: space-between;">
+		<form method="GET" action="/req_tir" class="full-height-flex" style="justify-content: space-between;">
 			<div class="gauche">
 				<div class="bonus_container">
 					<div class="ligne">
@@ -44,7 +44,10 @@
 			</div>
 		
 			<div class="centre">
-				{carteAff}
+				<div class="carte_bg">
+                    {carteAff}
+            	</div>
+
 				<input type="hidden" name="nom_partie" value="{partie_query}">
 			</div>
 
@@ -61,9 +64,9 @@
 				</div>			
 			</div>
 		</form>
-   </div>
+	</div>
 
-   <script>
+	<script>
         let checkboxes;
 
         window.addEventListener("load", function () {
@@ -93,7 +96,7 @@
         function countChecked(checkboxes) {
             return Array.from(checkboxes.values()).reduce((acc, box) => acc + (box.checked ? 1 : 0), 0);
         }
-    </script>
+	</script>
 
 </body>
 </html	
