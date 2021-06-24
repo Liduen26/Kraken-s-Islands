@@ -48,26 +48,31 @@ h2 {
     text-shadow: var(--shadow-text);
 }
 
-.content {
-
-    position: absolute;
-    top: 24%;
-    bottom: 0%;
-    right: 0%;
-    left: 0%;
+.create_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: scroll;   
 }
 
-
-.p1_bg {
+.create_bg {
+    background: url(./parchment.png) no-repeat center/cover;
+    height: 450px;
+    width: 550px;
     
-	background: url(./parchment.png) no-repeat center/cover;
-    position: absolute;
-    top: 15%;
-    bottom: 15%;
-    right: 55%;
-    left: 10%;
-	
 
+}
+
+.create_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+    padding: 75px;
+    color: var(--color-text-inv);
+    font-family: 'Courgette', serif;
+    font-size: 1.5em;
+    text-shadow: var(--shadow-text2);
 }
 
 .form_content {
@@ -82,45 +87,23 @@ h2 {
     left: 15%;
 }
 
-.p2_bg {
-    
-	background: url(./papier.jpg) no-repeat center/cover;
-    position: absolute;
-    top: 15%;
-    bottom: 15%;
-    right: 10%;
-    left: 55%;
-	
+#create-numb {
+    width: 100px;
 }
 
-.map_content {
-	
-	position: absolute;
-    top: 10%;
-    bottom: 15%;
-    right: 15%;
-    left: 15%;
+.carte_bg {    
+	background: url(./papier.jpg) no-repeat center/cover;
+    padding: 15px;
+
 }
+
+
 
 /*.cadre_carte {
 	
 	flex-direction: row;
 	justify-content: center;
 }*/
-
-.b1_retour {
-	
-	height: 60px;
-    width: 110px;
-    background: url(./piece.jpg) ;
-
-	position: absolute;
-    bottom: 2em;
-    right: 2.3em;
-	border-radius: 1.7em;
-    box-shadow: var(--shadow-box);
-}
-
 
 .b_retour {
     position: absolute;
@@ -518,10 +501,15 @@ button:hover, input[type="submit"]:hover {
 .liste_container {
     margin: 20px;
     border : 2px solid black;
+    overflow-y: scroll;
+    height: 55vh;
 }
 
 #titre {
-    background: none;
+    position: sticky;
+    top: 0;
+    margin: 10px;
+    background: 0;
 }
 
 .liste_ligne {
@@ -534,6 +522,7 @@ button:hover, input[type="submit"]:hover {
     font-family: 'Courgette', serif;
     font-size: 1.4em;
     text-shadow: var(--shadow-text);
+
 }
 
 .liste_box {
@@ -559,6 +548,7 @@ button:hover, input[type="submit"]:hover {
     font-family: 'Courgette', serif;
     font-size: 1em;
     border-radius: 30%;
+    text-shadow: var(--shadow-text);
 
 }
 
@@ -570,5 +560,5 @@ button:hover, input[type="submit"]:hover {
 }
 
 #quitter {
-    margin-top: 45vh;
+    margin-top: 35vh;
 }

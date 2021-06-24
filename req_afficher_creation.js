@@ -21,12 +21,12 @@ function trait(req, res, query) {
 	page = fs.readFileSync('m_creation_partie.html', 'utf-8');
 
 	carte = generation(undefined, haut, larg);
-
+	
 	//faire un nouv marqureurs pour créer des zones de texte dynamiques
 
-	marqueurs.taille = `<input type="number" name="hauteur" required value="${carte.length}"> x <input type="number" name="largeur" required value="${carte[0].length}"><p>`;
-	
-    marqueurs.carteAff = trans_html(carte, 5);
+    marqueurs.haut = carte.length;
+	marqueurs.larg = carte[0].length;
+	marqueurs.carteAff = trans_html(carte, 5);
 	marqueurs.erreur = "";
 	page = page.supplant(marqueurs);
 

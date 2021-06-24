@@ -23,7 +23,7 @@ function trait(req, res, query) {
 	partie = JSON.parse(contenu);
 
 	for(i = 0;i < partie.length;i++) {
-		if(partie[i].Player_1 === query.Player_1) {
+		if(partie[i].partie === query.nom_partie) {
 			partie[i].Player_2 = req.headers.cookie;
 			partie[i].status_p = "en cours";
 			nom_partie = partie[i].partie;

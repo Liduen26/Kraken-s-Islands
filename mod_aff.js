@@ -3,7 +3,6 @@
  
 const fs = require("fs");
 const mod_aff_html2 = require("./mod_aff_html2.js");
-const mod_win = require ("./mod_win.js");
 const mod_zone_tir = require("./mod_zone_tir.js");
 const mod_autre = require("./mod_autre_pseudo.js");
 const mod_dissimulation = require("./mod_dissimulation.js");
@@ -14,26 +13,29 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 	let parties;
     let x, y, i;
 	let player_autre = mod_autre(req, nom_partie);
-	let dist, dist2;
-	let bat, bat_2;
+	let dist;
 
     sauvegarde = JSON.parse( fs.readFileSync(`partie/${nom_partie}.json`, "UTF-8"));
 
 	console.log(req.headers.cookie + " :");
 	console.log(sauvegarde[req.headers.cookie]);
-
-	bat = sauvegarde[sauvegarde.equipe1].bateau;
-
-
-	//mise en place du bateau sur la carte selon les coord du joueur
+	
+	//est-ce que le bonus yeux de faucon de l'autre joueur est activé ?
 	if (sauvegarde[player_autre].bonus.oeil > 0) {
 		sauvegarde[req.headers.cookie].stats.camo += 2;
 	}
 
+	//mise en place du bateau sur la carte selon les coord du joueur
 	for (y = 0; y <= sauvegarde.carte.length - 1; y++) {
 		for (x=0; x<= sauvegarde.carte[0].length; x++) {
+
+			//calcul de la distance de la case actuelle par rapport à la position du navire du joueur via un théorème de pythagore
 			dist = Math.hypot((sauvegarde[req.headers.cookie].coordonnees.y - y), (sauvegarde[req.headers.cookie].coordonnees.x - x));
+
+			//affichage du bateau
 			if (sauvegarde[req.headers.cookie].coordonnees.y === y && sauvegarde[req.headers.cookie].coordonnees.x === x) {
+
+				//affichage de la bonne icone
 				if(req.headers.cookie === sauvegarde.equipe1) {
 					if(dist <= sauvegarde[req.headers.cookie].stats.camo) {
 						sauvegarde.carte[y][x] = "b_p";
@@ -47,6 +49,7 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 						sauvegarde.carte[y][x] = "b_2";
 					}
 				}
+			//affichage de la zone bleu clair si la case est dans la zone de visibilité du navire
 			} else if (dist <= sauvegarde[req.headers.cookie].stats.camo && sauvegarde.carte[y][x] === 0) {
 				sauvegarde.carte[y][x] = "zb";
 			}
@@ -57,7 +60,8 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 	if(sauvegarde[player_autre].a_tire === true && sauvegarde[player_autre].play === false) {
 		sauvegarde = mod_zone_tir(req, nom_partie, sauvegarde);
 	}
-
+	
+	//mod_dissimulation, pour voir si le joueur ennemi est a portée de vue, et si oui l'afficher
 	sauvegarde = mod_dissimulation(req, nom_partie, sauvegarde, dist);
 
     //entrée de la carte dans l'html
@@ -117,6 +121,7 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 		marqueurs.d_kraken = "disabled";
 	} 
 
+	//envoi des pvs des joueurs selon les données récupérée dans le JSON
 	marqueurs.pvJ1 = req.headers.cookie + ":" + sauvegarde[req.headers.cookie].stats.pv;
 	marqueurs.pvJ2 = player_autre + ":" + sauvegarde[player_autre].stats.pv;
 

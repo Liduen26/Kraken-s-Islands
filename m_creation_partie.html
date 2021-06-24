@@ -10,27 +10,30 @@
 		<h2><label>Création de votre partie</label></h2>
 	</header>
 
-	<div class="content">
-		<div class="p1_bg">
-			<div class="form_content">
+	<div class="create_content">
+		<div class="create_bg">
+			<div class="create_form">
 				<form action="req_afficher_creation" method="GET">
-					Taille de la carte : </br>
-					{taille}
-					<input type="submit" value="Carte">
+					<label>Taille de la carte : <br>
+						<input type="number" class="z-text" id="create-numb" name="hauteur" required value="{haut}"> x
+						<input type="number" class="z-text" id="create-numb" name="largeur" required value="{larg}"><br>
+					</label>
+					
+					<input class="b_connexion" type="submit" value="Carte">
 				</form>
 
 				<form action="req_creer" method="GET">
-					Nom de la partie : </br>
-					<input type="text" name="nom_partie" required> <br>
-					{erreur}
-					<p>			
-					<input type="submit" value="Valider">
+					<label>Nom de la partie : </br>
+						<input type="text" class="z-text" name="nom_partie" required> <br>
+						{erreur}
+					</label>
+					<input class="b_connexion" type="submit" value="Valider">
 				</form>
 			</div>
 		</div>
 
-		<div class="p2_bg">
-			<div class="map_content">	
+		<div class="carte_bg">
+			<div class="carte_content">	
 				<div class="cadre_carte" >
 					{carteAff}
 				</div>
