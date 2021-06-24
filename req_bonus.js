@@ -78,7 +78,6 @@ function bonus (req, res, query)  {
 				partie[req.headers.cookie].bonus.barils = barils;
 				partie[req.headers.cookie].bonus.bombes.push (partie[req.headers.cookie].coordonnees);
 
-console.log("test" + barils);
 				partie[req.headers.cookie].tour += 1;
     			fs.writeFileSync(`./partie/${query.nom_partie}.json`, JSON.stringify(partie) ,"UTF-8");
             }
