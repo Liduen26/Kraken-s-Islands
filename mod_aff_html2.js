@@ -50,20 +50,40 @@ function trans_html(req, sauvegarde, tpixel, tir){
 			//on met dans la variable display un bout de code html, qui correspond à un carré de couleur
 			//c'est tout ces carrés de couleurs assemblés qui font une carte
 			if(tir !== undefined) {
-				if(color === "blue" || color === "zone" || color === "z-detect") {
+				if(color === "blue" || color === "zone" || color === "z-detect" /*|| color === "bateau_p" || color === "bateau_2" || color === "bateau_2_p" || color === "bateau"*/ ) {
 					//case à cocher 
 					display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="${color}-tir"></label>`);
 				} else if (color === "bateau_p") {
+					//case à cocher 
+                    display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="blue-tir"></label>`);
+
 					//bateau selon sa classe
-					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat}_p.png) center/cover"></span>`);
+					//display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="bateau" style="background: url(./icones/ico_${bat}_p.png) center/cover"></label>`);
+					//display.push(`<span class="bateau" style="background: url(./icones/ico_${bat}_p.png) center/cover"></span>`);
 				
 				} else if (color === "bateau_2") {
+					//case à cocher 
+                    display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="blue-tir"></label>`);
+
 					//bateau selon sa classe
-					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2.png) center/cover"></span>`);
+					//display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="bateau" style="background:     url(./icones/ico_${bat_2}_2.png) center/cover"></label>`);
+					//display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2.png) center/cover"></span>`);
 
 				} else if (color === "bateau_2_p") {
+					//case à cocher 
+                    display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="blue-tir"></label>`);
+
 					//bateau selon sa classe
-					display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2_p.png) center/cover"></span>`);
+					//display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="bateau" style="background:     url(./icones/ico_${bat_2}_2_p.png) center/cover"></label>`);
+					//display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2_p.png) center/cover"></span>`);
+				
+				} else if (color === "bateau") {
+					//case à cocher 
+                    display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="blue-tir"></label>`);
+
+               		//bateau selon sa classe
+                    //display.push(`<input id="toggle_${y}_${x}" type="checkbox" name="tir" value="${y}_${x}" class="z-tir"/><label for="toggle_${y}_${x}" class="bateau" style="background: url(./icones/ico_${bat}.png) center/cover"></label>`);
+                    //display.push(`<span class="bateau" style="background: url(./icones/ico_${bat_2}_2_p.png) center/cover"></span>`);
 
 				} else {
 					//span normal

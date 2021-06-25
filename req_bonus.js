@@ -97,7 +97,7 @@ function bonus (req, res, query)  {
 	}
     
 	page = mod_win(req, query.nom_partie, page);
-    mod_aff(req, res, page, query.nom_partie, rien, rien, carte);
+    mod_aff(req, res, page, query.nom_partie, undefined, rien, carte);
 }
 
 

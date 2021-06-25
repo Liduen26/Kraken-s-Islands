@@ -21,7 +21,7 @@ function vu(req, nom_partie, sauvegarde, dist) {
 	}
 
 
-	if(distance_bateau <= sauvegarde[player_autre].stats.camo) { //|| sauvegarde[req.headers.cookie].bonus.vision === true) {//
+	if(distance_bateau <= sauvegarde[player_autre].stats.camo || sauvegarde[req.headers.cookie].bonus.vision === true) { 
 		if(req.headers.cookie === sauvegarde.equipe1) {
 			if (distance_bateau <= sauvegarde[req.headers.cookie].stats.camo) {
 				sauvegarde.carte[y][x] = "b_2_p";

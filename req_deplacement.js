@@ -84,7 +84,6 @@ function deplacement(req, res, query) {
 	sauvegarde = mod_kraken(req, sauvegarde, query.nom_partie);
 	console.log(sauvegarde[req.headers.cookie].bonus);
 
-	sauvegarde[req.headers.cookie].bonus.kraken = 0;
 	fs.writeFileSync(`./partie/${query.nom_partie}.json`,JSON.stringify(sauvegarde) ,"UTF-8");
 	page = mod_win(req, query.nom_partie, page);
 	mod_aff(req, res, page, query.nom_partie);

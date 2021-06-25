@@ -44,10 +44,10 @@ function tir(req, res, query) {
 		sauvegarde[req.headers.cookie].zone.y = sauvegarde[req.headers.cookie].coordonnees.y;
 		sauvegarde[req.headers.cookie].zone.x = sauvegarde[req.headers.cookie].coordonnees.x;
 
-		sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 5);
+		sauvegarde[req.headers.cookie].zone.y -= Math.floor(Math.random() * 4);
 		sauvegarde[req.headers.cookie].zone.y_p = sauvegarde[req.headers.cookie].zone.y + 3;
 
-		sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 5);
+		sauvegarde[req.headers.cookie].zone.x -= Math.floor(Math.random() * 4);
 		sauvegarde[req.headers.cookie].zone.x_p = sauvegarde[req.headers.cookie].zone.x + 3;
 
 
