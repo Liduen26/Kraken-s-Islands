@@ -30,16 +30,16 @@
 
 			<div class="deplacement_container">
 				<div class="ligne_1">
-					<a><button disabled class="b_connnexion">Haut</button></a>
+					<a><button disabled class="mv_haut"></button></a>
 				</div>
 				
 				<div class="ligne_2">
-					<a><button disabled class="b_connnexion">Droite</button></a>
-					<a><button disabled class="b_connnexion">Gauche</button></a>
+					<a><button disabled class="mv_gauche"></button></a>
+					<a><button disabled class="mv_droite"></button></a>
 				</div>
 
 				<div class="ligne_3">
-					<a><button disabled class="b_connnexion">Bas</button></a>
+					<a><button disabled class="mv_bas"></button></a>
 				</div>
 			</div>
 		</div>
@@ -60,8 +60,29 @@
 			</div>
 
 			<div class="pv">
-				<label disabled class="ptsvie">{pvJ1}<br> </label>
-				<label disabled class="ptsvie">{pvJ2} </label>
+				<div class="pv_container">
+                    <label class="pv_chiffres" id="vous">
+                         
+                        {pvJ1}
+                    </label>
+                    <label class="pv_barre">
+                        <span class="pv_barre_bg">
+                            <span id="barreJ1" style="width: {pvJ1_p}%;"></span>
+                        </span>
+                        {pseudoJ1}
+                    </label>
+                </div>
+                <div class="pv_container">
+                    <label class="pv_chiffres" id="adv">
+                        {pvJ2}
+                    </label>
+                    <label class="pv_barre">
+                        <span class="pv_barre_bg">
+                            <span id="barreJ1" style="width: {pvJ2_p}%;"></span>
+                        </span>
+                        {pseudoJ2}
+                    </label>
+                </div>			
 			</div>
 		</div>
    </div>

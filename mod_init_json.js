@@ -28,6 +28,7 @@ function init(req, sauvegarde) {
 	sauvegarde[req.headers.cookie].stats.pv = 0;
 	sauvegarde[req.headers.cookie].stats.atq = 0;
 	sauvegarde[req.headers.cookie].stats.camo = 0;
+	sauvegarde[req.headers.cookie].pvmax = 0;
 	
 	//création de la zone
 	sauvegarde[req.headers.cookie].zone = {};

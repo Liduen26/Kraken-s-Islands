@@ -122,8 +122,13 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 	} 
 
 	//envoi des pvs des joueurs selon les données récupérée dans le JSON
-	marqueurs.pvJ1 = req.headers.cookie + ":" + sauvegarde[req.headers.cookie].stats.pv;
-	marqueurs.pvJ2 = player_autre + ":" + sauvegarde[player_autre].stats.pv;
+	marqueurs.pvJ1 = sauvegarde[req.headers.cookie].stats.pv;
+	marqueurs.pseudoJ1 = req.headers.cookie;
+	marqueurs.pvJ1_p = Math.floor(sauvegarde[req.headers.cookie].stats.pv * (100 / sauvegarde[req.headers.cookie].pvmax));
+
+	marqueurs.pvJ2 = sauvegarde[player_autre].stats.pv;
+	marqueurs.pseudoJ2 = player_autre;
+	marqueurs.pvJ2_p = Math.floor(sauvegarde[player_autre].stats.pv * (100 / sauvegarde[player_autre].pvmax));
 
     //affichage de la page html
     page = page.supplant(marqueurs);

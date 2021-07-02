@@ -473,16 +473,70 @@ button:hover, input[type="submit"]:hover {
 }
 
 
+/* Points de vie */
 .pv {
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 30px;
+    height: 110px;
+}
+
+.pv_container {
+    background-color: rgba(0, 0, 0, 0.315);
+    display: flex;
+    
+    padding: 5px;
+    color: var(--color-text);
+    font-family: 'Courgette', serif;
+    text-shadow: var(--shadow-text);
+    border-radius: 10px;
+}
+
+.pv_chiffres {
+    display: flex;
+    width: 50px;
+    border: 3px solid var(--color-text);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-size: 1.3em;
     
 }
 
-.ptsvie {
-    background-color: rgb(255, 255, 255);
-
+#vous {
+    background: green;
 }
 
+#adv {
+    background: red;
+}
+
+.pv_barre {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 1em;
+}
+
+.pv_barre_bg {
+    display: flex;
+    height: 20px;
+    border: 1px solid var(--color-text);
+    margin-left: -22px;
+    background-color: rgba(0, 0, 0, 0.315);
+}
+
+#barreJ1 {
+    display: flex;
+    background: var(--color-text-old);
+    height: 20px;
+    
+    /*width: 80px;*/
+}
 .blue {
 	background-color: blue; 
 	border: 1px dotted #000000e0;

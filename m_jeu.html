@@ -56,9 +56,30 @@
 				<a href="/req_tour_suivant?nom_partie={partie_query}"><button {d_tour} class="b_connnexion">Tour suivant</button></a>
 			</div>
 			<div class="pv">
-				<label class="ptsvie">{pvJ1}<br> </label>
-				<label class="ptsvie">{pvJ2}</label>
-			</div>			
+				<div class="pv_container">
+					<label class="pv_chiffres" id="vous">
+						
+						{pvJ1}
+					</label>
+					<label class="pv_barre">
+						<span class="pv_barre_bg">
+							<span id="barreJ1" style="width: {pvJ1_p}%;"></span>
+						</span>
+						{pseudoJ1}
+					</label>
+				</div>
+				<div class="pv_container">
+					<label class="pv_chiffres" id="adv">
+						{pvJ2}
+					</label>
+					<label class="pv_barre">
+						<span class="pv_barre_bg">
+							<span id="barreJ1" style="width: {pvJ2_p}%;"></span>
+						</span>
+						{pseudoJ2}
+					</label>
+				</div>
+			</div>
 		</div>
    </div>
 </body>
