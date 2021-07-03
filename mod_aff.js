@@ -130,6 +130,11 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 	marqueurs.pseudoJ2 = player_autre;
 	marqueurs.pvJ2_p = Math.floor(sauvegarde[player_autre].stats.pv * (100 / sauvegarde[player_autre].pvmax));
 
+	if(sauvegarde[req.headers.cookie].play === false) {
+		marqueurs.c_tour = `style="background: red"`;
+		console.log(marqueurs);
+	}
+
     //affichage de la page html
     page = page.supplant(marqueurs);
     res.writeHead(200, {'Content-Type': 'text/html'});
