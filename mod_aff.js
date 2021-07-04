@@ -119,7 +119,14 @@ function mod_aff(req, res, page, nom_partie, tir, zone, carte) {
 	} 
 	if(sauvegarde[req.headers.cookie].bonus.kraken === 0) {
 		marqueurs.d_kraken = "disabled";
-	} 
+	}
+
+	marqueurs.nb_espion = sauvegarde[req.headers.cookie].bonus.espion;
+	marqueurs.nb_sabot = sauvegarde[req.headers.cookie].bonus.sabotage;
+	marqueurs.nb_yeux = sauvegarde[req.headers.cookie].bonus.faucon;
+	marqueurs.nb_barils = sauvegarde[req.headers.cookie].bonus.barils;
+	marqueurs.nb_kraken = sauvegarde[req.headers.cookie].bonus.kraken;
+
 
 	//envoi des pvs des joueurs selon les données récupérée dans le JSON
 	marqueurs.pvJ1 = sauvegarde[req.headers.cookie].stats.pv;
