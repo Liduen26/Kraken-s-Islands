@@ -25,15 +25,6 @@ body {
 
 * {
     /* border: 1px solid whitesmoke  */
-    /*! margin-top: 20%; */
-}
-
-:disabled {
-    cursor: default;
-}
-
-:enabled {
-    cursor: pointer;
 }
 
 header {
@@ -379,69 +370,10 @@ button:hover, input[type="submit"]:hover {
 	text-align: center;
 }
 
-/* Bonus */
 .bonus_container { 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: var(--color-text);
-    font-family: 'Courgette', serif;
-    font-size: 1.2em;
-    text-shadow: var(--shadow-text);
-    width: 95%;
+/*    border: 1px solid rgb(245, 248, 245);*/
     
-    height: 30%;
 } 
-
-.bonus_ligne {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 7px;
-}
-
-.b_bonus {
-    justify-content: center;
-    width: 150px;
-    border: 1px solid var(--color-text); 
-    padding: 3px;
-    border-radius: 13px 5%;
-    margin-right: 10px;
-    
-    color: var(--color-text);
-    font-family: 'Courgette', serif;
-    font-size: 1em;
-    text-shadow: var(--shadow-text);
-    
-    box-shadow: var(--shadow-box);
-}
-
-#espion {
-    background: black; 
-}
-
-#sabotage {
-    background: #008bff; 
-}
-
-#faucon {
-    background: #84b900; 
-}
-
-#barils {
-    background: brown; 
-}
-
-#kraken {
-    background: purple; 
-}
-
-.b_bonus:active {
-    box-shadow: var(--shadow-box-active);
-}
-
-.b_bonus:disabled {
-    background: grey !important;
-}
 
 .full-height-flex {
 	display: flex;
@@ -454,19 +386,29 @@ button:hover, input[type="submit"]:hover {
 /*    border: 1px solid rgb(15, 15, 15);*/
     display: flex;
     flex-direction:column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-	height: 30%;
+	margin-top :
 }
 
 .shoot_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid rgb(2, 50, 95);    
-    height: 40%;
-    
+    border: 1px solid rgb(2, 50, 95);   
 } 
+
+.tirer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-text);
+    font-family: 'Courgette', serif;
+    text-shadow: var(--shadow-text);
+    font-size: 1.2em;
+}
+
+.b_tirer {
+    
+}
+
     
 .droite {
     display: flex;
@@ -497,6 +439,7 @@ button:hover, input[type="submit"]:hover {
     align-items: center;
     width:20%;
 /*    border: 1px solid red;*/
+	margin-left: 15px;
 }
 
 .mv_haut {
@@ -521,14 +464,10 @@ button:hover, input[type="submit"]:hover {
 
 }
 
-.ligne_depl {
+.ligne_2 {
     display: flex;
-    justify-content: center;
-    width: 160px;
-}
-
-#ligne_centre {
     justify-content: space-between;
+    width: 160px;
 }
 
 .mv_gauche {
@@ -552,13 +491,6 @@ button:hover, input[type="submit"]:hover {
 }
 
 /* Tour suivant */
-.tour_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 40%;
-}
-
 .t_suivant {
     display:flex;
     flex-direction: column;
@@ -567,7 +499,7 @@ button:hover, input[type="submit"]:hover {
     color: var(--color-text);
     font-family: 'Courgette', serif;
     text-shadow: var(--shadow-text);
-    font-size: 1.6em;
+    font-size: 1.2em;
     
     
 }
@@ -581,7 +513,6 @@ button:hover, input[type="submit"]:hover {
     border-radius: 35%;
     margin: 6px;
     outline: none;
-    box-shadow: var(--shadow-box);
     
     background: var(--color-click);
 }
@@ -590,25 +521,20 @@ button:hover, input[type="submit"]:hover {
     border: 0;  
 }
 
-.b_t_suivant:active {
-    box-shadow: var(--shadow-box-active);
-}
-
 
 /* Points de vie */
 .pv {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     width: 80%;
-    /*! margin-bottom: 30px; */
-    height: 30%;
+    margin-bottom: 30px;
+    height: 110px;
 }
 
 .pv_container {
     background-color: rgba(0, 0, 0, 0.315);
     display: flex;
-    margin-top: 7px;
     
     padding: 5px;
     color: var(--color-text);
@@ -619,14 +545,13 @@ button:hover, input[type="submit"]:hover {
 
 .pv_chiffres {
     display: flex;
-    width: 58px;
-    height: 40px;
+    width: 50px;
     border: 3px solid var(--color-text);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
     z-index: 1;
-    font-size: 1.4em;
+    font-size: 1.3em;
     
 }
 
@@ -643,7 +568,7 @@ button:hover, input[type="submit"]:hover {
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 .pv_barre_bg {
