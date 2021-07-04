@@ -10,9 +10,12 @@
     <header>
         <h2><label>Veuillez patienter</label></h2>
     </header>
+    <div class="cadre_menu">
+        <div class="planche">
+            Partie : {partie_query}
+        </div>
 
-	{partie}<br>
-
-	<a href="req_quitter_partie?nom_partie={partie_query}"><button>Quitter</button></a>
+        <a href="req_quitter_partie?nom_partie={partie_query}"><button class="b_accueil_int" id="quitter">Quitter</button></a>
+    </div>
 </body>
 </html>

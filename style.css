@@ -32,10 +32,6 @@ body {
     cursor: default;
 }
 
-:enabled {
-    cursor: pointer;
-}
-
 header {
     margin: 20px;
     padding: 0px;
