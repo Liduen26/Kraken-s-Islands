@@ -1,2 +1,3 @@
 *.json
 !stats_bateaux.json
+node_modules
